@@ -38,3 +38,5 @@ genetic variants to clinical trials. Bioprocess is simply where I'm starting.
      - A link to the repo, if/when it's public
      - The specific insight the integrated data produces, with an example
 -->
+
+*Glycolysis pathway diagram by [author], via Wikimedia Commons, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).*

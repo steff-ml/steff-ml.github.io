@@ -42,6 +42,11 @@ parts.
 
 <!-- TODO: this is the ten-second keyword scan. List what you actually use.
      Group them so it's skimmable. Example structure below — edit to fit. -->
+<div class="tech-logos" style="display:flex; flex-wrap:wrap; gap:2rem; align-items:center; margin:1.5rem 0;">
+  <img src="/assets/images/logos/databricks.svg" alt="Databricks" style="height:44px;">
+  <img src="/assets/images/logos/apachespark.svg" alt="PySpark / Apache Spark" style="height:44px;">
+  <img src="/assets/images/logos/python.svg" alt="Python" style="height:44px;">
+</div>
 
 **Data & platforms:** Databricks, Apache Spark, Delta Lake, [warehouse/cloud?]
 
