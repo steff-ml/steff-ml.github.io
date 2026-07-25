@@ -14,9 +14,8 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: "Steff Horemans"
-email: "steffhoremans3@gmail.com"
+email: "steff.horemans3@gmail.com"
 description: "A blog about my life, my work and my thoughts."
-twitter_username: username
 github_username: username
 minimal_mistakes_skin: default
 search: true
@@ -69,20 +68,17 @@ author:
       url: "https://github.com/steff-ml"
     - label: "Linkedin"
       icon: "fab fa-fw fa-linkedin"
-      url: "https://linkedin.com/in/steff-horemans"
+      url: "https://www.linkedin.com/in/steff-horemans-34884497/"
 
 
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://github.com/steff-ml"
+    - label: "Linkedin"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/steff-horemans-34884497/"
 
 defaults:
   # _posts
@@ -103,6 +99,15 @@ defaults:
     values:
       layout: single
       author_profile: true
+  # _projects
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      read_time: false
 
 category_archive:
   type: liquid
@@ -110,3 +115,8 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+
+collections:
+  projects:
+    output: true
+    permalink: /work/:path/

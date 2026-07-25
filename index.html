@@ -1,7 +1,37 @@
 ---
-# You don't need to edit this file, it's empty on purpose.
-# Edit theme's home layout instead if you wanna make some changes
-# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-layout: home
-author_profile: true
+layout: splash
+permalink: /
+title: "Steff Horemans"
+header:
+  overlay_color: "#1a1a2e"
+  # To use a background image instead of a solid colour, comment out overlay_color
+  # above and uncomment the two lines below (drop the image in assets/images/):
+  # overlay_image: /assets/images/hero.jpg
+  # overlay_filter: 0.5
+  actions:
+    - label: "Read my story"
+      url: "/about/"
+excerpt: "I build the infrastructure that breaks down the data silos costing organisations money."
+intro:
+  - excerpt: "I'm a Databricks data engineer with a PhD in biology. I spent a decade learning to understand living systems as wholes rather than parts — and I now do the same for industrial and life-science processes, building the data infrastructure that lets people finally see the whole picture."
+feature_row:
+  - title: "About"
+    excerpt: "From synthetic biology and a PhD in cell metabolism to industrial data engineering — and why the bridge between the two is exactly the work I want to do."
+    url: "/about/"
+    btn_label: "The longer story"
+    btn_class: "btn--primary"
+  - title: "Work"
+    excerpt: "**From Gene to Cost** — a governed Databricks lakehouse linking strain engineering, bioprocess and economic data into insight none of them could give alone."
+    url: "/work/"
+    btn_label: "What I'm building"
+    btn_class: "btn--primary"
+  - title: "Writing"
+    excerpt: "Notes on architecture, data, and the systems around them — from AI stacks to why governed infrastructure is what keeps any of it useful."
+    url: "/blog/"
+    btn_label: "What I think about"
+    btn_class: "btn--primary"
 ---
+
+{% include feature_row id="intro" type="center" %}
+
+{% include feature_row %}
