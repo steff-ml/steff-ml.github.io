@@ -35,3 +35,9 @@ feature_row:
 {% include feature_row id="intro" type="center" %}
 
 {% include feature_row %}
+<h2 class="archive__subtitle">Latest writing</h2>
+{% for post in site.posts limit:3 %}
+  {% include archive-single.html type="list" %}
+{% endfor %}
+
+[See all writing &rarr;](/blog/){: .btn .btn--light-outline}
