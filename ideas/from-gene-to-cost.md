@@ -3,6 +3,7 @@ title: "From Gene to Cost"
 excerpt: "A governed Databricks lakehouse linking strain engineering, bioprocess and economic data."
 date: 2026-07-25
 status: "Under active development"
+mission: decrease-manufacturing-cost
 header:
   teaser: /assets/images/projects/from-gene-to-cost-teaser.jpg   # TODO: add a teaser image (optional)
 # tags let you group projects later:

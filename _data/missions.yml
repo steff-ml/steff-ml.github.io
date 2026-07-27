@@ -1,0 +1,8 @@
+# Missions shown on the Work page, in display order.
+# `slug` must match the `mission:` value in each _projects front matter.
+- slug: decrease-manufacturing-cost
+  title: "Decrease Manufacturing Costs"
+  description: "Governed data infrastructure that links process, quality, and economic data so cost drivers stop hiding in silos."
+- slug: improve-time-to-access
+  title: "Improve Time to Access"
+  description: "Governed data infrastructure that removes roadblocks in the way of bringing life-saving therapies to patients."
