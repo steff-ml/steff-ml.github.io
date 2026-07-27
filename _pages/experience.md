@@ -61,4 +61,4 @@ tool?], [IaC / CI-CD?]
 ## Get in touch
 
 See the [contact page](/contact/) — I'm always up for a conversation about data
-in bioprocessing and the life sciences.
+in (bio)processing and the life sciences.
