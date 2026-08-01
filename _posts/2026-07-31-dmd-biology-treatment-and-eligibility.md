@@ -7,7 +7,7 @@ audience:
   - data-engineers
   - bio-scientists
 tags:
-  - genetic-disease
+  - rare-disease
   - molecular-biology
   - precision-medicine
 excerpt: "The DMD biology this project's data model depends on, end to end: the disease, dystrophin's role, the genetics behind the reading-frame rule, the treatment landscape, and how eligibility criteria are actually structured."

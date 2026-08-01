@@ -2,7 +2,7 @@
 title: "Projects"
 layout: single
 permalink: /projects/
-entries_layout: list
+entries_layout: grid
 author_profile: true
 ---
 

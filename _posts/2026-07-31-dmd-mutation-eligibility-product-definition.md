@@ -4,7 +4,7 @@ date: 2026-07-31 09:00:00 +0200
 categories: [project-definition]
 project: precision_medicine_to_eligibility_lakehouse
 tags:
-  - genetic-disease
+  - rare-disease
   - precision-medicine
   - data-mesh
   - agile

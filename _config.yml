@@ -62,7 +62,7 @@ plugins:
 author:
   name   : "Steff Horemans"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "Data Engineer with PhD in Life Sciences specializing in data engineering for chemical and biological engineering."
+  bio    : "Data engineer with PhD in Life Sciences specializing in industrial and life science processes."
   location: "Antwerp, Belgium"
   links:
     - label: "Github"
