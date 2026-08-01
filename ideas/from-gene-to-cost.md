@@ -1,7 +1,7 @@
 ---
 title: "From Gene to Cost"
 excerpt: "A governed Databricks lakehouse linking strain engineering, bioprocess and economic data."
-date: 2026-07-25
+date: 2026-07-31
 status: "Under active development"
 mission: decrease-manufacturing-cost
 header:

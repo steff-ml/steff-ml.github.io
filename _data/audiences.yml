@@ -1,0 +1,11 @@
+# Reader audiences used to filter primers on /primers/.
+# `slug` must match a value in a primer's `audience:` front matter list.
+- slug: data-engineers
+  title: "Data engineers moving into biotech"
+  description: "The data sources, standards and scientific concepts hostile to newcomers, explained for people with an engineering background."
+- slug: bio-scientists
+  title: "Bioengineers & bioinformaticians"
+  description: "The data engineering practice that isn't part of any bio-adjacent curriculum, but decides whether a dataset is valuable long-term."
+- slug: bio-it-leaders
+  title: "Bio-IT & R&D data leaders"
+  description: "What a given piece of infrastructure costs to build and run, and how to distinguish a real problem from an expensive one."

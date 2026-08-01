@@ -1,7 +1,7 @@
 ---
 title: "Lignin Leaderboard"
 excerpt: "A governed Databricks lakehouse linking Pseudomonas Putida genome reference data with feedstock and product cost to determine promising production targets."
-date: 2026-07-25
+date: 2026-07-31
 status: "Under development"
 mission: decrease-manufacturing-cost
 header:

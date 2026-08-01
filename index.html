@@ -18,14 +18,14 @@ feature_row:
     url: "/about/"
     btn_label: "The longer story"
     btn_class: "btn--primary"
-  - title: "Work"
+  - title: "Projects"
     excerpt: "Open-source data infrastructure, organized around missions that decrease costs and improve outcomes."
-    url: "/work/"
+    url: "/projects/"
     btn_label: "What I'm building"
     btn_class: "btn--primary"
-  - title: "Writing"
-    excerpt: "Notes on architecture, data, and the systems around them from AI stacks to why governed infrastructure is what keeps any of it useful."
-    url: "/blog/"
+  - title: "Primers"
+    excerpt: "Short explainers of a single concept or system, written for whichever side of the data-engineering/bio divide it's unfamiliar to."
+    url: "/primers/"
     btn_label: "What I think about"
     btn_class: "btn--primary"
 ---
@@ -33,9 +33,3 @@ feature_row:
 {% include feature_row id="intro" type="center" %}
 
 {% include feature_row %}
-<h2 class="archive__subtitle">Latest writing</h2>
-{% for post in site.posts limit:3 %}
-  {% include archive-single.html type="list" %}
-{% endfor %}
-
-[See all writing &rarr;](/blog/){: .btn .btn--light-outline}

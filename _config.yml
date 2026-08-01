@@ -38,6 +38,8 @@ include:
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
+exclude:
+  - ideas/
 # exclude:
 #   - Gemfile
 #   - Gemfile.lock
@@ -104,7 +106,7 @@ defaults:
       path: ""
       type: projects
     values:
-      layout: single
+      layout: project
       author_profile: true
       share: true
       read_time: false
@@ -119,4 +121,4 @@ tag_archive:
 collections:
   projects:
     output: true
-    permalink: /work/:path/
+    permalink: /projects/:path/

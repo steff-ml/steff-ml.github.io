@@ -1,43 +1,40 @@
 ---
 title: "Genetic disease variant to precision medicine eligibility"
-excerpt: "A governed Databricks lakehouse linking mutation variants of genetic diseases like Duchenne to eligibility criteria for trials of medicines that map to the correct mutation variant."
-date: 2026-07-25
+excerpt: "A governed data platform linking confirmed genetic mutations in rare diseases like Duchenne muscular dystrophy to the therapies and trials a patient is eligible for."
+date: 2026-07-31
 status: "Under development"
 mission: improve-time-to-access
 header:
-  teaser: /assets/images/projects/from-gene-to-cost-teaser.jpg   # TODO: add a teaser image (optional)
+  teaser: /assets/images/projects/precision-medicine-eligibility-teaser.svg   # TODO: add a teaser image (optional)
 # tags let you group projects later:
 tags:
   - databricks
-  - bioprocess
+  - genetic-disease
+  - precision-medicine
   - lakehouse
 ---
 
 *Status: under development.*
 
-A bioreactor makes a product — a metabolite, a monoclonal antibody, and so on —
-by growing cells. How well it does that depends on the cell (usually genetically
-modified) and on conditions in the reactor: feed rate, oxygen availability,
-stirring. All of these cost money in substrate and electricity, and all of it
-happens in a regulatorily stringent environment.
+A patient with a confirmed Duchenne muscular dystrophy (DMD) mutation should
+be able to find every therapy and trial they qualify for as a query — not a
+week spent manually cross-referencing registries, the reading-frame rule, and
+free-text trial criteria across systems that don't talk to each other.
 
-So understanding how a bioprocess *really* performs means understanding it as
-part of a whole system: the producer cell and how it responds to its
-environment, the physical conditions in the reactor, the economics, and the
-regulatory playing field.
+**The goal:** build a reference implementation for a governed data platform
+that turns a confirmed genetic variant into a full eligibility picture —
+approved therapies, open trials, and the gaps neither one covers — updated
+automatically as the trial landscape changes.
 
-**The goal:** build a reference implementation for a governed Databricks
-lakehouse that integrates this data and produces insight none of these sources
-could give alone.
+DMD is the starting implementation, but the underlying model generalises
+directly to other rare genetic diseases where a discrete genetic measurement
+determines therapeutic eligibility: spinal muscular atrophy, Huntington's
+disease, the lysosomal storage disorders.
 
-The same pattern applies to chemical processes, and to linking patients with
-genetic variants to clinical trials. Bioprocess is simply where I'm starting.
-
-<!-- TODO as this develops, consider adding:
+<!-- TODO as this develops, I will add.
      - An architecture diagram (drop in assets/images/projects/ and reference it)
      - A "what's built so far" section with concrete progress
      - A link to the repo, if/when it's public
-     - The specific insight the integrated data produces, with an example
+     - A worked example: one patient's HGVS variant walked through to a
+       ranked list of eligible trials
 -->
-
-*Glycolysis pathway diagram by [author], via Wikimedia Commons, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).*

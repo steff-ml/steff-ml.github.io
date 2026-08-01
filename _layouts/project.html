@@ -1,0 +1,35 @@
+---
+layout: single
+---
+
+{{ content }}
+
+{% assign related_posts = site.posts | where_exp: "post", "post.project == page.slug" %}
+{% if related_posts.size > 0 %}
+<div class="project-posts">
+  <h2>Posts about this project</h2>
+  {% for kind in site.data.post_kinds %}
+    {% assign kind_posts = related_posts | where_exp: "post", "post.categories contains kind.slug" %}
+    {% if kind_posts.size > 0 %}
+    <h3>{{ kind.title }}</h3>
+    <div class="entries-list">
+      {% for post in kind_posts %}
+        {% include archive-single.html type="list" %}
+      {% endfor %}
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>
+{% endif %}
+
+{% assign methodology_posts = site.posts | where: "all_projects", true %}
+{% if methodology_posts.size > 0 %}
+<div class="project-posts project-posts--methodology">
+  <h2>How I Work</h2>
+  <div class="entries-list">
+    {% for post in methodology_posts %}
+      {% include archive-single.html type="list" %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

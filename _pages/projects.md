@@ -1,7 +1,7 @@
 ---
-title: "Work"
+title: "Projects"
 layout: single
-permalink: /work/
+permalink: /projects/
 entries_layout: list
 author_profile: true
 ---

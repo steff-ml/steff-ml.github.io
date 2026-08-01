@@ -1,0 +1,18 @@
+# The 5 kinds of posts, in display order under each project's own page
+# (see _layouts/project.html).
+# `slug` must match the `categories:` value in each post's front matter.
+- slug: project-definition
+  title: "Project Definition"
+  description: "What is broken, who it hurts, and what has to be true for the work to have been worth doing. No code."
+- slug: data-exploration
+  title: "Data Exploration"
+  description: "What the data actually looks like once you open it: standards, gaps between theory and practice, and the assumptions we make."
+- slug: engineering
+  title: "Engineering"
+  description: "Turning an exploration into an asset other people can rely on: modelling, pipelines, tests, lineage, and the trade-offs behind each."
+- slug: retrospective
+  title: "Retrospective"
+  description: "What I chose, what it cost, and what I would do differently."
+- slug: primer
+  title: "Scientific Primers"
+  description: "Short explainers of a single concept or system in this project's domain, written for whichever side of the divide it is unfamiliar to."
