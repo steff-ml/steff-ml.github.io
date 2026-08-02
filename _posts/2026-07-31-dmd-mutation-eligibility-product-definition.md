@@ -11,13 +11,13 @@ tags:
 excerpt: "Value, feasibility, and prioritization for linking DMD mutations to therapy and trial eligibility — structured as epics and scored against Agile frameworks, not argued for in one long narrative."
 ---
 
-*Part of [Genetic disease variant to precision medicine eligibility]({{ "/projects/improve-time-to-access/precision_medicine_to_eligibility_lakehouse/" | relative_url }}).*
+*Part of [Rare disease variant to precision medicine eligibility]({{ "/projects/improve-time-to-access/precision_medicine_to_eligibility_lakehouse/" | relative_url }}).*
 
 This is the product-definition post for this project — same job any
 project-definition post does (is this worth building, what does done mean),
 but structured as epics scored against value, feasibility, and business
 viability rather than argued for as one narrative, per
-[How I Write Product Requirement Documents]({{ "/primer/how-i-write-product-requirement-documents/" | relative_url }}).
+[How and Why I Write Data Product Requirements Docs]({{ "/primer/how-and-why-i-write-data-product-requirements-docs/" | relative_url }}).
 No code — just the argument for what to build first and why.
 
 ## Vision
