@@ -15,9 +15,9 @@ excerpt: "Value, feasibility, and prioritization for linking DMD mutations to th
 
 This is the product-definition post for this project — same job any
 project-definition post does (is this worth building, what does done mean),
-but structured as epics scored against value, feasibility, and business
-viability rather than argued for as one narrative, per
-[How and Why I Write Data Product Requirements Docs]({{ "/primer/how-and-why-i-write-data-product-requirements-docs/" | relative_url }}).
+but structured as epics scored against value, feasibility, and priority
+rather than argued for as one narrative, per
+[How and Why I Write Data Product Definition Documents]({{ "/primer/how-and-why-i-write-data-product-definition-documents/" | relative_url }}).
 No code — just the argument for what to build first and why.
 
 ## Vision
@@ -32,15 +32,20 @@ DMD is progressive — most patients lose ambulation by early adolescence[^2] �
 and the average 2.2-year gap to a confirmed diagnosis[^3] is time already
 lost before any of this even starts.
 
+Distribution is part of the value case, not an afterthought: this is open —
+Databricks Marketplace / API — rather than a closed internal tool,
+specifically so smaller biotechs and academic groups without bespoke
+analytics teams can benefit from it too. That's deliberately alongside, not
+against, RDCA-DAP: RDCA-DAP is FDA-initiated, CDISC SDTM, restricted to
+participating sponsors, built for regulatory submission; this project is
+independent, OMOP CDM, open access, built for pre-competitive research and
+hypothesis generation.[^4]
+
 ## Epics
 
-Five epics, one per planned data product. Each carries its own value case and
-feasibility read, per Cagan's four product risks: value, usability,
-feasibility, and business viability[^4] — an idea that's valuable but
-infeasible, or feasible but low-value, isn't ready to build regardless of how
-the other looks. Each story below is also written to be independent and
-testable in Bill Wake's INVEST sense[^5] — small enough to estimate on its
-own, not a bundle of everything the epic could eventually grow into.
+Five epics, one per planned data product. Each carries its own value case
+and feasibility read — an idea that's valuable but infeasible, or feasible
+but low-value, isn't ready to build regardless of how the other looks.
 
 ### Epic 1 — Mutation Gap Analysis
 
@@ -49,7 +54,7 @@ no approved therapy and no active trial ranked by patient count, so I can
 direct research funding at the largest unmet need.
 
 **Value:** turns an approximate sense of "unmet need" into something specific
-enough to act on.[^6]
+enough to act on.[^5]
 
 **Feasibility:** an aggregation over the mutation and trial catalogues only —
 no patient data, no governance dependency. Buildable as soon as both
@@ -59,8 +64,8 @@ and [HGMD](http://www.hgmd.cf.ac.uk/) for the mutation catalogue;
 [ClinicalTrials.gov](https://clinicaltrials.gov), the [EU Clinical Trials Register](https://www.clinicaltrialsregister.eu),
 and [FDA](https://www.fda.gov)/[EMA](https://www.ema.europa.eu) approvals for the trial catalogue.
 
-**Definition of done:** a ranked, auto-refreshing view of uncovered mutation
-classes by patient count.
+**Per-epic success criteria:** a ranked, auto-refreshing view of uncovered
+mutation classes by patient count.
 
 ### Epic 2 — Therapeutic Cohort Sizing
 
@@ -75,8 +80,8 @@ recruit.
 reverse direction — the same real, public catalogues cover it, and no patient
 data is required either.
 
-**Definition of done:** given candidate eligibility rules, a patient count
-and characterization of the addressable population.
+**Per-epic success criteria:** given candidate eligibility rules, a patient
+count and characterization of the addressable population.
 
 ### Epic 3 — Patient-Trial Matching
 
@@ -85,16 +90,15 @@ confirmed mutation and get every open trial they meet the genetic criteria
 for, so I can refer them without manually cross-referencing registries.
 
 **Value:** the primary cross-domain product — replaces a manual,
-expert-dependent process with an auditable query, at registry scale.[^6]
+expert-dependent process with an auditable query, at registry scale.[^5]
 
 **Feasibility:** needs `patient_mutation_profile`, which depends on the
-genomics layer (not yet built). No real patient dataset is available or
-likely to be — there's no data-sharing agreement with a registry — so this
-runs on spoofed patient data instead. Higher feasibility risk than Epics 1–2,
-and for reasons outside pure engineering.
+genomics layer (not yet built) and on patient data that doesn't exist for
+this project — see Risks and assumptions. Higher feasibility risk than
+Epics 1–2, and for reasons outside pure engineering.
 
-**Definition of done:** given a confirmed HGVS variant, a ranked list of
-eligible trials with evidence level and exclusion reasons, recomputed
+**Per-epic success criteria:** given a confirmed HGVS variant, a ranked list
+of eligible trials with evidence level and exclusion reasons, recomputed
 automatically when a trial's criteria change.
 
 ### Epic 4 — Patient-Therapy Matching
@@ -104,12 +108,12 @@ with plain-language reasoning, so I can explain it to the patient and family
 without re-deriving the reading-frame logic myself.
 
 **Value:** replaces informal expert judgement with a reproducible, auditable
-determination.[^7]
+determination.[^6]
 
 **Feasibility:** a constrained view of Epic 3 (evidence level = approved
-only) — same dependency, same spoofed-patient-data caveat, smaller surface.
+only) — same data-availability gap, smaller surface.
 
-**Definition of done:** given a variant, approved therapies with
+**Per-epic success criteria:** given a variant, approved therapies with
 mutation-level reasoning in plain language.
 
 ### Epic 5 — Proactive Trial Alerts
@@ -121,69 +125,59 @@ doesn't depend on someone re-running the match by hand.
 **Value:** converts the system from a pull query into a push recruitment
 tool — the highest-leverage epic for recruitment speed.
 
-**Feasibility:** requires a registry to maintain patient mutation profiles
-inside the system — a governance decision this project doesn't control, and
-one step further removed from reality than spoofed data can stand in for.
-The highest business-viability risk of the five, not a technical one.
+**Feasibility:** depends on a registry maintaining patient mutation profiles
+inside its own system — a step further removed from reality than even
+spoofed data can stand in for. See Risks and assumptions.
 
-**Definition of done:** a delta between consecutive eligibility-catalogue
-versions is surfaced as a notification when a trial's status or criteria
-change.
+**Per-epic success criteria:** a delta between consecutive
+eligibility-catalogue versions is surfaced as a notification when a trial's
+status or criteria change.
 
 ## Prioritization
 
-MoSCoW[^8] over RICE[^9] here, deliberately: RICE's Reach and Confidence
-numbers would be guesses before this has any real usage, and fake precision
-is worse than an honest Must/Should/Could/Won't call.
+What's most important to do, and when: value, effort, and dependencies,
+rated low/medium/high per epic rather than sorted into named buckets.
 
-- **Must have (v1):** Epic 1 (Mutation Gap Analysis) and Epic 2 (Cohort
-  Sizing). Not because they're the highest-value epics — Epics 3 and 4
-  clearly are — but because they're the only ones buildable without patient
-  data or an external data-sharing agreement. Feasibility, not value, sets
-  the build order here.
-- **Should have (v1.1):** Epic 3 (Patient-Trial Matching) and Epic 4
-  (Patient-Therapy Matching), once the genomics layer and a real patient data
-  source exist.
-- **Could have (later):** Epic 5 (Proactive Trial Alerts) — depends on
-  registries adopting the system into their own workflow, not just this
-  project shipping code.
-- **Won't have (for now):** a regulatory-submission platform — that's
-  RDCA-DAP's job, on CDISC SDTM, not this project's[^10]; a multi-disease
-  implementation before DMD ships, even though the architecture is built to
-  generalise to SMA, Huntington's, and the lysosomal storage disorders; and
-  forcing genomic data into the OMOP genomic extension, which is still
-  ~50% VCF-coverage prototype-grade.[^11]
+- **Epic 1 — Mutation Gap Analysis:** value high, effort low, dependencies
+  none. Buildable immediately from public catalogues alone.
+- **Epic 2 — Therapeutic Cohort Sizing:** value high, effort low,
+  dependencies none. Same data as Epic 1, buildable alongside it.
+- **Epic 3 — Patient-Trial Matching:** value highest, effort high,
+  dependencies high — blocked on the genomics layer and on patient data that
+  has to be spoofed rather than real.
+- **Epic 4 — Patient-Therapy Matching:** value high, effort medium,
+  dependencies the same as Epic 3, whose subset it is.
+- **Epic 5 — Proactive Trial Alerts:** value high, effort medium,
+  dependencies highest — the blocker isn't engineering, it's getting a
+  registry to adopt the system into its own workflow.
+
+Low effort and no dependencies put Epics 1 and 2 first, even though they
+aren't the highest-value pair on their own — feasibility, not value alone,
+sets the build order here.
+
+Not doing, for now: a regulatory-submission platform (that's RDCA-DAP's job,
+on CDISC SDTM, not this project's[^4]); a multi-disease implementation
+before DMD ships, even though the architecture is built to generalise to
+SMA, Huntington's, and the lysosomal storage disorders; and forcing genomic
+data into the OMOP genomic extension, which is still ~50% VCF-coverage
+prototype-grade.[^7]
 
 Per the project's own README, Phase 1 (Bronze source exploration across
 ClinicalTrials.gov, EU CTR/CTIS, FDA openFDA, LOVD, ClinVar, and Ensembl) is
 complete, and `clinical.gold.trial_eligibility_catalogue` — the shared
 dependency for Epics 1, 2, and 3 — is in build.
 
-## Business viability
-
-Distribution is open — Databricks Marketplace / API — rather than a closed
-internal tool, so smaller biotechs and academic groups without bespoke
-analytics teams can use it too. That positions this deliberately alongside,
-not against, RDCA-DAP: RDCA-DAP is FDA-initiated, CDISC SDTM, restricted to
-participating sponsors, built for regulatory submission; this project is
-independent, OMOP CDM, open access, built for pre-competitive research and
-hypothesis generation.[^10]
-
-The real viability risk sits under Epics 3–5: what does a data-sharing
-agreement with a registry like [TREAT-NMD](https://treat-nmd.eu) actually require before real
-patient-level matching is possible? Until that exists — and it may never,
-for this project — patient data is spoofed rather than real, which is a
-deliberate choice, not an oversight: it's the only way to demonstrate the
-patient-facing epics at all without institutional access nobody grants an
-independent open-source project by default. Databricks Free Edition's data
-sharing is also limited compared to a paid workspace, so even the synthetic
-cross-domain demo will look somewhat artificial rather than production-grade.
-That answer determines how much of the patient-facing value can be
-demonstrated publicly versus only described — and it's a governance and
-tooling question, not an engineering one.
-
 ## Risks and assumptions
 
+- What a data-sharing agreement with a registry like [TREAT-NMD](https://treat-nmd.eu)
+  would actually require before real patient-level matching is possible is
+  still unknown — and may never resolve for an independent project. Until
+  then, patient data is spoofed rather than real, a deliberate choice given
+  that no institution grants that kind of access to an independent
+  open-source project by default, not an oversight. Databricks Free
+  Edition's data sharing is also more limited than a paid workspace, so even
+  the synthetic cross-domain demo (Epics 3–5) will look somewhat artificial
+  rather than production-grade.
 - The HITI (knock-in) eligibility caveat is unresolved: if an exon is knocked
   in at a junction site, does that change what "in the exon region" means for
   frame-effect purposes? Flagged in the scientific background doc, not
@@ -194,11 +188,11 @@ tooling question, not an engineering one.
   system either overreaches into clinical decision-making or undersells what
   it can answer alone.
 - The reading-frame rule has known exceptions (roughly 8% of cases, mostly
-  near the gene's 5′ end)[^7] — the system flags mutation eligibility; a
+  near the gene's 5′ end)[^6] — the system flags mutation eligibility; a
   clinician still owns the patient-level decision.
 - HGVS / GA4GH VRS is assumed to be the right variant representation rather
   than the OMOP genomic extension — reasonable given the extension's ~50%
-  VCF coverage today,[^11] but an assumption worth revisiting if that
+  VCF coverage today,[^7] but an assumption worth revisiting if that
   coverage improves.
 
 ## Why this is worth doing
@@ -215,11 +209,7 @@ where every month of delay is muscle that doesn't come back.
 [^1]: Angulski et al. (2023) — DMD disease profile, mutation landscape, and current therapeutic approaches.
 [^2]: Natural history of DMD: loss of ambulation by early adolescence, respiratory/cardiac failure typically fatal in the third decade.
 [^3]: Thomas et al. (2022). [Average time to a confirmed DMD molecular diagnosis](https://pmc.ncbi.nlm.nih.gov/articles/PMC9308714/) — 2.2 years despite advances in NGS.
-[^4]: Marty Cagan, [The Four Big Risks](https://www.svpg.com/four-big-risks/), Silicon Valley Product Group (from *INSPIRED*) — value, usability, feasibility, business viability.
-[^5]: Bill Wake (2003). [INVEST in Good Stories, and SMART Tasks](https://xp123.com/invest-in-good-stories-and-smart-tasks/).
-[^6]: Leckie, Zia & Yokota (2024). [Applying every approved and experimental exon-skipping strategy to the full UMD-DMD mutation database](https://pmc.ncbi.nlm.nih.gov/articles/PMC11593839/) — the 27% coverage figure for approved therapies, and the quantification of what the remaining 73% need.
-[^7]: Aartsma-Rus et al. (2009). [The reading-frame rule applied systematically to the Leiden DMD mutation database](https://pubmed.ncbi.nlm.nih.gov/19156838/) — the eligibility algorithm this project encodes as a computed field, including its known exceptions.
-[^8]: [What is MoSCoW Prioritization?](https://www.agilebusiness.org/resource/what-is-moscow-prioritization/), Agile Business Consortium (DSDM).
-[^9]: [RICE: Simple Prioritization for Product Managers](https://www.intercom.com/blog/rice-simple-prioritization-for-product-managers/), Intercom.
-[^10]: Barrett et al. (2023). [RDCA-DAP](https://pmc.ncbi.nlm.nih.gov/articles/PMC10673974/) — the FDA/Critical Path Institute platform this project deliberately complements rather than duplicates.
-[^11]: Ahmadi et al. (2024). [OMOP CDM adapted for rare disease via a genomic extension](https://pmc.ncbi.nlm.nih.gov/articles/PMC11325822/) — reported ~50% VCF-to-OMOP coverage for rare disease variants.
+[^4]: Barrett et al. (2023). [RDCA-DAP](https://pmc.ncbi.nlm.nih.gov/articles/PMC10673974/) — the FDA/Critical Path Institute platform this project deliberately complements rather than duplicates.
+[^5]: Leckie, Zia & Yokota (2024). [Applying every approved and experimental exon-skipping strategy to the full UMD-DMD mutation database](https://pmc.ncbi.nlm.nih.gov/articles/PMC11593839/) — the 27% coverage figure for approved therapies, and the quantification of what the remaining 73% need.
+[^6]: Aartsma-Rus et al. (2009). [The reading-frame rule applied systematically to the Leiden DMD mutation database](https://pubmed.ncbi.nlm.nih.gov/19156838/) — the eligibility algorithm this project encodes as a computed field, including its known exceptions.
+[^7]: Ahmadi et al. (2024). [OMOP CDM adapted for rare disease via a genomic extension](https://pmc.ncbi.nlm.nih.gov/articles/PMC11325822/) — reported ~50% VCF-to-OMOP coverage for rare disease variants.
