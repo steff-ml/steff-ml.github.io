@@ -1,35 +1,136 @@
 ---
-layout: splash
+layout: single
 permalink: /
 title: "Steff Horemans"
-header:
-  overlay_color: "#1a1a2e"
-  overlay_image: /assets/images/hero.jpg
-  overlay_filter: 0.5
-  actions:
-    - label: "Read my story"
-      url: "/about/"
+author_profile: true
 excerpt: "I build the infrastructure that breaks down the data silos costing organisations money."
-intro:
-  - excerpt: "I'm a Databricks data engineer with a PhD in biology. I spent a decade learning to understand living systems as wholes rather than parts and I now do the same for industrial and life science processes, building the data infrastructure that lets people finally see the whole picture."
-feature_row:
-  - title: "About"
-    excerpt: "From synthetic biology and a PhD in cell metabolism to industrial data engineering and why the bridge between the two is exactly the work I want to do."
-    url: "/about/"
-    btn_label: "The longer story"
-    btn_class: "btn--primary"
-  - title: "Projects"
-    excerpt: "Open-source data infrastructure, organized around missions that decrease costs and improve outcomes."
-    url: "/projects/"
-    btn_label: "What I'm building"
-    btn_class: "btn--primary"
-  - title: "Primers"
-    excerpt: "Short explainers of a single concept or system, written for whichever side of the data-engineering/bio divide it's unfamiliar to."
-    url: "/primers/"
-    btn_label: "What I think about"
-    btn_class: "btn--primary"
 ---
 
-{% include feature_row id="intro" type="center" %}
+<section class="home-hero">
+  <svg class="home-hero__diagram" viewBox="0 0 640 150" role="img" aria-label="Diagram of disconnected data systems -- a LIMS, an MES, patient registries, and trial databases -- converging into a single governed data product.">
+    <g class="home-hero__silos">
+      <line x1="70" y1="24" x2="480" y2="75" />
+      <line x1="70" y1="58" x2="480" y2="75" />
+      <line x1="70" y1="92" x2="480" y2="75" />
+      <line x1="70" y1="126" x2="480" y2="75" />
+      <circle cx="60" cy="24" r="9" />
+      <circle cx="60" cy="58" r="9" />
+      <circle cx="60" cy="92" r="9" />
+      <circle cx="60" cy="126" r="9" />
+      <text x="78" y="28">LIMS</text>
+      <text x="78" y="62">MES</text>
+      <text x="78" y="96">Patient registries</text>
+      <text x="78" y="130">Trial databases</text>
+    </g>
+    <circle class="home-hero__product" cx="480" cy="75" r="20" />
+    <text class="home-hero__product-label" x="480" y="115" text-anchor="middle">Governed data product</text>
+  </svg>
+  <h2>I build the data infrastructure that gets rare-disease patients to the right trial, and biomanufacturing to lower cost.</h2>
+</section>
 
-{% include feature_row %}
+<section class="home-about">
+  <div class="home-section__eyebrow">About</div>
+  <h3>Who's building this</h3>
+  <p>From synthetic biology and a PhD in cell metabolism to industrial data engineering — and why the bridge between the two is exactly the work I want to do. I spent a decade learning to understand living systems as wholes rather than parts, and I now do the same for industrial and life-science processes.</p>
+  <a class="btn btn--primary" href="{{ '/about/' | relative_url }}">The longer story →</a>
+</section>
+
+<section class="home-section">
+  <div class="home-section__head">
+    <div class="home-section__eyebrow">Projects</div>
+    <h3>What I'm building</h3>
+  </div>
+  <p class="home-section__sub">For anyone sizing up what I'd build for them.</p>
+
+  {% assign latest_projects = site.projects | sort: "date" | reverse %}
+  <div class="home-card-grid">
+    {% for project in latest_projects limit: 3 %}
+    <a class="home-card" href="{{ project.url | relative_url }}">
+      <div class="home-card__thumb-wrap">
+        {% if project.header.teaser %}
+        <img src="{{ project.header.teaser | relative_url }}" alt="">
+        {% else %}
+        <span class="home-card__thumb-empty" aria-hidden="true"></span>
+        {% endif %}
+      </div>
+      <div class="home-card__body">
+        <div class="home-card__meta">
+          {% for tag in project.tags limit: 3 %}<span class="home-tag">{{ tag }}</span>{% endfor %}
+        </div>
+        <span class="home-card__title">{{ project.title }}</span>
+        <p class="home-card__hook">{{ project.excerpt | strip_html }}</p>
+      </div>
+    </a>
+    {% endfor %}
+    {% comment %}
+    <div class="home-card home-card--placeholder">
+      <div class="home-card__thumb-wrap"><span class="home-card__thumb-empty" aria-hidden="true"></span></div>
+      <div class="home-card__body">
+        <div class="home-card__label">Coming up</div>
+        <span class="home-card__title">Decreasing manufacturing cost</span>
+        <p class="home-card__hook">Not started yet.</p>
+      </div>
+    </div>
+    {% endcomment %}
+  </div>
+
+  <a class="btn btn--primary home-section__cta" href="{{ '/projects/' | relative_url }}">See all projects →</a>
+</section>
+
+<section class="home-section">
+  <div class="home-section__head">
+    <div class="home-section__eyebrow">Blog</div>
+    <h3>Engineering tips &amp; tricks</h3>
+  </div>
+  <p class="home-section__sub">Hardcore technical write-ups for fellow data engineers — not general reading.</p>
+
+  {% assign engineering_posts = site.posts | where_exp: "post", "post.categories contains 'engineering'" | sort: "date" | reverse %}
+  {% if engineering_posts.size == 0 %}
+  <p class="home-section__empty">Nothing published in this lane yet — the product-definition posts live under their projects instead, not here.</p>
+  {% endif %}
+  <div class="home-card-grid">
+    {% for post in engineering_posts limit: 3 %}
+    <a class="home-card" href="{{ post.url | relative_url }}">
+      <div class="home-card__thumb-wrap">
+        {% if post.header.teaser %}
+        <img src="{{ post.header.teaser | relative_url }}" alt="">
+        {% else %}
+        <span class="home-card__thumb-empty" aria-hidden="true"></span>
+        {% endif %}
+      </div>
+      <div class="home-card__body">
+        <div class="home-card__meta">
+          <time>{{ post.date | date: "%b %-d, %Y" }}</time>
+          {% for tag in post.tags limit: 1 %}<span class="home-tag">{{ tag }}</span>{% endfor %}
+        </div>
+        <span class="home-card__title">{{ post.title }}</span>
+        <p class="home-card__hook">{{ post.excerpt | strip_html }}</p>
+      </div>
+    </a>
+    {% endfor %}
+    {% comment %}
+    <div class="home-card home-card--placeholder">
+      <div class="home-card__thumb-wrap"><span class="home-card__thumb-empty" aria-hidden="true"></span></div>
+      <div class="home-card__body">
+        <div class="home-card__label">Coming up</div>
+        <span class="home-card__title">A Databricks user guide</span>
+        <p class="home-card__hook">In progress.</p>
+      </div>
+    </div>
+    <div class="home-card home-card--placeholder">
+      <div class="home-card__thumb-wrap"><span class="home-card__thumb-empty" aria-hidden="true"></span></div>
+      <div class="home-card__body">
+        <div class="home-card__label">Coming up</div>
+        <span class="home-card__title">More hardcore write-ups</span>
+        <p class="home-card__hook">As they're built.</p>
+      </div>
+    </div>
+    {% endcomment %}
+  </div>
+
+  <a class="btn btn--primary home-section__cta" href="{{ '/blog/' | relative_url }}">See all posts →</a>
+</section>
+
+<section class="home-cta">
+  <p>Want to talk about a project? <a href="{{ '/contact/' | relative_url }}">Get in touch →</a></p>
+</section>

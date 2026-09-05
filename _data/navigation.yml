@@ -3,6 +3,8 @@ main:
     url: /about/
   - title: "Projects"
     url: /projects/
+  - title: "Blog"
+    url: /blog/
   - title: "Primers"
     url: /primers/
   - title: "Contact"

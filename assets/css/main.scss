@@ -1,0 +1,247 @@
+---
+---
+
+@charset "utf-8";
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+@import "minimal-mistakes";
+
+/* ---------------------------------------------------------------------
+   Site-specific additions on top of the theme. Keep this section small —
+   everything here is either a new class used on a specific page (the
+   homepage) or a light, deliberate tweak to an existing theme component.
+   --------------------------------------------------------------------- */
+
+/* Keep the author sidebar in view while the page content scrolls, on
+   wide screens. The theme only makes the *right-hand* TOC sidebar sticky
+   by default -- this opts the left author-profile sidebar in too. */
+@media (min-width: $large) {
+  .sidebar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 2em;
+  }
+}
+
+/* ---------- Homepage: hero band ---------- */
+.home-hero {
+  padding: 1.5em 0 1.75em;
+  border-bottom: 1px solid $border-color;
+
+  h2 {
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    line-height: 1.3;
+    max-width: 34ch;
+    margin: 0;
+  }
+}
+
+.home-hero__diagram {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  margin: 0 0 1.5em;
+
+  line {
+    stroke: $muted-text-color;
+    stroke-width: 1;
+    opacity: 0.45;
+  }
+
+  circle {
+    fill: $background-color;
+    stroke: $muted-text-color;
+    stroke-width: 1.25;
+  }
+
+  text {
+    font-size: 10px;
+    fill: $muted-text-color;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  .home-hero__product {
+    fill: $text-color;
+    stroke: $text-color;
+  }
+
+  .home-hero__product-label {
+    fill: $text-color;
+    font-weight: 700;
+  }
+}
+
+/* ---------- Homepage: Projects and Blog, each a full-width section ---------- */
+.home-section {
+  padding: 2.5em 0;
+  border-bottom: 1px solid $border-color;
+}
+
+.home-section__eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $muted-text-color;
+}
+
+.home-section__head h3 {
+  font-size: 1.3rem;
+  margin: 0.25em 0 0;
+}
+
+.home-section__sub {
+  font-size: 0.86rem;
+  color: $muted-text-color;
+  margin: 0.4em 0 1.4em;
+  line-height: 1.4;
+  max-width: 60ch;
+}
+
+.home-section__empty {
+  font-size: 0.85rem;
+  color: $muted-text-color;
+  line-height: 1.55;
+  margin: 0 0 1.4em;
+}
+
+/* Cards, spaced out horizontally -- as many per row as comfortably fit,
+   collapsing to one column on narrow screens automatically (no manual
+   breakpoint needed: auto-fit responds to the real available width,
+   whether that's the full viewport or the narrower column left over
+   once the theme floats .sidebar beside the content at $large). */
+.home-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5em;
+}
+
+.home-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  color: $text-color;
+
+  &:hover .home-card__title { text-decoration: underline; }
+}
+
+.home-card__thumb-wrap {
+  aspect-ratio: 16 / 9;
+  background: $background-color;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0;
+  }
+}
+
+.home-card__thumb-empty {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px dashed $border-color;
+  box-sizing: border-box;
+}
+
+.home-card__body {
+  padding: 1em 1.15em 1.25em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  flex: 1;
+}
+
+.home-card__meta {
+  display: flex;
+  gap: 0.4em;
+  flex-wrap: wrap;
+  align-items: center;
+
+  time {
+    font-size: 0.74rem;
+    color: $muted-text-color;
+  }
+}
+
+.home-card__title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.home-card__hook {
+  margin: 0;
+  font-size: 0.85rem;
+  color: $muted-text-color;
+  line-height: 1.5;
+}
+
+.home-tag {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: $background-color;
+  color: $muted-text-color;
+  padding: 0.26em 0.6em;
+  border-radius: 999px;
+}
+
+/* Coming-up cards sit in the same grid as real ones but are never
+   mistaken for a link: dashed border, no hover state, an explicit label. */
+.home-card--placeholder {
+  border-style: dashed;
+
+  .home-card__thumb-wrap { background: transparent; }
+
+  .home-card__label {
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $muted-text-color;
+  }
+
+  .home-card__hook { font-style: italic; }
+}
+
+.home-section__cta {
+  margin-top: 1.75em;
+}
+
+/* ---------- Homepage: About teaser ---------- */
+.home-about {
+  padding: 2em 0;
+  border-bottom: 1px solid $border-color;
+
+  p {
+    max-width: 62ch;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: $muted-text-color;
+    margin: 1em 0 1.2em;
+  }
+}
+
+/* ---------- Homepage: closing call to action ---------- */
+.home-cta {
+  padding: 2.25em 0 1em;
+  text-align: center;
+
+  p {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  a {
+    font-weight: 700;
+    text-decoration: none;
+
+    &:hover { text-decoration: underline; }
+  }
+}
