@@ -2,26 +2,23 @@
 layout: single
 ---
 
-{{ content }}
+{% if page.outcome %}
+<p class="outcome-line">{{ page.outcome }}{% unless page.outcome_measured %}<span class="badge-target">Target, not result</span>{% endunless %}</p>
+{% endif %}
 
-{% assign related_posts = site.posts | where_exp: "post", "post.project == page.slug" %}
-{% if related_posts.size > 0 %}
-<div class="project-posts">
-  <h2>Posts about this project</h2>
-  {% for kind in site.data.post_kinds %}
-    {% assign kind_posts = related_posts | where_exp: "post", "post.categories contains kind.slug" %}
-    {% if kind_posts.size > 0 %}
-    <h3>{{ kind.title }}</h3>
-    <div class="entries-list">
-      {% for post in kind_posts %}
-        {% include archive-single.html type="list" %}
-      {% endfor %}
-    </div>
-    {% endif %}
-  {% endfor %}
+{% if page.role or page.timeline or page.stack %}
+<div class="chip-row">
+  {% if page.role %}<span class="home-tag">{{ page.role }}</span>{% endif %}
+  {% if page.timeline %}<span class="home-tag">{{ page.timeline }}</span>{% endif %}
+  {% for tool in page.stack %}<span class="home-tag">{{ tool }}</span>{% endfor %}
 </div>
 {% endif %}
 
+{{ content }}
+
+{% comment %}
+Hidden for now -- not a fan of this content on project pages as-is. May
+resurface as part of "Engineering tips & tricks" instead of here.
 {% assign methodology_posts = site.posts | where: "all_projects", true %}
 {% if methodology_posts.size > 0 %}
 <div class="project-posts project-posts--methodology">
@@ -33,3 +30,24 @@ layout: single
   </div>
 </div>
 {% endif %}
+{% endcomment %}
+
+{% assign all_projects = site.projects | sort: "date" %}
+{% assign proj_index = -1 %}
+{% for p in all_projects %}
+  {% if p.url == page.url %}{% assign proj_index = forloop.index0 %}{% endif %}
+{% endfor %}
+{% assign prev_project = nil %}
+{% assign next_project = nil %}
+{% if proj_index > 0 %}
+  {% assign prev_project = all_projects[proj_index | minus: 1] %}
+{% endif %}
+{% assign next_index = proj_index | plus: 1 %}
+{% if next_index < all_projects.size %}
+  {% assign next_project = all_projects[next_index] %}
+{% endif %}
+
+<div class="proj-nav">
+  {% if prev_project %}<a href="{{ prev_project.url | relative_url }}">← {{ prev_project.title }}</a>{% else %}<span>← Previous project</span>{% endif %}
+  {% if next_project %}<a href="{{ next_project.url | relative_url }}">{{ next_project.title }} →</a>{% else %}<span>Next project →</span>{% endif %}
+</div>

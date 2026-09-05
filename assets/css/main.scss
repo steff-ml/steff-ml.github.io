@@ -29,8 +29,9 @@
   border-bottom: 1px solid $border-color;
 
   h2 {
-    font-size: clamp(1.5rem, 2.4vw, 2rem);
-    line-height: 1.3;
+    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+    font-style: italic;
+    line-height: 1.4;
     max-width: 34ch;
     margin: 0;
   }
@@ -244,4 +245,324 @@
 
     &:hover { text-decoration: underline; }
   }
+}
+
+/* ---------------------------------------------------------------------
+   Project case-study pages. Same spine every time: outcome line, chips,
+   hero diagram, at-a-glance, then Problem / Data & constraints /
+   Hypotheses / Approach / What I built / Results / What I'd change, each
+   optionally linking out to a backing artifact in the project's own repo.
+   --------------------------------------------------------------------- */
+
+.status-flag {
+  display: flex;
+  gap: 0.6em;
+  align-items: flex-start;
+  background: $background-color;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  padding: 0.85em 1.1em;
+  margin: 1em 0 1.75em;
+  font-size: 0.84rem;
+  color: $muted-text-color;
+  line-height: 1.5;
+
+  strong { color: $text-color; }
+}
+
+.outcome-line {
+  font-size: 1.05rem;
+  color: $muted-text-color;
+  line-height: 1.5;
+  margin: 0.75em 0 1.1em;
+}
+
+.badge-target {
+  display: inline-block;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: $background-color;
+  color: $muted-text-color;
+  border: 1px solid $border-color;
+  padding: 0.2em 0.55em;
+  border-radius: 999px;
+  margin-left: 0.5em;
+  vertical-align: middle;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-bottom: 2rem;
+}
+
+.hero-diagram-wrap {
+  border: 1px solid $border-color;
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  margin-bottom: 2rem;
+  background: #fff;
+}
+
+.hero-diagram {
+  width: 100%;
+  height: auto;
+  display: block;
+
+  text {
+    font-size: 11px;
+    fill: $muted-text-color;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  .stage-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    fill: $muted-text-color;
+  }
+
+  rect.node {
+    fill: $background-color;
+    stroke: $border-color;
+  }
+
+  rect.node--product {
+    fill: $text-color;
+    stroke: $text-color;
+  }
+
+  .product-text {
+    fill: #fff;
+    font-weight: 700;
+  }
+
+  line, path {
+    stroke: $muted-text-color;
+    stroke-width: 1;
+    fill: none;
+    opacity: 0.6;
+  }
+
+  marker path { fill: $muted-text-color; opacity: 0.6; }
+}
+
+.glance {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  border: 1px solid $border-color;
+  border-radius: 12px;
+  padding: 1.4rem 1.5rem;
+  margin-bottom: 2.25rem;
+
+  @media (max-width: $small) {
+    grid-template-columns: 1fr;
+  }
+
+  > div { min-width: 0; }
+
+  .glance-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $muted-text-color;
+    margin-bottom: 0.4em;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.86rem;
+    color: $muted-text-color;
+    line-height: 1.45;
+  }
+}
+
+.proj-section {
+  margin-bottom: 2.5rem;
+
+  h2 { font-size: 1.15rem; margin-bottom: 0.8rem; }
+}
+
+.callout {
+  border: 1px solid $border-color;
+  background: $background-color;
+  border-radius: 10px;
+  padding: 1em 1.2em;
+  font-size: 0.85rem;
+  color: $muted-text-color;
+  line-height: 1.55;
+  margin-top: 1em;
+
+  strong { color: $text-color; }
+}
+
+.rejected-box {
+  border: 1px dashed $border-color;
+  border-radius: 10px;
+  padding: 1em 1.2em;
+  margin-top: 1em;
+  font-size: 0.85rem;
+  color: $muted-text-color;
+  line-height: 1.55;
+
+  strong { color: $text-color; }
+}
+
+/* Hypotheses -- one compact line each, not a card, so this stays a
+   glance-level section rather than the biggest thing on the page. */
+.hyp-compact-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.6rem;
+}
+
+.hyp-row {
+  display: flex;
+  gap: 0.9em;
+  align-items: flex-start;
+  padding: 0.7em 0;
+  border-top: 1px solid $border-color;
+
+  &:first-child { border-top: none; }
+}
+
+.hyp-row__text {
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.hyp-row__test {
+  display: block;
+  margin-top: 0.2em;
+  font-size: 0.78rem;
+  color: $muted-text-color;
+}
+
+.hyp-row__proto-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  margin-top: 0.4em;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: $muted-text-color;
+  text-decoration: none;
+  border-bottom: 1px dashed $muted-text-color;
+  padding-bottom: 0.05em;
+
+  &:hover { color: $link-color; border-color: $link-color; }
+}
+
+.verdict {
+  flex-shrink: 0;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.28em 0.6em;
+  border-radius: 999px;
+  white-space: nowrap;
+  margin-top: 0.15em;
+}
+
+.verdict--untested { background: $background-color; color: $muted-text-color; }
+.verdict--held { background: mix(#fff, $success-color, 85%); color: $success-color; }
+
+.built-box {
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+
+  .built-links {
+    display: flex;
+    gap: 1.2em;
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    span { color: $muted-text-color; }
+  }
+}
+
+.metric-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.metric-tile {
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  padding: 1.1rem 1.2rem;
+  text-align: center;
+
+  &--empty { border-style: dashed; color: $muted-text-color; }
+
+  &__value { font-size: 1.3rem; font-weight: 700; }
+  &__label { font-size: 0.76rem; color: $muted-text-color; margin-top: 0.3em; }
+}
+
+.artifact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  margin-top: 0.9em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: $muted-text-color;
+  text-decoration: none;
+  border-bottom: 1px dashed $muted-text-color;
+  padding-bottom: 0.1em;
+
+  &:hover { color: $link-color; border-color: $link-color; }
+
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.95em; }
+
+  .new-tag {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: $background-color;
+    color: $muted-text-color;
+    padding: 0.15em 0.5em;
+    border-radius: 999px;
+  }
+}
+
+.img-caption {
+  font-size: 0.8rem;
+  color: $muted-text-color;
+  line-height: 1.5;
+  margin-top: 0.5em;
+}
+
+.proj-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $border-color;
+
+  a, span {
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    padding: 0.7em 1.1em;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: $muted-text-color;
+  }
+
+  span { opacity: 0.5; }
+  a:hover { color: $link-color; border-color: $link-color; }
 }

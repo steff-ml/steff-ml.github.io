@@ -57,6 +57,7 @@ inside a tissue
 
 ![Diagram of dystrophin connecting intracellular actin to the extracellular matrix, via the dystroglycan complex](https://upload.wikimedia.org/wikipedia/commons/5/5e/Dystrophin_diagram.jpg)
 *Dystrophin diagram by Daniel E. Michele and Kevin P. Campbell, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Dystrophin_diagram.jpg), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).*
+{: .img-caption}
 
 Structurally, dystrophin has four domains: an N-terminal domain that anchors
 to internal actin filaments, a long central rod domain that acts as a shock
@@ -85,6 +86,7 @@ much milder BMD, you need three facts about how a gene becomes a protein.
 
 ![Diagram of the central dogma: DNA is transcribed to RNA, then translated to protein](https://upload.wikimedia.org/wikipedia/commons/3/38/Central_Dogma_Model.png)
 *Central dogma of molecular biology by Mike Jones, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Central_Dogma_Model.png), [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).*
+{: .img-caption}
 
 1. A gene is DNA. Most of it isn't used directly. It's split into **exons**
    (the parts that get kept) and **introns** (the parts that get cut out).

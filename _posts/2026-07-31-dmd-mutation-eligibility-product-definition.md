@@ -11,9 +11,9 @@ tags:
 excerpt: "My current understanding of why and how to build the lakehouse for linking DMD mutations to trial eligibility."
 ---
 
-*Part of [Rare disease variant to precision medicine eligibility]({{ "/projects/improve-time-to-access/precision_medicine_to_eligibility_lakehouse/" | relative_url }}).*
+*Part of [DMD Eligibility Lakehouse]({{ "/projects/improve-time-to-access/precision_medicine_to_eligibility_lakehouse/" | relative_url }}).*
 
-This is the data product definition document for the Rare disease variant to precision medicine eligibility project.
+This is the data product definition document for the DMD Eligibility Lakehouse project.
 It is designed to help answer the value, feasbility and prioritization questions needed to start building
 For more information on the what and the how of this document: [How and Why I Write Data Product Definition Documents]({{ "/primer/how-and-why-i-write-data-product-definition-documents/" | relative_url }}).
 No code, just the argument for what to build first and why.
