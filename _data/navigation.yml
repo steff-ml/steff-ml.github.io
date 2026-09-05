@@ -3,7 +3,7 @@ main:
     url: /about/
   - title: "Projects"
     url: /projects/
-  - title: "Blog"
+  - title: "Engineering Tips and Tricks"
     url: /blog/
   - title: "Contact"
     url: /contact/

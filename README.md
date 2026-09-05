@@ -206,10 +206,12 @@ The top menu is defined in `_data/navigation.yml`:
 main:
   - title: "About"
     url: /about/
-  - title: "Blog"
+  - title: "Projects"
+    url: /projects/
+  - title: "Engineering Tips and Tricks"
     url: /blog/
-  - title: "Podcast"
-    url: /podcast/
+  - title: "Contact"
+    url: /contact/
 ```
 
 Add or reorder entries here to change the menu.

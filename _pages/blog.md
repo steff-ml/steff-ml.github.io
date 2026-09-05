@@ -1,5 +1,5 @@
 ---
-title: "Blog"
+title: "Engineering Tips and Tricks"
 layout: single
 permalink: /blog/
 author_profile: true
