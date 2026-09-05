@@ -568,6 +568,113 @@
 }
 
 /* ---------------------------------------------------------------------
+   Single-post template (_layouts/single.html). Overrides the theme
+   default for site.posts only -- pages and projects keep the theme's
+   own header/footer includes, untouched.
+   --------------------------------------------------------------------- */
+
+.post-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: $muted-text-color;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  border-bottom: 1px dashed $muted-text-color;
+  padding-bottom: 0.15em;
+
+  &:hover { color: $link-color; border-color: $link-color; }
+}
+
+.post-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  align-items: center;
+  margin: 0.5em 0 1rem;
+
+  time, .read-time { font-size: 0.8rem; color: $muted-text-color; }
+  .dot { color: $muted-text-color; font-size: 0.7rem; }
+}
+
+.post-audiences {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  margin-bottom: 1.5rem;
+}
+
+.home-tag--outline {
+  background: transparent;
+  border: 1px solid $border-color;
+  color: $muted-text-color;
+}
+
+.post-content {
+  font-size: 0.95rem;
+  line-height: 1.7;
+
+  p, li, dl { font-size: 1em; }
+
+  h2 { font-size: 1.15rem; margin-top: 2em; }
+  h3 { font-size: 1.02rem; }
+}
+
+.post-content img {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin: 1.5em auto 0.4em;
+  border-radius: 8px;
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin: 2.5rem 0 0;
+  padding-top: 1.75rem;
+  border-top: 1px solid $border-color;
+}
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $border-color;
+
+  a {
+    display: block;
+    max-width: 60%;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    padding: 0.9em 1.1em;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: $muted-text-color;
+
+    &:hover { color: $link-color; border-color: $link-color; }
+  }
+
+  .nav-label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $muted-text-color;
+    margin-bottom: 0.3em;
+  }
+
+  .back { margin-left: auto; }
+}
+
+/* ---------------------------------------------------------------------
    /projects/ and /blog/: search box, tag-filter chips, and the project
    row list. Shared components, used by both listing pages.
    --------------------------------------------------------------------- */

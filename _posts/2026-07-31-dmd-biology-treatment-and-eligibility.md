@@ -1,5 +1,5 @@
 ---
-title: "Primer: Duchenne Muscular Dystrophy:  Biology, Treatment and Eligibility"
+title: "What is Duchenne muscular dystrophy?"
 date: 2026-07-31 09:30:00 +0200
 categories: [primer]
 project: precision_medicine_to_eligibility_lakehouse
@@ -15,11 +15,11 @@ excerpt: "Everything you need to know about Duchenne Muscular Dystrophy for this
 
 If you want to build good data models, you must first understand the real-world
 you are modelling. Therefore this primer will answer the following questions:
-- What is Duchenne Muscular Dystrophy (DMD) and its cousin Becker Muscular Dystrophy?
-- What role does the protein dystrophin play in this disease?
-- Why do some mutations in the dystrophin gene cause DMD and others BMD?
-- How can we treat DMD and when do the specific mutations matter?
-- How does this translate into the definition of eligibility rules?
+- [What is Duchenne Muscular Dystrophy (DMD) and its cousin Becker Muscular Dystrophy?](#what-is-dmd-and-bmd)
+- [What role does the protein dystrophin play in this disease?](#the-role-of-dystrophin)
+- [Why do some mutations in the dystrophin gene cause DMD and others BMD?](#reading-frame-rule)
+- [How can we treat DMD and when do the specific mutations matter?](#treatment-options)
+- [How does this translate into the definition of eligibility rules?](#eligibility-criteria)
 
 
 ## What is DMD and BMD? {#what-is-dmd-and-bmd}
@@ -72,9 +72,9 @@ membrane becomes leaky and easily damaged → calcium floods in and disrupts
 normal cell signalling → damaged cells leak proteins that trigger chronic
 inflammation → the resulting mitochondrial stress and repeated
 damage-and-repair cycle replaces muscle with fibrous scar tissue.[^1] 
-- When this happens in skeletal muscle cells, the patient loses strength over time and becomes weelchair-bound,
-- When this happens in heart muscle cells, the patient gets the dilated cardiomyopathy and eventual hearth failures that kill most of them.
-- When this happens in the diaphragm muscles, the patient loses the ability to breath without assistance over time and can die of that too.
+- When this happens in skeletal muscle cells, the patient loses strength over time and becomes wheelchair-bound,
+- When this happens in heart muscle cells, the patient gets the dilated cardiomyopathy and eventual heart failures that kill most of them.
+- When this happens in the diaphragm muscles, the patient loses the ability to breathe without assistance over time and can die of that too.
 
 DMD and BMD are essentially both diseases where muscles progressively degrade over time, because dystrophin can't protect muscle cells from leaking.
 The difference between the two is that DMD mutations completely destroy dystrophin functionality and BMD mutations impare, but don't fully destroy it.
@@ -105,7 +105,7 @@ To understand why, picture the mRNA as a sentence made entirely of three-letter 
 `THE BIG RED FOX ATE THE CAT`.
 Delete exactly one whole word and the rest still reads as real words: 
 `THE BIG FOX ATE THE CAT`. 
-Delete four letters instead of three,though, and every word after the cut is read starting from the wrong letter
+Delete four letters instead of three, though, and every word after the cut is read starting from the wrong letter
 `THE BIF OXA TET HEC AT`.
 The ribosome doesn't know a mistake happened, so it just keeps reading
 gibberish until it hits an accidental stop sign, almost immediately.
@@ -157,7 +157,7 @@ These drugs work independently of the exact mutation of the patient, but may ind
 
 
 ### Restore the reading frame to get BMD like functionality
-The first instinct you may have to treat this disease is to fix the dystrophin gene itself using gene editing. This is often easier said than done, as there are limitations to our ability to deliver gene editing machinery inside a living being and reliably reach all muscle cells with that. Delivery of gene editing machinery is usually done using adenovirusses (AAV) and patients can develop an immune response to them, rendering the treatment moot.
+The first instinct you may have to treat this disease is to fix the dystrophin gene itself using gene editing. This is often easier said than done, as there are limitations to our ability to deliver gene editing machinery inside a living being and reliably reach all muscle cells with that. Delivery of gene editing machinery is usually done using adeno-associated virusses (AAV) and patients can develop an immune response to them, rendering the treatment moot.
 There is also a limitation to how much an AAV virus can deliver and also a dilution effect if muscle cells die and are replaced by others that did not receive the fix. Most of these approaches are far from clinical practice.
 For that reason, many drugs target the less ambitious goal of turning DMD into BMD. One promising approach is splice modulation: remove a broken exon from the mRNA to restore the reading frame. This requires lifelong dosing, but is achieved with small, easy to deliver molecules.
 In any case, the applicability of these kinds of drugs are very dependent on the actual mutation a patient has and form the core reason for this project. 
@@ -165,7 +165,7 @@ In any case, the applicability of these kinds of drugs are very dependent on the
 | Mechanism class | Intervenes at | Mutation-specific? | Key trade-off |
 |---|---|---|---|
 | **Gene correction** (CRISPR-based: exon deletion, reframing, base editing, prime editing, HITI) | The reading frame itself[^4], via a permanent edit to the DNA rather than the spliced mRNA | **Yes**: different strategies rescue different mutation types | Could be one-time fixes instead of lifelong dosing, but nearly all strategies are still animal-model stage, not in patients |
-| **Splice modulation** (AON exon skipping) | The reading frame itself, via steric-block splicing that masks a target exon from the spliceosome[^5] | **Yes**  each drug rescues one specific deletion pattern | Approved and in patients today, but the mutation itself is untouched, so dosing repeats indefinitely |
+| **Splice modulation** (AON exon skipping) | The reading frame itself, via steric-block splicing that masks a target exon from the spliceosome[^5] | **Yes** each drug rescues one specific deletion pattern | Approved and in patients today, but the mutation itself is untouched, so dosing repeats indefinitely |
 | **Stop-codon read-through** | Nonsense mutations specifically: forces the ribosome past a premature stop signal | **Yes** — nonsense mutations only (~10–15% of patients) | The one drug that reached late-stage trials (ataluren) failed its primary endpoints |
 
 ### Provide other options than the broken dystrophin protein
@@ -181,7 +181,7 @@ Different therapies impose different eligibility criteria, ranging from standard
 
 ## Therapeutic eligibility criteria for DMD {#eligibility-criteria}
 
-Based on this situation, here is my working mental model of a three layered gate
+Based on this situation, here is my working mental model of a three-layered gate
 on how to determine automatically whether a patient is eligible for a treatment. 
 
 **Layer 1 — mutation-intrinsic classification.** Every patient record gets their precise mutation verified: 
@@ -203,9 +203,9 @@ treatment history, and **pre-existing AAV antibodies as a hard exclusion for eve
 regardless of how well the patient's mutation matches the therapy.
 
 ## Conclusion
-In this primer, we have discussed the disease progression of DMD versus BMD. 
-We have seen that both are caused by a disfunctional dystrophin protein and that the difference between DMD and BMD is primarily explained by whether or not a mutation destroys the reading frame. 
-We have seen that there is no universal fix for DMD and that it is therefore important to match patients to treatments that have the highest chance of working for them.
+In this primer, I have discussed the disease progression of DMD versus BMD. 
+You have seen that both are caused by a disfunctional dystrophin protein and that the difference between DMD and BMD is primarily explained by whether or not a mutation destroys the reading frame. 
+You have seen that there is no universal fix for DMD and that it is therefore important to match patients to treatments that have the highest chance of working for them.
 This primer will likely be updated once I go deeper into real clinical trial eligibility criteria, but it provides a mental model that will help you follow along the data modelling decisions I need to make throughout this project.
 
 

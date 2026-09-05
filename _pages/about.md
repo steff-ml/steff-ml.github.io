@@ -89,9 +89,10 @@ follow a project end to end or read only the stage that concerns you.
 4. **Retrospective**: What I chose, what it cost and what I would do
    differently. 
 
-Alongside these run [**primers**](/primers/): short explainers of a single concept or system
+Alongside these run **primers**: short explainers of a single concept or system
 (what a LIMS is for a data engineer, what column-level lineage is for a
-bioinformatician, ...) written for whichever side of the divide it is unfamiliar to.
+bioinformatician, ...) written for whichever side of the divide it is unfamiliar to,
+linked from the project they belong to.
 
 ## Who is this website for?
 Everything here comes with an open reference implementation on the
