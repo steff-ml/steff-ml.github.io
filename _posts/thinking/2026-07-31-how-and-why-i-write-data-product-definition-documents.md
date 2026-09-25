@@ -1,8 +1,7 @@
 ---
 title: "How and Why I Write Data Product Definition Documents"
 date: 2026-07-31 10:30:00 +0200
-categories: [primer]
-all_projects: true
+categories: [thinking]
 audience:
   - data-engineers
   - bio-it-leaders

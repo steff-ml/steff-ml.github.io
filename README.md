@@ -210,6 +210,8 @@ main:
     url: /projects/
   - title: "Engineering Tips and Tricks"
     url: /blog/
+  - title: "Thinking"
+    url: /thinking/
   - title: "Contact"
     url: /contact/
 ```

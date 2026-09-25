@@ -35,166 +35,6 @@
   h3 { font-size: 1.02rem; }
 }
 
-/* ---------- Homepage: hero band ---------- */
-.home-hero {
-  padding: 1.5em 0 1.75em;
-  border-bottom: 1px solid $border-color;
-
-  h2 {
-    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
-    font-style: italic;
-    line-height: 1.4;
-    max-width: 34ch;
-    margin: 0;
-  }
-}
-
-.home-hero__diagram {
-  display: block;
-  width: 100%;
-  max-width: 420px;
-  height: auto;
-  margin: 0 0 1.5em;
-
-  line {
-    stroke: $muted-text-color;
-    stroke-width: 1;
-    opacity: 0.45;
-  }
-
-  circle {
-    fill: $background-color;
-    stroke: $muted-text-color;
-    stroke-width: 1.25;
-  }
-
-  text {
-    font-size: 10px;
-    fill: $muted-text-color;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  }
-
-  .home-hero__product {
-    fill: $text-color;
-    stroke: $text-color;
-  }
-
-  .home-hero__product-label {
-    fill: $text-color;
-    font-weight: 700;
-  }
-}
-
-/* ---------- Homepage: Projects and Engineering Tips & Tricks, each a full-width section ---------- */
-.home-section {
-  padding: 2.5em 0;
-  border-bottom: 1px solid $border-color;
-}
-
-.home-section__eyebrow {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: $muted-text-color;
-}
-
-.home-section__head h3 {
-  font-size: 1.3rem;
-  margin: 0.25em 0 0;
-}
-
-.home-section__sub {
-  font-size: 0.86rem;
-  color: $muted-text-color;
-  margin: 0.4em 0 1.4em;
-  line-height: 1.4;
-  max-width: 60ch;
-}
-
-.home-section__empty {
-  font-size: 0.85rem;
-  color: $muted-text-color;
-  line-height: 1.55;
-  margin: 0 0 1.4em;
-}
-
-/* Cards, spaced out horizontally -- as many per row as comfortably fit,
-   collapsing to one column on narrow screens automatically (no manual
-   breakpoint needed: auto-fit responds to the real available width,
-   whether that's the full viewport or the narrower column left over
-   once the theme floats .sidebar beside the content at $large). */
-.home-card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1.5em;
-}
-
-.home-card {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid $border-color;
-  border-radius: 10px;
-  overflow: hidden;
-  text-decoration: none;
-  color: $text-color;
-
-  &:hover .home-card__title { text-decoration: underline; }
-}
-
-.home-card__thumb-wrap {
-  aspect-ratio: 16 / 9;
-  background: $background-color;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    margin: 0;
-  }
-}
-
-.home-card__thumb-empty {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-bottom: 1px dashed $border-color;
-  box-sizing: border-box;
-}
-
-.home-card__body {
-  padding: 1em 1.15em 1.25em;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-  flex: 1;
-}
-
-.home-card__meta {
-  display: flex;
-  gap: 0.4em;
-  flex-wrap: wrap;
-  align-items: center;
-
-  time {
-    font-size: 0.74rem;
-    color: $muted-text-color;
-  }
-}
-
-.home-card__title {
-  font-size: 0.98rem;
-  font-weight: 700;
-  line-height: 1.35;
-}
-
-.home-card__hook {
-  margin: 0;
-  font-size: 0.86rem;
-  color: $muted-text-color;
-  line-height: 1.5;
-}
-
 .home-tag {
   font-size: 0.68rem;
   font-weight: 600;
@@ -205,58 +45,371 @@
   border-radius: 999px;
 }
 
-/* Coming-up cards sit in the same grid as real ones but are never
-   mistaken for a link: dashed border, no hover state, an explicit label. */
-.home-card--placeholder {
-  border-style: dashed;
+/* ---------------------------------------------------------------------
+   Homepage v2. Fully custom sidebar + layout (author_profile: false,
+   hide_title: true, full_width: true on index.html) -- not reusing the
+   theme's own .sidebar/.page__title for this one page, everywhere else
+   is untouched.
 
-  .home-card__thumb-wrap { background: transparent; }
+   .page--full undoes the theme's hardcoded assumption that .page always
+   sits beside a floated .sidebar (width: calc(100% - 200px)) -- without
+   this, turning author_profile off leaves a permanent ~200px blank
+   strip on the left, since nothing floats there to fill it.
+   --------------------------------------------------------------------- */
 
-  .home-card__label {
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: $muted-text-color;
-  }
-
-  .home-card__hook { font-style: italic; }
-}
-
-.home-section__cta {
-  margin-top: 1.75em;
-}
-
-/* ---------- Homepage: About teaser ---------- */
-.home-about {
-  padding: 2em 0;
-  border-bottom: 1px solid $border-color;
-
-  p {
-    max-width: 62ch;
-    font-size: 0.98rem;
-    line-height: 1.65;
-    color: $muted-text-color;
-    margin: 1em 0 1.2em;
+.page--full {
+  @media (min-width: $large) {
+    float: none;
+    width: 100%;
+    padding-inline-end: 0;
   }
 }
 
-/* ---------- Homepage: closing call to action ---------- */
-.home-cta {
-  padding: 2.25em 0 1em;
-  text-align: center;
+.home2-layout {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
 
-  p {
-    margin: 0;
-    font-size: 1.05rem;
-  }
+.home2-sidebar {
+  flex: 0 0 220px;
+  position: sticky;
+  top: 2em;
+}
+
+.home2-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid $border-color;
+  margin-bottom: 0.7rem;
+}
+
+.home2-identity h1 {
+  font-size: 0.92rem !important;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.home2-tagline {
+  margin-top: 0.5rem;
+  font-size: 0.74rem !important;
+  color: $muted-text-color;
+  line-height: 1.45;
+}
+
+.home2-credentials {
+  margin-top: 0.6rem;
+  font-size: 0.68rem !important;
+  color: $muted-text-color;
+  line-height: 1.4;
+}
+
+.home2-contact-row {
+  margin-top: 0.9rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid $border-color;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 
   a {
-    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    font-size: 0.72rem !important;
+    color: $muted-text-color;
+    text-decoration: none;
+
+    &:hover { color: $link-color; }
+  }
+
+  .home2-icon { width: 14px; text-align: center; font-size: 0.72rem !important; }
+}
+
+.home2-now-line {
+  margin-top: 0.9rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid $border-color;
+  font-size: 0.68rem !important;
+  color: $muted-text-color;
+  line-height: 1.4;
+
+  a {
+    font-size: 0.68rem !important;
+    color: $text-color;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  a:hover { color: $link-color; }
+}
+
+.home2-story-btn {
+  margin-top: 0.9rem;
+  display: block;
+  text-align: center;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  padding: 0.55em 0.7em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: $text-color;
+  text-decoration: none;
+
+  &:hover { border-color: $link-color; color: $link-color; }
+}
+
+.home2-main {
+  min-width: 0;
+  flex: 1;
+  max-width: 720px;
+}
+
+.home2-empty {
+  font-size: 0.86rem;
+  color: $muted-text-color;
+}
+
+.mission-box {
+  background: $background-color;
+  border: 1px solid $border-color;
+  border-radius: 14px;
+  padding: 1.4rem 1.6rem;
+  margin-bottom: 2rem;
+
+  h2 { font-size: 1.15rem; line-height: 1.5; font-weight: 600; }
+  p { margin: 0.6em 0 0; font-size: 0.9rem; color: $muted-text-color; }
+}
+
+.lane-row {
+  display: flex;
+  gap: 1.1em;
+  margin-bottom: 0.9em;
+
+  a {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: $muted-text-color;
+
+    &.active, &:hover { color: $text-color; }
+  }
+}
+
+.section { margin-bottom: 2.25rem; }
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.8em;
+
+  h3 { font-size: 0.92rem; font-weight: 700; }
+
+  .see-all {
+    font-size: 0.78rem;
     text-decoration: none;
 
     &:hover { text-decoration: underline; }
   }
+}
+
+.product-card {
+  display: block;
+  border: 1px solid $border-color;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  color: $text-color;
+}
+
+.product-card__icon {
+  height: 70px;
+  background: $background-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+
+.product-card__body { padding: 0.9rem 1.1rem 1rem; }
+
+.product-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.product-card__title { font-size: 0.92rem; font-weight: 700; }
+
+.stage-badge {
+  flex-shrink: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.2em 0.6em;
+  border-radius: 999px;
+  background: $background-color;
+  color: $muted-text-color;
+
+  &--pretotype { background: mix(#fff, $warning-color, 85%); color: $warning-color; }
+  &--prototype { background: mix(#fff, $info-color, 85%); color: $info-color; }
+  &--built { background: mix(#fff, $success-color, 85%); color: $success-color; }
+}
+
+.product-card__hook {
+  margin: 0.45em 0 0;
+  font-size: 0.86rem;
+  color: $muted-text-color;
+  line-height: 1.5;
+}
+
+.product-card__cta {
+  display: block;
+  margin-top: 0.7em;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.stage-legend {
+  margin: 0.6em 0 0;
+  font-size: 0.76rem;
+  color: $muted-text-color;
+
+  a { color: $muted-text-color; text-decoration: underline; }
+}
+
+.stage-list { display: flex; flex-direction: column; margin: 1.5em 0; }
+
+.stage-list__item {
+  padding: 1em 0;
+  border-top: 1px solid $border-color;
+
+  &:first-child { border-top: none; }
+}
+
+.stage-list__title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3em; }
+
+.stage-list__desc {
+  margin: 0;
+  font-size: 0.86rem;
+  color: $muted-text-color;
+  line-height: 1.55;
+}
+
+.method-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+}
+
+.method-card {
+  display: flex;
+  gap: 0.8em;
+  align-items: flex-start;
+  border: 1px solid $border-color;
+  border-radius: 12px;
+  padding: 0.8em 0.95em;
+  text-decoration: none;
+  color: $text-color;
+
+  &:hover .method-card__title { text-decoration: underline; }
+}
+
+.method-card--placeholder {
+  border-style: dashed;
+
+  .method-card__hook { font-style: italic; }
+}
+
+.method-card__icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  background: $background-color;
+}
+
+.method-card__title { font-size: 0.85rem; font-weight: 700; margin: 0; }
+
+.method-card__title--voice { font-style: italic; font-weight: 600; }
+
+.method-card__hook {
+  margin: 0.25em 0 0;
+  font-size: 0.86rem;
+  color: $muted-text-color;
+  line-height: 1.5;
+}
+
+.method-card__meta { margin: 0.3em 0 0; font-size: 0.74rem; color: $muted-text-color; }
+
+.method-card__label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $muted-text-color;
+}
+
+.signup-box, .learn-box {
+  border-radius: 12px;
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.1rem;
+
+  p { margin: 0 0 0.7em; font-size: 0.86rem; color: $muted-text-color; line-height: 1.5; }
+}
+
+.signup-box { background: $background-color; }
+.learn-box { border: 1px solid $border-color; }
+
+.learn-box .learn-title { font-size: 0.9rem; font-weight: 700; color: $text-color; margin-bottom: 0.3em; }
+
+.form-row { display: flex; gap: 0.5em; }
+
+.form-row input {
+  flex: 1;
+  min-width: 0;
+  height: 34px;
+  padding: 0 0.8em;
+  border: 1px solid $border-color;
+  border-radius: 7px;
+  background: #fff;
+  color: $text-color;
+  font-size: 0.82rem;
+}
+
+.btn-disabled {
+  height: 34px;
+  padding: 0 0.9em;
+  border: 1px solid $border-color;
+  border-radius: 7px;
+  background: #fff;
+  color: $muted-text-color;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: not-allowed;
+}
+
+p.coming-soon-note {
+  margin: 0.5em 0 0;
+  font-size: 0.74rem;
+  color: $muted-text-color;
+  font-style: italic;
+}
+
+@media (max-width: $large) {
+  .home2-layout { flex-direction: column; gap: 1.5rem; }
+  .home2-sidebar { position: static; flex: 1 1 auto; display: flex; align-items: center; gap: 1rem; }
+  .home2-avatar { margin-bottom: 0; }
+  .home2-tagline, .home2-credentials, .home2-now-line { display: none; }
+  .home2-contact-row { flex-direction: row; margin: 0 0 0 auto; padding: 0; border: 0; }
+  .home2-story-btn { display: none; }
+  .home2-main { max-width: none; }
 }
 
 /* ---------------------------------------------------------------------

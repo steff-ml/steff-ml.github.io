@@ -1,18 +1,12 @@
-# The 5 kinds of posts, in display order under each project's own page
-# (see _layouts/project.html).
-# `slug` must match the `categories:` value in each post's front matter.
-- slug: project-definition
-  title: "Project Definition"
-  description: "What is broken, who it hurts, and what has to be true for the work to have been worth doing. No code."
-- slug: data-exploration
-  title: "Data Exploration"
-  description: "What the data actually looks like once you open it: standards, gaps between theory and practice, and the assumptions we make."
+# The 3 lanes regular blog posts are written under (shown as a small pill
+# on each post via _layouts/single.html). `slug` must match the
+# `categories:` value in a post's front matter.
+- slug: thinking
+  title: "Thinking"
+  description: "General essays and opinions, not tied to a specific project: how I approach the work, what I believe about it, and why."
 - slug: engineering
   title: "Engineering"
-  description: "Turning an exploration into an asset other people can rely on: modelling, pipelines, tests, lineage, and the trade-offs behind each."
-- slug: retrospective
-  title: "Retrospective"
-  description: "What I chose, what it cost, and what I would do differently."
-- slug: primer
-  title: "Primer"
-  description: "Short explainers of a single concept or system in this project's domain, written for whichever side of the divide it is unfamiliar to."
+  description: "Hardcore technical write-ups for fellow data engineers: modelling, pipelines, tests, lineage, and the trade-offs behind each."
+- slug: products
+  title: "Products"
+  description: "What is broken, who it hurts, what the data actually looks like, and what I chose, learned or would do differently, for a specific project. Includes short concept/system explainers for a project's domain."

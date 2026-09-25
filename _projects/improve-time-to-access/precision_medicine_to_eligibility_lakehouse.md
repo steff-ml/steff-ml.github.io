@@ -2,7 +2,7 @@
 title: "DMD Eligibility Lakehouse"
 excerpt: "A governed data platform linking genetic mutations in DMD to the therapies and trials a patient is eligible for."
 date: 2026-07-31
-status: "Under development"
+stage: pretotype
 mission: improve-time-to-access
 outcome: "Aims to replace a week of manual registry cross-referencing with a single query."
 outcome_measured: false
@@ -48,7 +48,7 @@ tags:
 
 The four FDA-approved exon-skipping therapies for DMD cover only 27% of patients by mutation alone. The other 73% have real options, but identifying which one a specific patient qualifies for means manually cross-referencing mutation registries, the reading-frame rule, and free-text trial eligibility criteria across systems that don't talk to each other — a process that doesn't scale across a registry and doesn't update when a trial opens or closes.
 
-<a class="artifact-link" href="{{ '/primer/dmd-biology-treatment-and-eligibility/' | relative_url }}"><span>📖</span> New to DMD? → What is Duchenne muscular dystrophy?</a>
+<a class="artifact-link" href="{{ '/products/dmd-biology-treatment-and-eligibility/' | relative_url }}"><span>📖</span> New to DMD? → What is Duchenne muscular dystrophy?</a>
 <a class="artifact-link" href="#"><span>📄</span> Deep dive → <code>docs/business_case.md</code></a>
 
 </section>

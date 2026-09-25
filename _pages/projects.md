@@ -43,7 +43,10 @@ Everything I'm building. Open-source, in progress, and honest about which stage 
     </div>
     <div>
       <div class="project-row__meta">
-        {% if project.status %}<span class="project-row__status">{{ project.status }}</span>{% endif %}
+        {% if project.stage %}
+          {% assign proj_stage = site.data.maturity_stages | where: "slug", project.stage | first %}
+          {% if proj_stage %}<span class="project-row__status">{{ proj_stage.title }}</span>{% endif %}
+        {% endif %}
         {% for tag in project.tags %}<span class="home-tag">{{ tag }}</span>{% endfor %}
       </div>
       <div class="project-row__title">{{ project.title }}</div>

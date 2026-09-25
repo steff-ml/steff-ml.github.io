@@ -1,0 +1,12 @@
+# The 3 stages a product can be at, shown as a badge on its card
+# (homepage and /projects/). `slug` must match a project's `stage:`
+# front-matter value.
+- slug: pretotype
+  title: "Pretotype"
+  description: "Before building anything: a cheap, fast test of whether the idea and the audience are real -- not yet whether it can be built."
+- slug: prototype
+  title: "Prototype"
+  description: "A working, imperfect version built to validate feasibility and get real feedback from real people -- not yet production."
+- slug: built
+  title: "Built"
+  description: "In real use, maintained, and held to a production bar."
