@@ -1,11 +1,7 @@
 main:
-  - title: "About"
-    url: /about/
-  - title: "Projects"
-    url: /projects/
-  - title: "Engineering Tips and Tricks"
-    url: /blog/
-  - title: "Thinking"
-    url: /thinking/
-  - title: "Contact"
-    url: /contact/
+  - title: "Project"
+    url: /projects/improve-time-to-access/precision_medicine_to_eligibility_lakehouse/
+  - title: "Concepts"
+    url: /concepts/
+  - title: "Notes"
+    url: /notes/

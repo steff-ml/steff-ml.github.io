@@ -30,14 +30,55 @@ layout: default
 
     <div class="page__inner-wrap">
       {% if page.collection == "posts" %}
+        {% comment %}
+        Where this post sits. Build-log posts (`chapter:` + `part:`) get their
+        chapter, section and project from _data/series.yml. TILs and link
+        roundups (`categories: [til]` / `[links]`) get a "Related to" line
+        from `concepts:` and an optional `project:`.
+        {% endcomment %}
+        {% assign series = site.data.series %}
+        {% assign kind = page.categories[0] %}
+        {% assign post_chapter = nil %}
+        {% assign post_section = nil %}
+        {% if page.chapter %}
+          {% for ch in series.chapters %}
+            {% if ch.slug == page.chapter %}{% assign post_chapter = ch %}{% endif %}
+            {% for sec in ch.sections %}
+              {% if sec.slug == page.chapter %}{% assign post_chapter = ch %}{% assign post_section = sec %}{% endif %}
+            {% endfor %}
+          {% endfor %}
+        {% endif %}
+
         {% assign parent_project = nil %}
-        {% if page.project %}
+        {% if post_chapter and series.project %}
+          {% assign parent_project = site.projects | where_exp: "p", "p.url contains series.project" | first %}
+        {% elsif page.project %}
           {% assign parent_project = site.projects | where_exp: "p", "p.url contains page.project" | first %}
         {% endif %}
 
+        {% comment %} Concept pages named in `concepts:` (their file names, without .md). Names without a page are skipped. {% endcomment %}
+        {% assign post_concepts = "" | split: "" %}
+        {% for slug in page.concepts %}
+          {% assign found = site.concepts | where: "slug", slug | first %}
+          {% if found %}{% assign post_concepts = post_concepts | push: found %}{% endif %}
+        {% endfor %}
+
         <header>
-          {% if parent_project %}
-          <a class="post-eyebrow" href="{{ parent_project.url | relative_url }}">← Back to {{ parent_project.title }}</a>
+          {% if post_chapter %}
+          <p class="post-context">
+            {% if parent_project %}<a href="{{ parent_project.url | relative_url }}">{{ parent_project.title }}</a><span class="dot">&middot;</span>{% endif %}
+            <a href="{{ parent_project.url | relative_url }}#build-log">Chapter {{ post_chapter.number }}: {{ post_chapter.title }}</a>
+            {% if post_section %}<span class="dot">&middot;</span>{{ post_section.title }}{% endif %}
+            {% if page.part %}<span class="dot">&middot;</span>Part {{ page.part }}{% endif %}
+          </p>
+          {% elsif kind == "til" or kind == "links" %}
+          <p class="post-context">
+            <span class="post-context__kind">{% if kind == "til" %}TIL{% else %}Links{% endif %}</span>
+            {% if post_concepts.size > 0 or parent_project %}
+              <span class="dot">&middot;</span>Related to:
+              {% for c in post_concepts %}<a href="{{ c.url | relative_url }}">{{ c.title }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}{% if parent_project %}{% if post_concepts.size > 0 %}, {% endif %}<a href="{{ parent_project.url | relative_url }}">{{ parent_project.title }}</a>{% endif %}
+            {% endif %}
+          </p>
           {% endif %}
 
           {% if page.title -%}
@@ -58,22 +99,29 @@ layout: default
                 {% if words < words_per_minute %}less than 1 min read{% else %}{{ words | divided_by: words_per_minute }} min read{% endif %}
               </span>
             {% endunless %}
-            {% assign kind = site.data.post_kinds | where: "slug", page.categories[0] | first %}
-            {% if kind %}<span class="dot">&middot;</span><span class="home-tag">{{ kind.title }}</span>{% endif %}
           </div>
-
-          {% if page.audience %}
-          <div class="post-audiences">
-            {% for slug in page.audience %}
-              {% assign aud = site.data.audiences | where: "slug", slug | first %}
-              {% if aud %}<span class="home-tag home-tag--outline">For {{ aud.title | downcase }}</span>{% endif %}
-            {% endfor %}
-          </div>
-          {% endif %}
         </header>
+
+        {% comment %} The cartoon that opens a post: `image:` and `image_alt:` in the front matter. Build-log posts without one show a placeholder. {% endcomment %}
+        {% if page.image %}
+        <figure class="post-cartoon">
+          <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: '' }}">
+        </figure>
+        {% elsif post_chapter %}
+        <figure class="post-cartoon post-cartoon--placeholder" aria-hidden="true">
+          <span>Cartoon goes here: set <code>image:</code> in the front matter</span>
+        </figure>
+        {% endif %}
 
         <section class="page__content e-content post-content" itemprop="text">
           {{ content }}
+
+          {% if post_concepts.size > 0 %}
+          <aside class="post-concepts">
+            <span class="post-concepts__label">Concepts in this post</span>
+            {% for c in post_concepts %}<a href="{{ c.url | relative_url }}">{{ c.title }}</a>{% endfor %}
+          </aside>
+          {% endif %}
 
           {% if page.tags.size > 0 %}
           <div class="post-tags">
@@ -81,18 +129,38 @@ layout: default
           </div>
           {% endif %}
 
-          {% if page.project %}
-            {% assign proj_posts = site.posts | where: "project", page.project | sort: "date" %}
-            {% assign next_post = nil %}
-            {% assign found_self = false %}
-            {% for p in proj_posts %}
-              {% if found_self and next_post == nil %}{% assign next_post = p %}{% endif %}
-              {% if p.url == page.url %}{% assign found_self = true %}{% endif %}
+          {% if post_chapter %}
+            {% comment %} Previous and next across the whole build log, in chapter, section and part order. {% endcomment %}
+            {% assign ordered = "" | split: "" %}
+            {% for ch in series.chapters %}
+              {% if ch.sections %}
+                {% for sec in ch.sections %}
+                  {% assign parts = site.posts | where: "chapter", sec.slug | sort: "part" %}
+                  {% assign ordered = ordered | concat: parts %}
+                {% endfor %}
+              {% else %}
+                {% assign parts = site.posts | where: "chapter", ch.slug | sort: "part" %}
+                {% assign ordered = ordered | concat: parts %}
+              {% endif %}
             {% endfor %}
-            <div class="post-nav">
-              {% if next_post %}<a href="{{ next_post.url | relative_url }}"><span class="nav-label">Next in this project</span>{{ next_post.title }} →</a>{% endif %}
-              {% if parent_project %}<a class="back" href="{{ parent_project.url | relative_url }}"><span class="nav-label">Project</span>← {{ parent_project.title }}</a>{% endif %}
-            </div>
+            {% assign prev_post = nil %}
+            {% assign next_post = nil %}
+            {% for p in ordered %}
+              {% if p.url == page.url %}
+                {% assign i_prev = forloop.index0 | minus: 1 %}
+                {% if i_prev >= 0 %}{% assign prev_post = ordered[i_prev] %}{% endif %}
+                {% assign next_post = ordered[forloop.index] %}
+              {% endif %}
+            {% endfor %}
+            <nav class="post-nav post-nav--series">
+              {% if prev_post %}<a href="{{ prev_post.url | relative_url }}"><span class="nav-label">← Previous</span>{{ prev_post.title }}</a>{% else %}<span></span>{% endif %}
+              {% if parent_project %}<a class="post-nav__home" href="{{ parent_project.url | relative_url }}#build-log"><span class="nav-label">Build log</span>{{ parent_project.title }}</a>{% endif %}
+              {% if next_post %}<a class="post-nav__next" href="{{ next_post.url | relative_url }}"><span class="nav-label">Next →</span>{{ next_post.title }}</a>{% else %}<span></span>{% endif %}
+            </nav>
+          {% elsif parent_project %}
+            <nav class="post-nav">
+              <a class="back" href="{{ parent_project.url | relative_url }}"><span class="nav-label">Project</span>← {{ parent_project.title }}</a>
+            </nav>
           {% endif %}
         </section>
       {% else %}

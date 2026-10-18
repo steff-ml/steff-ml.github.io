@@ -1,7 +1,7 @@
-# Concept areas shown as a tree on the home page, in display order.
-# A concept page joins an area with `group: <slug>` in its front matter.
-# `planned` lists concepts without a page yet (shown greyed out); an entry
-# disappears by itself once a page with the same title exists.
+# Concept areas, in display order. A concept page joins an area with
+# `group: <slug>` in its front matter. Areas without any concept page are
+# hidden on the home page and on /concepts/.
+# `planned` is a private writing list: it is never shown on the site.
 - slug: ai
   title: "AI"
   planned:

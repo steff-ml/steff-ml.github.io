@@ -6,4 +6,4 @@ group: systems
 author_profile: true
 ---
 
-<span class="todo">[One or two sentences: what this area covers and why it matters for your work.]</span>
+Ideas from systems design that help build AI systems that are reliable, resilient and safe.

@@ -2,15 +2,13 @@
 layout: single
 ---
 {% comment %}
-One concept area: written concept pages with `group: <page.group>` as
-links, then the planned ones from _data/concepts.yml greyed out.
+One concept area: the concept pages with `group: <page.group>`.
 A search box filters the list by title, excerpt and tags.
 {% endcomment %}
 {{ content }}
 
 {% assign area = site.data.concepts | where: "slug", page.group | first %}
 {% assign area_pages = site.concepts | where: "group", page.group | sort: "title" %}
-{% assign written_titles = area_pages | map: "title" %}
 
 <div class="search-box">
   <svg viewBox="0 0 20 20"><circle cx="9" cy="9" r="6.5"/><line x1="14" y1="14" x2="18" y2="18"/></svg>
@@ -26,11 +24,6 @@ A search box filters the list by title, excerpt and tags.
     <a href="{{ concept.url | relative_url }}">{{ concept.title }}</a>
     {% if concept.excerpt %}<span class="concept-index__hook">{{ concept.excerpt | strip_html }}</span>{% endif %}
   </li>
-  {% endfor %}
-  {% for planned in area.planned %}
-    {% unless written_titles contains planned %}
-    <li data-search="{{ planned }}"><span class="tree__planned">{{ planned }}</span> <span class="concept-index__hook">Not written yet</span></li>
-    {% endunless %}
   {% endfor %}
 </ul>
 

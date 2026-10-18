@@ -4,7 +4,7 @@ _data/series.yml, parts from posts with `chapter:` and `part:`.
 Shown on the project page named in _data/series.yml (`project:`).
 {% endcomment %}
 {% assign series = site.data.series %}
-<section class="project-series">
+<section class="project-series" id="build-log">
   <h2>Build log</h2>
   <ul class="tree">
     {% for chapter in series.chapters %}

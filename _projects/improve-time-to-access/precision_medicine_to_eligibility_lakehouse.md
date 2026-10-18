@@ -1,24 +1,28 @@
 ---
-title: "DMD Eligibility Lakehouse"
-excerpt: "A governed data platform linking genetic mutations in DMD to the therapies and trials a patient is eligible for."
+title: "From Question to Data Product"
+excerpt: "AI workflows that take a research question to a working data product, tested first on Duchenne muscular dystrophy trial eligibility."
 date: 2026-07-31
 stage: pretotype
-mission: improve-time-to-access
-outcome: "Aims to replace a week of manual registry cross-referencing with a single query."
+outcome: "Aims to cut the expert work between a research question and a go/no-go on a data product."
 outcome_measured: false
 role: "Solo"
 timeline: "Started Jul 2026"
 stack:
+  - LiteLLM
+  - OpenCode
+  - Scaleway
+  - OVHcloud
   - Databricks
-  - OMOP CDM
-  - Delta Live Tables
 header:
   teaser: /assets/images/projects/precision-medicine-eligibility-teaser.jpg
+concepts:
+  - duchenne-muscular-dystrophy
 tags:
-  - databricks
   - rare-disease
-  - precision-medicine
-  - lakehouse
+  - data-discovery
+  - data-products
+  - ai-engineering
+  - databricks
 ---
 
 <div class="hero-diagram-wrap" markdown="1">
@@ -31,7 +35,11 @@ tags:
 
 ## Problem
 
-The four FDA-approved exon-skipping therapies for DMD cover only 27% of patients by mutation alone. The other 73% have real options, but identifying which one a specific patient qualifies for means manually cross-referencing mutation registries, the reading-frame rule, and free-text trial eligibility criteria across systems that don't talk to each other — a process that doesn't scale across a registry and doesn't update when a trial opens or closes.
+The four FDA-approved exon-skipping therapies for DMD cover only 27% of patients by mutation alone. The other 73% have options, but identifying which one a specific patient qualifies for means manually cross-referencing mutation registries, the reading-frame rule and free-text trial eligibility criteria across systems. Furthermore, patients can be ineligible for treatments for other reasons such as age, pre-existing AAV antibodies that prevent gene therapy and more. This means it is hard for patients to find out which treatments they are eligible for, hard for trial managers to figure out which patients will respond best to their proposed treatment and hard for research institutions as a whole to find which patients are currently being underserved by the industry. To solve that problem, you would need data products on a data lakehouse that properly combine these disparate data sources together.
+Such a DMD eligibility lakehouse generalizes in two ways. 
+First, DMD is not the only rare disease where I haven't been able to find a database that explicitly links trial/therapy eligibility criteria to the underlying disease profile that would benefit most. Hence, the final solution should generalize to multiple rare diseases if possible.
+Second, the problem itself is general. It is hard to go from an idea to figuring out what datasets are meaningfully available to building a valuable data product. 
+Hence, this is the problem we are tackling.
 
 <a class="artifact-link" href="{{ '/concepts/duchenne-muscular-dystrophy/' | relative_url }}"><span>📖</span> New to DMD? → What is Duchenne muscular dystrophy?</a>
 <a class="artifact-link" href="#"><span>📄</span> Deep dive → <code>docs/business_case.md</code></a>
@@ -42,13 +50,12 @@ The four FDA-approved exon-skipping therapies for DMD cover only 27% of patients
 
 ## Proposed solution
 
-Before building this lakehouse, I want to know whether the data allows it and whether anyone needs it. Today, finding that out takes a lot of expert work, all paid before there is any sign of demand. So I'm building four tools, each making one step cheaper:
+To facilitate the process that goes from question to data product, I'm building the four AI workflows below:
 
-1. **Automated data discovery.** Starts from a question and ends with a set of datasets: how feasible each one is from different perspectives, such as access, licence, quality and privacy, and how they join together.
-2. **Automated pretotyping.** Takes those datasets and their constraints, invents synthetic data where it has to, and proposes data product ideas to test demand with.
-3. **Automated prototyping.** Turns a selected pretotype into a small version that actually works, on Databricks, GCP or another platform.
-4. **Automated build.** Takes a prototype through everything a regulated environment needs, such as tests, lineage and data contracts.
+1. **Automated data discovery.** Starts from a question and ends with a set of datasets, including a feasibility report (availability, quality, legal access, privacy...) and how to join the datasets together.
+2. **Automated pretotyping.** Takes those datasets and their constraints, invents synthetic data where it is needed and proposes data product ideas to test market demand.
+3. **Automated prototyping.** Turns a selected pretotype with proven market demand into a small version that actually works on Databricks, GCP or another platform to prove that it can be built.
+4. **Automated build.** Takes a prototype and turns it into a full data product, complete with owner, lineage tracking, access control and more.
 
-DMD is the first test case: this lakehouse becomes one possible outcome, and goes through the same go/no-go as any other idea. Data discovery is in design now. The other three come later.
 
 </section>

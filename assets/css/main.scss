@@ -984,6 +984,100 @@ p.coming-soon-note {
   .back { margin-left: auto; }
 }
 
+// Build-log posts: previous, back to the build log, next.
+.post-nav--series {
+  a { flex: 1; max-width: none; }
+
+  .post-nav__home { text-align: center; }
+  .post-nav__next { text-align: right; }
+
+  > span { flex: 1; }
+}
+
+// The line above a post title: project · chapter · section · part,
+// or TIL/Links · related to.
+.post-context {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  align-items: baseline;
+  margin: 0 0 0.4em;
+  font-size: 0.78rem;
+  color: $muted-text-color;
+
+  a { color: $muted-text-color; }
+  a:hover { color: $link-color; }
+  .dot { font-size: 0.7rem; }
+}
+
+.post-context__kind {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+// The cartoon that opens a post.
+.post-cartoon {
+  margin: 0 0 1.75rem;
+
+  img { display: block; width: 100%; border-radius: 12px; }
+}
+
+.post-cartoon--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 7;
+  border: 2px dashed $border-color;
+  border-radius: 12px;
+  background: $background-color;
+  font-size: 0.8rem;
+  color: $muted-text-color;
+  text-align: center;
+  padding: 1em;
+}
+
+.post-concepts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em 1em;
+  align-items: baseline;
+  margin: 2.5rem 0 0;
+  font-size: 0.86rem;
+}
+
+.post-concepts__label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $muted-text-color;
+}
+
+// "Used in" at the bottom of a concept page.
+.concept-used-in {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $border-color;
+
+  h2 { margin: 0 0 0.6em; font-size: 0.92rem; }
+  ul { list-style: none; margin: 0; padding: 0; font-size: 0.86rem; }
+  li { display: flex; gap: 0.7em; align-items: baseline; margin: 0.3em 0; }
+  time, .concept-used-in__kind { flex-shrink: 0; width: 7em; font-size: 0.78rem; color: $muted-text-color; }
+  p { font-size: 0.86rem; color: $muted-text-color; }
+}
+
+// One area on the /concepts/ overview.
+.concept-group { margin-bottom: 1.5rem; }
+
+.concept-group__title {
+  margin: 0 0 0.2em;
+  font-size: 1rem;
+
+  a { text-decoration: none; }
+}
+
 /* ---------------------------------------------------------------------
    About page. Restructures the same prose into scannable components --
    nothing here shortens the actual content.

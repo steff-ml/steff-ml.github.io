@@ -6,4 +6,4 @@ group: ai
 author_profile: true
 ---
 
-<span class="todo">[One or two sentences: what this area covers and why it matters for your work.]</span>
+Artificial intelligence concepts that you need to understand how my AI tooling works

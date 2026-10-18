@@ -10,19 +10,20 @@ full_width: true
 
 {% comment %} The intro at the top of the main column. Plain Markdown. {% endcomment %}
 {% capture intro %}
-## Hi, I'm Steff.
+## Hello, I'm Steff.
 
-AI should put capability in the hands of scientists and engineers solving important problems. I build the data infrastructure that lets it, without locking anyone into a single provider. I'm not against the big AI labs. I'm against lock-in.
+I'm a data engineer. 
+By day, I design and build governed data products on Databricks, from the first intake to pipelines, quality checks, access control and lineage in production.
 
-I'm a data engineer. I design and build governed data platforms on Databricks, from the first intake to pipelines, quality checks, access control and lineage in production.
+By night, I apply data and AI engineering to socially relevant problems and blog about my work.
 
-I also:
+This blog is for you if you:
+- want to learn how to build data products.
+- want to know how to apply generative AI tools to accelerate your data engineering workflow.
+- want to apply these powers to creating products that answer meaningful questions.
 
-- Run an **independent AI stack**: a gateway that routes between frontier, open and European models, so I can switch without rebuilding.
-- Write about **designing AI systems I can explain and trust**, with ideas from [systems thinking]({{ '/concepts/systems/' | relative_url }}) such as Gall's law and single points of failure.
-- Apply both to **rare-disease data**: finding the data that exists and making it usable.
 
-Steff Horemans is a data engineer with a PhD in the life sciences and six years of building data products, from Tableau dashboards for a pharmaceutical client to data platforms on Databricks. Before that, Steff studied how a cell's metabolism drives DNA replication. Based in Antwerp, Belgium.
+Steff Horemans is a data engineer with a PhD in the life sciences and six years of building data products, from Tableau dashboards for a pharmaceutical client to data platforms on Databricks. Before that, he studied how a cell's metabolism regulates DNA replication. Now, he wants to bring all this together to build data solutions that directly improve the lives of others.  Based in Antwerp, Belgium.
 {% endcapture %}
 
 <div class="home2-layout">
@@ -37,9 +38,10 @@ Steff Horemans is a data engineer with a PhD in the life sciences and six years 
       <a href="mailto:{{ site.email }}"><span class="home2-icon">✉️</span> Email</a>
       {% assign github_link = site.author.links | where: "label", "Github" | first %}
       {% if github_link %}<a href="{{ github_link.url }}"><span class="home2-icon">💻</span> GitHub</a>{% endif %}
-      <a href="{{ '/contact/' | relative_url }}"><span class="home2-icon">📅</span> Talk to me</a>
+      {% assign linkedin_link = site.author.links | where: "label", "Linkedin" | first %}
+      {% if linkedin_link %}<a href="{{ linkedin_link.url }}"><span class="home2-icon">🔗</span> LinkedIn</a>{% endif %}
     </div>
-    <a class="home2-story-btn" href="{{ '/about/' | relative_url }}">Read my full story →</a>
+    <a class="home2-story-btn" href="{{ '/assets/cv/cv_steff_horemans.pdf' | relative_url }}">Download my CV →</a>
   </aside>
 
   <main class="home2-main">
@@ -87,7 +89,7 @@ Steff Horemans is a data engineer with a PhD in the life sciences and six years 
         {% for group in site.data.concepts %}
         {% assign group_page = site.pages | where: "group", group.slug | first %}
         {% assign group_count = site.concepts | where: "group", group.slug | size %}
-        <a class="concept-area" href="{{ group_page.url | relative_url }}">{{ group.title }}{% if group_count > 0 %} <span class="concept-area__count">{{ group_count }}</span>{% endif %}</a>
+        {% if group_count > 0 %}<a class="concept-area" href="{{ group_page.url | relative_url }}">{{ group.title }} <span class="concept-area__count">{{ group_count }}</span></a>{% endif %}
         {% endfor %}
       </div>
     </section>
