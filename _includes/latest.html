@@ -1,0 +1,48 @@
+{% comment %}
+One stream of everything dated, newest first: posts, TILs, link roundups,
+and concept pages by their last update. Merges site.posts (already sorted
+newest first) with site.concepts sorted by `last_modified_at`.
+Usage: {% include latest.html limit=8 %}
+{% endcomment %}
+{% assign latest_limit = include.limit | default: 8 %}
+{% assign latest_posts = site.posts %}
+{% assign latest_concepts = site.concepts | sort: "last_modified_at" | reverse %}
+{% assign pi = 0 %}
+{% assign ci = 0 %}
+<ul class="recent-list">
+{% for n in (1..latest_limit) %}
+  {% assign p = latest_posts[pi] %}
+  {% assign c = latest_concepts[ci] %}
+  {% if p == nil and c == nil %}{% break %}{% endif %}
+
+  {% assign take_post = true %}
+  {% if p == nil %}
+    {% assign take_post = false %}
+  {% elsif c %}
+    {% assign p_time = p.date | date: "%s" | plus: 0 %}
+    {% assign c_time = c.last_modified_at | date: "%s" | plus: 0 %}
+    {% if c_time > p_time %}{% assign take_post = false %}{% endif %}
+  {% endif %}
+
+  {% if take_post %}
+    {% assign item = p %}
+    {% assign item_date = p.date %}
+    {% assign kind = p.categories[0] %}
+    {% if kind == "til" %}{% assign label = "TIL" %}
+    {% elsif kind == "links" %}{% assign label = "Links" %}
+    {% elsif p.part %}{% assign label = "Part " | append: p.part %}
+    {% else %}{% assign label = "Post" %}{% endif %}
+    {% assign pi = pi | plus: 1 %}
+  {% else %}
+    {% assign item = c %}
+    {% assign item_date = c.last_modified_at %}
+    {% assign label = "Concept" %}
+    {% assign ci = ci | plus: 1 %}
+  {% endif %}
+  <li>
+    <time datetime="{{ item_date | date_to_xmlschema }}">{{ item_date | date: "%b %-d" }}</time>
+    <span class="recent-kind">{{ label }}</span>
+    <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+  </li>
+{% endfor %}
+</ul>

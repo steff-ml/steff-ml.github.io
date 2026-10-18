@@ -16,6 +16,10 @@ layout: single
 
 {{ content }}
 
+{% if site.data.series.project and page.url contains site.data.series.project %}
+  {% include series-tree.html %}
+{% endif %}
+
 {% comment %}
 Hidden for now -- not a fan of this content on project pages as-is. May
 resurface as part of "Engineering tips & tricks" instead of here.

@@ -1,6 +1,7 @@
 ---
 title: "Duchenne muscular dystrophy"
 last_modified_at: 2026-07-31
+group: bio
 tags:
   - rare-disease
   - molecular-biology

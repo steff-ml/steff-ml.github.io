@@ -1,0 +1,27 @@
+# Concept areas shown as a tree on the home page, in display order.
+# A concept page joins an area with `group: <slug>` in its front matter.
+# `planned` lists concepts without a page yet (shown greyed out); an entry
+# disappears by itself once a page with the same title exists.
+- slug: ai
+  title: "AI"
+  planned:
+    - "Model-agnostic stack"
+    - "AI gateway"
+    - "Coding harness"
+    - "One-shotting"
+- slug: systems
+  title: "Systems design"
+  planned:
+    - "Gall's law"
+    - "Single point of failure"
+    - "Requisite variety"
+    - "Known-answer test"
+- slug: data
+  title: "Data"
+  planned:
+    - "Data contract"
+    - "Data product"
+    - "Lineage"
+- slug: bio
+  title: "Biology"
+  planned: []
