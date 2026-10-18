@@ -15,8 +15,8 @@
 # in the templates via {{ site.myvariable }}.
 title: "Steff Horemans"
 email: "steffhoremans3@gmail.com"
-description: "A blog about my life, my work and my thoughts."
-github_username: username
+description: "I build the data infrastructure that lets AI put capability in the hands of scientists and engineers."
+github_username: steff-ml
 minimal_mistakes_skin: default
 search: true
 url: "https://steff-ml.github.io"   # no trailing slash
@@ -59,7 +59,7 @@ plugins:
 
 author:
   name   : "Steff Horemans"
-  avatar : "/assets/images/bio-photo.jpg"
+  avatar : "/assets/images/Steff_picture.jpg"
   bio    : "Data engineer with PhD in Life Sciences specializing in industrial and life science processes."
   location: "Antwerp, Belgium"
   links:
@@ -89,7 +89,7 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: true
+      comments: false
       share: true
       related: true
   # _pages
@@ -99,12 +99,12 @@ defaults:
     values:
       layout: single
       author_profile: true
-  # _projects
+  # _products
   - scope:
       path: ""
-      type: projects
+      type: products
     values:
-      layout: project
+      layout: product
       author_profile: true
       share: true
       read_time: false
@@ -125,9 +125,9 @@ tag_archive:
   path: /tags/
 
 collections:
-  projects:
+  products:
     output: true
-    permalink: /projects/:path/
+    permalink: /products/:name/
   concepts:
     output: true
     permalink: /concepts/:name/

@@ -41,7 +41,7 @@ Steff Horemans is a data engineer with a PhD in the life sciences and six years 
       {% assign linkedin_link = site.author.links | where: "label", "Linkedin" | first %}
       {% if linkedin_link %}<a href="{{ linkedin_link.url }}"><span class="home2-icon">🔗</span> LinkedIn</a>{% endif %}
     </div>
-    <a class="home2-story-btn" href="{{ '/assets/cv/cv_steff_horemans.pdf' | relative_url }}">Download my CV →</a>
+    <a class="home2-story-btn" href="{{ '/assets/cv/cv_steff_horemans_EN_2.pdf' | relative_url }}">Download my CV →</a>
   </aside>
 
   <main class="home2-main">
@@ -49,14 +49,14 @@ Steff Horemans is a data engineer with a PhD in the life sciences and six years 
     <!-- 1. Intro (text: the capture block at the top) -->
     <section class="home-intro">{{ intro | markdownify }}</section>
 
-    <!-- 2. The current project -->
+    <!-- 2. The current product -->
     <section class="section" id="products">
       <div class="section-head">
         <h3>Products</h3>
-        <a class="see-all" href="{{ '/projects/' | relative_url }}">See all products →</a>
+        <a class="see-all" href="{{ '/products/' | relative_url }}">See all products →</a>
       </div>
 
-      {% assign latest_projects = site.projects | sort: "date" | reverse %}
+      {% assign latest_projects = site.products | sort: "date" | reverse %}
       {% if latest_projects.size > 0 %}
         {% for project in latest_projects limit: 1 %}
         <a class="product-card" href="{{ project.url | relative_url }}">
@@ -70,7 +70,7 @@ Steff Horemans is a data engineer with a PhD in the life sciences and six years 
               {% endif %}
             </div>
             <p class="product-card__hook">{{ project.excerpt | strip_html }}</p>
-            <span class="product-card__cta">Open the project →</span>
+            <span class="product-card__cta">Open the product →</span>
           </div>
         </a>
         {% endfor %}
@@ -100,17 +100,14 @@ Steff Horemans is a data engineer with a PhD in the life sciences and six years 
     </div>
     <div class="signup-box">
       <p>No schedule. I write when I've built something worth writing about.</p>
-      <div class="form-row">
-        <input type="email" placeholder="your@email.com" disabled>
-        <button class="btn-disabled" disabled>Notify me</button>
-      </div>
-      <p class="coming-soon-note">Signup isn't wired up yet — coming soon.</p>
+      <a class="cta-btn cta-btn--primary" href="{{ '/feed.xml' | relative_url }}">Subscribe via RSS</a>
+      <p class="cta-note">Add this link to a feed reader, such as Feedly, Inoreader or NetNewsWire, and every new post shows up there by itself.</p>
     </div>
 
     <div class="learn-box">
       <p class="learn-title">Want to learn this?</p>
       <p>Tell me what you're stuck on. It shapes what I build, and you get first access.</p>
-      <button class="btn-disabled" disabled style="width:100%;">Tell me what you're stuck on — coming soon</button>
+      <a class="cta-btn" href="mailto:{{ site.email }}?subject=What%20I%27m%20stuck%20on">Tell me what you're stuck on</a>
     </div>
 
   </main>

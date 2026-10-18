@@ -1,18 +1,18 @@
 ---
-title: "Projects"
+title: "Products"
 layout: single
-permalink: /projects/
+permalink: /products/
 author_profile: true
 ---
 
 Everything I'm building. Open-source, in progress, and honest about which stage each one is at.
 
-{% assign all_projects = site.projects | sort: "date" | reverse %}
+{% assign all_projects = site.products | sort: "date" | reverse %}
 
 {% if all_projects.size > 0 %}
 <div class="search-box">
   <svg viewBox="0 0 20 20"><circle cx="9" cy="9" r="6.5"/><line x1="14" y1="14" x2="18" y2="18"/></svg>
-  <input type="text" id="project-search" placeholder="Search projects by title or tag…" oninput="applyProjectFilters()">
+  <input type="text" id="project-search" placeholder="Search products by title or tag…" oninput="applyProjectFilters()">
 </div>
 
 {% assign all_tags = "" | split: "" %}
@@ -29,7 +29,7 @@ Everything I'm building. Open-source, in progress, and honest about which stage 
 </div>
 
 <p class="results-count" id="project-count"></p>
-<p class="search-empty" id="project-search-empty">No projects match that search.</p>
+<p class="search-empty" id="project-search-empty">No products match that search.</p>
 
 <div class="project-row-list" id="project-rows">
   {% for project in all_projects %}

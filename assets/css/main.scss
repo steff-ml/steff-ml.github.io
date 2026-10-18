@@ -537,6 +537,35 @@
 
 .learn-box .learn-title { font-size: 0.9rem; font-weight: 700; color: $text-color; margin-bottom: 0.3em; }
 
+// Working buttons in the "Follow along" boxes (RSS feed, email).
+.cta-btn {
+  display: block;
+  padding: 0.55em 0.9em;
+  border: 1px solid $border-color;
+  border-radius: 7px;
+  background: #fff;
+  color: $text-color;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover { border-color: $link-color; color: $link-color; }
+}
+
+.cta-btn--primary {
+  background: $link-color;
+  border-color: $link-color;
+  color: #fff;
+
+  &:hover { background: darken($link-color, 8%); color: #fff; }
+}
+
+.signup-box p.cta-note {
+  margin: 0.6em 0 0;
+  font-size: 0.74rem;
+}
+
 .form-row { display: flex; gap: 0.5em; }
 
 .form-row input {
@@ -939,6 +968,30 @@ p.coming-soon-note {
   margin: 1.5em auto 0.4em;
   border-radius: 8px;
 }
+
+// A full-width image with a small caption: screenshots, diagrams.
+// Usage in a post: <figure class="post-figure"><img …><figcaption>…</figcaption></figure>
+.post-content .post-figure {
+  display: block;
+  margin: 1.75em 0;
+
+  img {
+    max-width: 100%;
+    margin: 0;
+    border: 1px solid $border-color;
+  }
+
+  figcaption {
+    margin: 0.6em 0 0;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: $muted-text-color;
+    text-align: center;
+  }
+}
+
+// Captions written in Markdown with {: .img-caption}: beat the theme's paragraph size.
+.page__content p.img-caption { font-size: 0.75rem; }
 
 .post-tags {
   display: flex;

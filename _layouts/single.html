@@ -32,9 +32,9 @@ layout: default
       {% if page.collection == "posts" %}
         {% comment %}
         Where this post sits. Build-log posts (`chapter:` + `part:`) get their
-        chapter, section and project from _data/series.yml. TILs and link
+        chapter, section and product from _data/series.yml. TILs and link
         roundups (`categories: [til]` / `[links]`) get a "Related to" line
-        from `concepts:` and an optional `project:`.
+        from `concepts:` and an optional `product:`.
         {% endcomment %}
         {% assign series = site.data.series %}
         {% assign kind = page.categories[0] %}
@@ -50,10 +50,10 @@ layout: default
         {% endif %}
 
         {% assign parent_project = nil %}
-        {% if post_chapter and series.project %}
-          {% assign parent_project = site.projects | where_exp: "p", "p.url contains series.project" | first %}
-        {% elsif page.project %}
-          {% assign parent_project = site.projects | where_exp: "p", "p.url contains page.project" | first %}
+        {% if post_chapter and series.product %}
+          {% assign parent_project = site.products | where_exp: "p", "p.url contains series.product" | first %}
+        {% elsif page.product %}
+          {% assign parent_project = site.products | where_exp: "p", "p.url contains page.product" | first %}
         {% endif %}
 
         {% comment %} Concept pages named in `concepts:` (their file names, without .md). Names without a page are skipped. {% endcomment %}
@@ -159,7 +159,7 @@ layout: default
             </nav>
           {% elsif parent_project %}
             <nav class="post-nav">
-              <a class="back" href="{{ parent_project.url | relative_url }}"><span class="nav-label">Project</span>← {{ parent_project.title }}</a>
+              <a class="back" href="{{ parent_project.url | relative_url }}"><span class="nav-label">Product</span>← {{ parent_project.title }}</a>
             </nav>
           {% endif %}
         </section>

@@ -1,5 +1,5 @@
 # The 3 stages a product can be at, shown as a badge on its card
-# (homepage and /projects/). `slug` must match a project's `stage:`
+# (homepage and /products/). `slug` must match a product's `stage:`
 # front-matter value.
 - slug: pretotype
   title: "Pretotype"

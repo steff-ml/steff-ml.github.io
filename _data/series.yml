@@ -1,17 +1,17 @@
-# The build log on the project page: chapters, optionally split into
+# The build log on the product page: chapters, optionally split into
 # sections. A post joins a chapter (or a section) with `chapter: <slug>`
 # and is ordered within it by `part: <n>`.
 #
-# `project` is the file name of the project page under _projects/,
+# `product` is the file name of the product page under _products/,
 # without .md.
-project: precision_medicine_to_eligibility_lakehouse
+product: from-question-to-data-product
 
 # status: done | turning-point | ongoing | later
 chapters:
   - slug: stack
     number: "I"
     title: "Building an independent AI stack"
-    status: done
+    status: ongoing
   - slug: discovery
     number: "II"
     title: "Designing an automated data discovery tool"
