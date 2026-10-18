@@ -1,0 +1,27 @@
+# Concept areas, in display order. A concept page joins an area with
+# `group: <slug>` in its front matter. Areas without any concept page are
+# hidden on the home page and on /concepts/.
+# `planned` is a private writing list: it is never shown on the site.
+- slug: ai
+  title: "AI"
+  planned:
+    - "Model-agnostic stack"
+    - "AI gateway"
+    - "Coding harness"
+    - "One-shotting"
+- slug: systems
+  title: "Systems design"
+  planned:
+    - "Gall's law"
+    - "Single point of failure"
+    - "Requisite variety"
+    - "Known-answer test"
+- slug: data
+  title: "Data"
+  planned:
+    - "Data contract"
+    - "Data product"
+    - "Lineage"
+- slug: bio
+  title: "Biology"
+  planned: []

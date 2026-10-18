@@ -1,0 +1,30 @@
+{% comment %}
+The build log as a tree: chapters (and their sections) from
+_data/series.yml, parts from posts with `chapter:` and `part:`.
+Shown on the product page named in _data/series.yml (`product:`).
+{% endcomment %}
+{% assign series = site.data.series %}
+<section class="project-series" id="build-log">
+  <h2>Build log</h2>
+  <ul class="tree">
+    {% for chapter in series.chapters %}
+    <li>
+      <span class="tree__label"><span class="tree__num">{{ chapter.number }}</span>{{ chapter.title }}</span>
+      <span class="series-status series-status--{{ chapter.status }}">{{ chapter.status | replace: "-", " " }}</span>
+      {% if chapter.sections %}
+      <ul>
+        {% for section in chapter.sections %}
+        <li>
+          <span class="tree__label tree__label--sub">{{ section.title }}</span>
+          <span class="series-status series-status--{{ section.status }}">{{ section.status | replace: "-", " " }}</span>
+          {% include series-parts.html slug=section.slug %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+        {% include series-parts.html slug=chapter.slug %}
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>

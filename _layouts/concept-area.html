@@ -1,0 +1,44 @@
+---
+layout: single
+---
+{% comment %}
+One concept area: the concept pages with `group: <page.group>`.
+A search box filters the list by title, excerpt and tags.
+{% endcomment %}
+{{ content }}
+
+{% assign area = site.data.concepts | where: "slug", page.group | first %}
+{% assign area_pages = site.concepts | where: "group", page.group | sort: "title" %}
+
+<div class="search-box">
+  <svg viewBox="0 0 20 20"><circle cx="9" cy="9" r="6.5"/><line x1="14" y1="14" x2="18" y2="18"/></svg>
+  <input type="text" id="concept-search" placeholder="Search {{ area.title }} concepts…" oninput="applyConceptSearch()">
+</div>
+
+<p class="results-count" id="concept-count"></p>
+<p class="search-empty" id="concept-search-empty">No concepts match that search.</p>
+
+<ul class="concept-index" id="concept-rows">
+  {% for concept in area_pages %}
+  <li data-search="{{ concept.title }} {{ concept.excerpt | strip_html }} {{ concept.tags | join: ' ' }}">
+    <a href="{{ concept.url | relative_url }}">{{ concept.title }}</a>
+    {% if concept.excerpt %}<span class="concept-index__hook">{{ concept.excerpt | strip_html }}</span>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+
+<script>
+function applyConceptSearch() {
+  var q = (document.getElementById('concept-search').value || '').trim().toLowerCase();
+  var items = document.querySelectorAll('#concept-rows li');
+  var visible = 0;
+  items.forEach(function (item) {
+    var match = q === '' || (item.getAttribute('data-search') || '').toLowerCase().indexOf(q) !== -1;
+    item.style.display = match ? '' : 'none';
+    if (match) visible++;
+  });
+  document.getElementById('concept-search-empty').style.display = visible === 0 ? '' : 'none';
+  document.getElementById('concept-count').textContent = visible + (visible === 1 ? ' concept' : ' concepts');
+}
+applyConceptSearch();
+</script>

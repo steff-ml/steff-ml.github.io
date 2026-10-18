@@ -1,16 +1,12 @@
 ---
-title: "What is Duchenne muscular dystrophy?"
-date: 2026-07-31 09:30:00 +0200
-categories: [products]
-project: precision_medicine_to_eligibility_lakehouse
-audience:
-  - data-engineers
-  - bio-scientists
+title: "Duchenne muscular dystrophy"
+last_modified_at: 2026-10-18
+group: bio
 tags:
   - rare-disease
   - molecular-biology
   - precision-medicine
-excerpt: "Everything you need to know about Duchenne Muscular Dystrophy for this project"
+excerpt: "What DMD is, why some mutations cause DMD and others the milder BMD, and how a patient's mutation decides which treatments and trials fit."
 ---
 
 If you want to build good data models, you must first understand the real-world
@@ -160,7 +156,7 @@ These drugs work independently of the exact mutation of the patient, but may ind
 The first instinct you may have to treat this disease is to fix the dystrophin gene itself using gene editing. This is often easier said than done, as there are limitations to our ability to deliver gene editing machinery inside a living being and reliably reach all muscle cells with that. Delivery of gene editing machinery is usually done using adeno-associated virusses (AAV) and patients can develop an immune response to them, rendering the treatment moot.
 There is also a limitation to how much an AAV virus can deliver and also a dilution effect if muscle cells die and are replaced by others that did not receive the fix. Most of these approaches are far from clinical practice.
 For that reason, many drugs target the less ambitious goal of turning DMD into BMD. One promising approach is splice modulation: remove a broken exon from the mRNA to restore the reading frame. This requires lifelong dosing, but is achieved with small, easy to deliver molecules.
-In any case, the applicability of these kinds of drugs are very dependent on the actual mutation a patient has and form the core reason for this project. 
+In any case, the applicability of these kinds of drugs are very dependent on the actual mutation a patient has and form the core reason for [this product]({{ "/products/from-question-to-data-product/" | relative_url }}). 
 
 | Mechanism class | Intervenes at | Mutation-specific? | Key trade-off |
 |---|---|---|---|
@@ -206,12 +202,12 @@ regardless of how well the patient's mutation matches the therapy.
 In this primer, I have discussed the disease progression of DMD versus BMD. 
 You have seen that both are caused by a disfunctional dystrophin protein and that the difference between DMD and BMD is primarily explained by whether or not a mutation destroys the reading frame. 
 You have seen that there is no universal fix for DMD and that it is therefore important to match patients to treatments that have the highest chance of working for them.
-This primer will likely be updated once I go deeper into real clinical trial eligibility criteria, but it provides a mental model that will help you follow along the data modelling decisions I need to make throughout this project.
+This primer will likely be updated once I go deeper into real clinical trial eligibility criteria, but it provides a mental model that will help you follow along the data modelling decisions I need to make throughout [this product]({{ "/products/from-question-to-data-product/" | relative_url }}).
 
 
 [^1]: Angulski et al. (2023). [Duchenne muscular dystrophy: disease mechanism and therapeutic strategies](https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2023.1183101/full), *Frontiers in Physiology* — disease profile, dystrophin structure and function, mutation landscape, and therapeutic strategies.
 [^2]: Crisafulli et al. (2020). [Global epidemiology of Duchenne muscular dystrophy: an updated systematic review and meta-analysis](https://pmc.ncbi.nlm.nih.gov/articles/PMC7275323/), *Orphanet Journal of Rare Diseases* — pooled global birth-prevalence estimate.
 [^3]: Thomas et al. (2022). [Average time to a confirmed DMD molecular diagnosis](https://pmc.ncbi.nlm.nih.gov/articles/PMC9308714/) — 2.2 years despite advances in NGS.
-[^4]: Aartsma-Rus et al. (2009). [The reading-frame rule applied systematically to the Leiden DMD mutation database](https://pubmed.ncbi.nlm.nih.gov/19156838/) — the eligibility algorithm this project encodes as a computed field, including its known exceptions.
+[^4]: Aartsma-Rus et al. (2009). [The reading-frame rule applied systematically to the Leiden DMD mutation database](https://pubmed.ncbi.nlm.nih.gov/19156838/) — the eligibility algorithm [this product]({{ "/products/from-question-to-data-product/" | relative_url }}) encodes as a computed field, including its known exceptions.
 [^5]: Leckie, Zia & Yokota (2024). [Applying every approved and experimental exon-skipping strategy to the full UMD-DMD mutation database](https://pmc.ncbi.nlm.nih.gov/articles/PMC11593839/) — coverage figures for approved and experimental exon-skipping approaches.
 [^6]: [Binding and neutralizing anti-AAV antibodies: detection and implications for rAAV-mediated gene therapy](https://www.sciencedirect.com/science/article/pii/S1525001623000102), *Molecular Therapy* (2023) — pre-existing anti-AAV antibodies above a threshold are an accepted exclusion criterion across most rAAV gene therapy trials.

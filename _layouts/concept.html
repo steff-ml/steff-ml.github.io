@@ -1,0 +1,32 @@
+---
+layout: single
+---
+{% comment %}
+One concept page. Links up to its area (`group:`) and lists every post
+and product page that names it in `concepts:` (this page's file name,
+without .md). "Updated" in the footer comes from `last_modified_at`.
+{% endcomment %}
+{% assign area = site.data.concepts | where: "slug", page.group | first %}
+{% assign area_page = site.pages | where: "group", page.group | first %}
+{% if area_page %}<a class="post-eyebrow" href="{{ area_page.url | relative_url }}">← {{ area.title }} concepts</a>{% endif %}
+
+{{ content }}
+
+{% assign this_slug = page.slug %}
+{% assign used_in_posts = site.posts | where_exp: "p", "p.concepts contains this_slug" %}
+{% assign used_in_projects = site.products | where_exp: "p", "p.concepts contains this_slug" %}
+<aside class="concept-used-in">
+  <h2>Used in</h2>
+  {% if used_in_posts.size > 0 or used_in_projects.size > 0 %}
+  <ul>
+    {% for p in used_in_projects %}
+    <li><span class="concept-used-in__kind">Product</span><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+    {% endfor %}
+    {% for p in used_in_posts %}
+    <li><time datetime="{{ p.date | date_to_xmlschema }}">{{ p.date | date: "%b %-d, %Y" }}</time><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No posts link here yet.</p>
+  {% endif %}
+</aside>

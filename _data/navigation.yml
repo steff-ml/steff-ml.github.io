@@ -1,11 +1,7 @@
 main:
-  - title: "About"
-    url: /about/
-  - title: "Projects"
-    url: /projects/
-  - title: "Engineering Tips and Tricks"
-    url: /blog/
-  - title: "Thinking"
-    url: /thinking/
-  - title: "Contact"
-    url: /contact/
+  - title: "Product"
+    url: /products/from-question-to-data-product/
+  - title: "Concepts"
+    url: /concepts/
+  - title: "Notes"
+    url: /notes/

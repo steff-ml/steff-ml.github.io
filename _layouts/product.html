@@ -16,8 +16,12 @@ layout: single
 
 {{ content }}
 
+{% if site.data.series.product and page.url contains site.data.series.product %}
+  {% include series-tree.html %}
+{% endif %}
+
 {% comment %}
-Hidden for now -- not a fan of this content on project pages as-is. May
+Hidden for now -- not a fan of this content on product pages as-is. May
 resurface as part of "Engineering tips & tricks" instead of here.
 {% assign methodology_posts = site.posts | where: "all_projects", true %}
 {% if methodology_posts.size > 0 %}
@@ -32,7 +36,7 @@ resurface as part of "Engineering tips & tricks" instead of here.
 {% endif %}
 {% endcomment %}
 
-{% assign all_projects = site.projects | sort: "date" %}
+{% assign all_projects = site.products | sort: "date" %}
 {% assign proj_index = -1 %}
 {% for p in all_projects %}
   {% if p.url == page.url %}{% assign proj_index = forloop.index0 %}{% endif %}
@@ -48,6 +52,6 @@ resurface as part of "Engineering tips & tricks" instead of here.
 {% endif %}
 
 <div class="proj-nav">
-  {% if prev_project %}<a href="{{ prev_project.url | relative_url }}">← {{ prev_project.title }}</a>{% else %}<span>← Previous project</span>{% endif %}
-  {% if next_project %}<a href="{{ next_project.url | relative_url }}">{{ next_project.title }} →</a>{% else %}<span>Next project →</span>{% endif %}
+  {% if prev_project %}<a href="{{ prev_project.url | relative_url }}">← {{ prev_project.title }}</a>{% else %}<span>← Previous product</span>{% endif %}
+  {% if next_project %}<a href="{{ next_project.url | relative_url }}">{{ next_project.title }} →</a>{% else %}<span>Next product →</span>{% endif %}
 </div>

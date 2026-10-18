@@ -1,9 +1,9 @@
 # steff-ml.github.io
 
-The source for my personal website — portfolio, blog, and (eventually) podcast.
-Built with [Jekyll](https://jekyllrb.com/) using the
-[Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/) theme, and
-deployed automatically to GitHub Pages.
+The source for my personal website: one data product, written up as a build log,
+plus short concept pages and notes. Built with [Jekyll](https://jekyllrb.com/)
+using the [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/)
+theme, and deployed automatically to GitHub Pages.
 
 **Live at:** https://steff-ml.github.io
 *(will become my custom domain once set up)*
@@ -31,29 +31,66 @@ roughly 1–2 minutes, after which the change is live. I never upload files to a
 server myself — pushing to GitHub *is* publishing.
 
 **Jekyll** is the engine that converts my content into a website. It reads
-Markdown files (like this one), applies the theme's layouts, and outputs finished
+Markdown files (like this one), applies the layouts, and outputs finished
 HTML. **Minimal Mistakes** is the theme — it controls how the site looks and
-provides the layouts (blog post, about page, author sidebar, etc.).
+provides the base layouts.
+
+---
+
+## How the site is structured
+
+```
+Home: intro + product card + concept areas + "Follow along"
+│
+├── Product page: problem · proposed solution · build log
+│     └── Build log: chapters (and sections) → posts, in order
+│
+├── Concepts: one short, timeless page per idea, grouped in areas
+│
+└── Notes: TILs and monthly link roundups
+```
+
+There are two kinds of pages:
+
+| Kind | What | Date | Updated later? |
+|---|---|---|---|
+| **Timeless** | Home, the product page, concept pages | "Last updated" only | Yes |
+| **Dated** | Build-log posts, TILs, link roundups | Yes | No, at most a dated correction |
+
+**The layouts do the linking.** A post only says which chapter it belongs to
+and which concepts it uses. The site then adds the line above the title,
+previous / build log / next at the bottom, the post's place in the build log,
+and "Used in" on every concept page it names. Don't write those links by hand.
 
 ---
 
 ## Repository layout
 
-The files and folders that matter day to day:
-
 | Path | What it's for |
 |---|---|
-| `_config.yml` | Site-wide settings: title, author bio, social links, plugins. Edit rarely. |
-| `_posts/` | Blog posts live here. One file per post. |
-| `_pages/` | Standalone pages (about, etc.). |
-| `about.md` | The about page content. |
-| `assets/images/` | Images used across the site (bio photo, post images). |
+| `index.md` | The home page. The intro text is the Markdown block at the top. |
+| `_products/` | Product pages. Currently one: `from-question-to-data-product.md`. |
+| `_pages/products.md` | The `/products/` list page. |
+| `_posts/build-log/` | Build-log posts. One file per post. |
+| `_posts/til/` | TILs. |
+| `_posts/links/` | Monthly link roundups. |
+| `_concepts/` | Concept pages. One file per concept. |
+| `_pages/concepts/` | The `/concepts/` overview and one page per concept area. |
+| `_pages/notes.md` | The `/notes/` page (lists TILs and link roundups). |
+| `_data/series.yml` | The build log's chapters and sections, and which product page shows it. |
+| `_data/concepts.yml` | The concept areas, plus a private list of planned concepts (never shown). |
 | `_data/navigation.yml` | The top navigation menu. |
+| `_layouts/` | `single.html` (posts), `concept.html`, `concept-area.html`, `product.html`. |
+| `_includes/` | `series-tree.html` (the build log), `latest.html` (spare: a dated stream). |
+| `assets/images/posts/` | Post cartoons. |
+| `assets/cv/` | The CV linked from the home page banner. |
+| `_archive/` | Old pages and posts. Not built, kept for later retrieval. |
+| `_config.yml` | Site-wide settings: title, author bio, social links, plugins. Edit rarely. |
 | `.github/workflows/deploy.yml` | The build-and-deploy automation. Don't touch unless changing the pipeline. |
 | `Gemfile` | Lists the Ruby packages (Jekyll + plugins) the site needs. |
 
 Folders starting with `_` are special to Jekyll — it processes them rather than
-copying them as-is.
+copying them as-is. `_archive/` is excluded from the build in `_config.yml`.
 
 ---
 
@@ -105,65 +142,100 @@ broke (see Troubleshooting).
 
 ---
 
-## How to write a new blog post
+## What to write, and where it goes
 
-Blog posts are Markdown files in the `_posts/` folder. **The filename format is
-mandatory** and Jekyll reads the date from it:
+The templates live in the strategy repo:
+`strategy-foundation/blog/sjablonen/`. Each one explains its fields in a
+comment at the top; delete the comment when you're done.
 
-```
-_posts/YYYY-MM-DD-a-short-slug.md
-```
+| I want to write… | Template | Save as | URL |
+|---|---|---|---|
+| A build-log post | `post.md` | `_posts/build-log/YYYY-MM-DD-short-title.md` | `/build-log/short-title/` |
+| A TIL | `til.md` | `_posts/til/YYYY-MM-DD-topic.md` | `/til/topic/` |
+| A link roundup | `links.md` | `_posts/links/YYYY-MM-DD-month-year.md` | `/links/month-year/` |
+| A concept page | `begrip.md` | `_concepts/short-name.md` | `/concepts/short-name/` |
 
-For example: `_posts/2026-07-25-first-week-with-jekyll.md`
+### Build-log posts
 
-Every post starts with a **front matter** block — the section between the two
-`---` lines. This is metadata Jekyll reads; the actual post goes below it:
+The front matter fields that place a post:
 
-```markdown
----
-title: "My Post Title"
-date: 2026-07-25 10:00:00 +0200
-categories: [engineering]
-tags: [jekyll, data]
-excerpt: "One sentence shown in the post list and social previews."
----
-
-The body of my post starts here, in normal Markdown.
-
-## A subheading
-
-A paragraph. **Bold**, *italic*, and [a link](https://example.com) all work.
-
-- A bullet
-- Another bullet
-
-Code blocks work too:
-
-​```python
-print("hello")
-​```
+```yaml
+categories: [build-log]
+chapter: stack        # a chapter or section slug from _data/series.yml
+part: 1               # order within that chapter or section
+image: /assets/images/posts/components.png   # the cartoon at the top
+image_alt: "What the cartoon shows"
+concepts:
+  - gall-s-law        # concept file names, without .md
 ```
 
-Two things that trip everyone up:
+Chapter and section slugs (from `_data/series.yml`):
+
+| Slug | Chapter / section |
+|---|---|
+| `stack` | I. Building an independent AI stack |
+| `wall` | II. Designing an automated data discovery tool → Hitting a wall |
+| `method` | II. … → Developing a general method for reliable AI systems design |
+| `migrate` | II. … → Migrate a working AI system to your independent stack |
+| `pretotyping` | III. Automated pretotyping |
+| `prototyping` | IV. Automated prototyping |
+| `build` | V. Automated build |
+
+Chapter II has sections, so its posts use a section slug (`wall`, `method`,
+`migrate`), not `discovery`. Parts are numbered within each chapter or section,
+starting at 1.
+
+**Cartoons:** put the image in `assets/images/posts/` and point `image:` at it.
+Without `image:`, a build-log post shows a dashed placeholder, so you can see
+which ones still need a cartoon. TILs and link roundups don't get a placeholder.
+
+### Concept pages
+
+- `group:` picks the area: `ai`, `systems`, `data` or `bio`.
+- The file name is the concept's name everywhere else: `_concepts/gall-s-law.md`
+  is `gall-s-law` in a post's `concepts:` list.
+- Change `last_modified_at` whenever you update the page.
+- A concept only shows on the site once its page exists. A name in a post's
+  `concepts:` without a page is skipped silently, so write the concept first.
+- An area (and its chip on the home page) appears as soon as it has one
+  concept.
+
+### Changing the build log
+
+Chapters, sections, titles and statuses (`done`, `turning-point`, `ongoing`,
+`later`) are in `_data/series.yml`. The `product:` key there names the product
+page that shows the build log (`product:`).
+
+### Two things that trip everyone up
 
 1. **A post dated in the future won't appear.** Jekyll silently skips posts whose
    date is later than the build time. If a new post doesn't show up, check the
    date in both the filename and the front matter.
-2. **Drafts** go in a `_drafts/` folder (create it if needed) with *no date* in
-   the filename — e.g. `_drafts/half-finished-idea.md`. Preview them with
+2. **Drafts** go in `_drafts/` with *no date* in the filename — e.g.
+   `_drafts/half-finished-idea.md`. Preview them with
    `bundle exec jekyll serve --drafts`. They won't publish until moved into
    `_posts/` with a proper dated filename.
 
 ---
 
-## How to add an image to a post
+## How to add other images
 
 1. Drop the image file into `assets/images/`, e.g.
    `assets/images/my-diagram.png`.
-2. Reference it in the post with a leading slash:
+2. Reference it with a leading slash:
 
 ```markdown
 ![A description of the image for accessibility](/assets/images/my-diagram.png)
+```
+
+Plain Markdown images in a post are capped at 420 px wide. For a screenshot or
+diagram that should use the full width, with a small caption below, use a figure:
+
+```html
+<figure class="post-figure">
+  <img src="{{ '/assets/images/posts/my-screenshot.png' | relative_url }}" alt="What the image shows">
+  <figcaption>One sentence about what the reader should notice.</figcaption>
+</figure>
 ```
 
 Keep images reasonably sized (compress large screenshots) — the whole published
@@ -171,11 +243,13 @@ site has a 1 GB ceiling, and oversized media is the fastest way to bloat it.
 
 ---
 
-## How to edit the About page
+## How to edit the home page
 
-The about content is in `about.md` (or `_pages/about.md` depending on how it's
-organized). Edit the Markdown below the front matter block, save, commit, push.
-The `permalink:` line in its front matter controls its URL (`/about/`).
+`index.md`. The intro is plain Markdown in the `{% capture intro %}` block at
+the top of the file. The banner on the left (photo, tagline, Email · GitHub ·
+LinkedIn, CV button) is the HTML just below it. The product card and the
+concept chips fill themselves. The "Follow along" boxes link to the RSS feed
+(`/feed.xml`, generated by `jekyll-feed`) and to an email with a preset subject.
 
 ---
 
@@ -204,19 +278,16 @@ The top menu is defined in `_data/navigation.yml`:
 
 ```yaml
 main:
-  - title: "About"
-    url: /about/
-  - title: "Projects"
-    url: /projects/
-  - title: "Engineering Tips and Tricks"
-    url: /blog/
-  - title: "Thinking"
-    url: /thinking/
-  - title: "Contact"
-    url: /contact/
+  - title: "Product"
+    url: /products/from-question-to-data-product/
+  - title: "Concepts"
+    url: /concepts/
+  - title: "Notes"
+    url: /notes/
 ```
 
-Add or reorder entries here to change the menu.
+The site title in the top left links to the home page. Add or reorder entries
+here to change the menu.
 
 ---
 
@@ -256,6 +327,8 @@ switch it back.
 | Build fails: "theme could not be found" (Jekyll 3.x in log) | Pages Source is on "Deploy from a branch" instead of "GitHub Actions". Fix in Settings → Pages. |
 | Build fails: `cannot load such file -- webrick` | The `webrick` gem is missing from the `Gemfile`. Add `gem "webrick", "~> 1.8"`. |
 | New post doesn't appear | Filename isn't `YYYY-MM-DD-slug.md`, or the date is in the future. |
+| Post isn't in the build log | `chapter:` doesn't match a slug in `_data/series.yml`, or `part:` is missing. |
+| Concept doesn't show on a post | No file in `_concepts/` with that exact name. |
 | Local preview won't start | Run `bundle install` first; make sure `webrick` is in the Gemfile. |
 | Local preview slow / won't auto-refresh | Repo is on `/mnt/c/...`; move it to `~/` in WSL. |
 | CSS missing / links broken | `baseurl` in `_config.yml` is wrong — should be `""` for this repo. |

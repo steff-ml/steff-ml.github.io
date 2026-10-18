@@ -182,6 +182,174 @@
   p { margin: 0.6em 0 0; font-size: 0.9rem; color: $muted-text-color; }
 }
 
+.home-intro {
+  margin-bottom: 2.25rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+
+  h2 { margin: 0 0 0.6em; font-size: 1.6rem; font-weight: 700; }
+  p { margin: 0 0 0.8em; }
+  ul { margin: 0 0 0.9em; padding-left: 1.2em; }
+  li { margin: 0.25em 0; }
+}
+
+// Unwritten copy on a page in progress. Grep for "todo" before merging.
+.todo {
+  background: mix(#fff, $warning-color, 88%);
+  border-radius: 4px;
+  padding: 0 0.25em;
+  font-style: italic;
+}
+
+// A two-level tree with connector lines: labels on the first level,
+// links below. Used for the concepts and the series on the home page.
+.tree {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.86rem;
+  line-height: 1.5;
+
+  > li { margin: 0 0 0.8em; }
+
+  ul {
+    list-style: none;
+    margin: 0.25em 0 0 0.45em;
+    padding: 0;
+  }
+
+  ul li {
+    position: relative;
+    margin: 0;
+    padding: 0.15em 0 0.15em 1.3em;
+
+    // the elbow: down from the parent, then right to the item
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0.9em;
+      height: 0.9em;
+      border-left: 1px solid $border-color;
+      border-bottom: 1px solid $border-color;
+    }
+
+    // the line continuing down to the next sibling
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.9em;
+      bottom: 0;
+      border-left: 1px solid $border-color;
+    }
+
+    &:last-child::after { display: none; }
+  }
+}
+
+.concept-areas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.concept-area {
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.3em 0.85em;
+  border: 1px solid $border-color;
+  border-radius: 999px;
+  text-decoration: none;
+  color: $text-color;
+
+  &:hover { border-color: $link-color; color: $link-color; }
+}
+
+.concept-area__count {
+  margin-left: 0.2em;
+  font-size: 0.7rem;
+  color: $muted-text-color;
+}
+
+.concept-index {
+  list-style: none;
+  margin: 1.5em 0;
+  padding: 0;
+
+  li {
+    padding: 0.6em 0;
+    border-top: 1px solid $border-color;
+
+    &:first-child { border-top: none; }
+  }
+}
+
+.concept-index__hook {
+  display: block;
+  font-size: 0.82rem;
+  color: $muted-text-color;
+}
+
+.project-series { margin: 2.5em 0; }
+
+.tree__label { font-weight: 700; }
+
+.tree__label--sub { font-weight: 600; }
+
+.tree__num {
+  display: inline-block;
+  min-width: 1.8em;
+  color: $muted-text-color;
+  font-weight: 700;
+}
+
+.tree__planned { color: $muted-text-color; font-style: italic; }
+
+.series-status {
+  margin-left: 0.4em;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.15em 0.6em;
+  border-radius: 999px;
+  white-space: nowrap;
+  background: $background-color;
+  color: $muted-text-color;
+
+  &--done { background: mix(#fff, $success-color, 85%); color: $success-color; }
+  &--turning-point { background: mix(#fff, $warning-color, 85%); color: $warning-color; }
+  &--ongoing { background: mix(#fff, $info-color, 85%); color: $info-color; }
+}
+
+.recent-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.86rem;
+
+  li {
+    display: flex;
+    gap: 0.7em;
+    align-items: baseline;
+    padding: 0.45em 0;
+    border-top: 1px solid $border-color;
+
+    &:first-child { border-top: none; }
+  }
+
+  time { flex-shrink: 0; width: 3.5em; color: $muted-text-color; font-size: 0.78rem; }
+}
+
+.recent-kind {
+  flex-shrink: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $muted-text-color;
+}
+
 .lane-row {
   display: flex;
   gap: 1.1em;
@@ -368,6 +536,35 @@
 .learn-box { border: 1px solid $border-color; }
 
 .learn-box .learn-title { font-size: 0.9rem; font-weight: 700; color: $text-color; margin-bottom: 0.3em; }
+
+// Working buttons in the "Follow along" boxes (RSS feed, email).
+.cta-btn {
+  display: block;
+  padding: 0.55em 0.9em;
+  border: 1px solid $border-color;
+  border-radius: 7px;
+  background: #fff;
+  color: $text-color;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover { border-color: $link-color; color: $link-color; }
+}
+
+.cta-btn--primary {
+  background: $link-color;
+  border-color: $link-color;
+  color: #fff;
+
+  &:hover { background: darken($link-color, 8%); color: #fff; }
+}
+
+.signup-box p.cta-note {
+  margin: 0.6em 0 0;
+  font-size: 0.74rem;
+}
 
 .form-row { display: flex; gap: 0.5em; }
 
@@ -772,6 +969,30 @@ p.coming-soon-note {
   border-radius: 8px;
 }
 
+// A full-width image with a small caption: screenshots, diagrams.
+// Usage in a post: <figure class="post-figure"><img …><figcaption>…</figcaption></figure>
+.post-content .post-figure {
+  display: block;
+  margin: 1.75em 0;
+
+  img {
+    max-width: 100%;
+    margin: 0;
+    border: 1px solid $border-color;
+  }
+
+  figcaption {
+    margin: 0.6em 0 0;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: $muted-text-color;
+    text-align: center;
+  }
+}
+
+// Captions written in Markdown with {: .img-caption}: beat the theme's paragraph size.
+.page__content p.img-caption { font-size: 0.75rem; }
+
 .post-tags {
   display: flex;
   flex-wrap: wrap;
@@ -814,6 +1035,100 @@ p.coming-soon-note {
   }
 
   .back { margin-left: auto; }
+}
+
+// Build-log posts: previous, back to the build log, next.
+.post-nav--series {
+  a { flex: 1; max-width: none; }
+
+  .post-nav__home { text-align: center; }
+  .post-nav__next { text-align: right; }
+
+  > span { flex: 1; }
+}
+
+// The line above a post title: project · chapter · section · part,
+// or TIL/Links · related to.
+.post-context {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  align-items: baseline;
+  margin: 0 0 0.4em;
+  font-size: 0.78rem;
+  color: $muted-text-color;
+
+  a { color: $muted-text-color; }
+  a:hover { color: $link-color; }
+  .dot { font-size: 0.7rem; }
+}
+
+.post-context__kind {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+// The cartoon that opens a post.
+.post-cartoon {
+  margin: 0 0 1.75rem;
+
+  img { display: block; width: 100%; border-radius: 12px; }
+}
+
+.post-cartoon--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 7;
+  border: 2px dashed $border-color;
+  border-radius: 12px;
+  background: $background-color;
+  font-size: 0.8rem;
+  color: $muted-text-color;
+  text-align: center;
+  padding: 1em;
+}
+
+.post-concepts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em 1em;
+  align-items: baseline;
+  margin: 2.5rem 0 0;
+  font-size: 0.86rem;
+}
+
+.post-concepts__label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $muted-text-color;
+}
+
+// "Used in" at the bottom of a concept page.
+.concept-used-in {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $border-color;
+
+  h2 { margin: 0 0 0.6em; font-size: 0.92rem; }
+  ul { list-style: none; margin: 0; padding: 0; font-size: 0.86rem; }
+  li { display: flex; gap: 0.7em; align-items: baseline; margin: 0.3em 0; }
+  time, .concept-used-in__kind { flex-shrink: 0; width: 7em; font-size: 0.78rem; color: $muted-text-color; }
+  p { font-size: 0.86rem; color: $muted-text-color; }
+}
+
+// One area on the /concepts/ overview.
+.concept-group { margin-bottom: 1.5rem; }
+
+.concept-group__title {
+  margin: 0 0 0.2em;
+  font-size: 1rem;
+
+  a { text-decoration: none; }
 }
 
 /* ---------------------------------------------------------------------

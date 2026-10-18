@@ -1,0 +1,40 @@
+# The build log on the product page: chapters, optionally split into
+# sections. A post joins a chapter (or a section) with `chapter: <slug>`
+# and is ordered within it by `part: <n>`.
+#
+# `product` is the file name of the product page under _products/,
+# without .md.
+product: from-question-to-data-product
+
+# status: done | turning-point | ongoing | later
+chapters:
+  - slug: stack
+    number: "I"
+    title: "Building an independent AI stack"
+    status: ongoing
+  - slug: discovery
+    number: "II"
+    title: "Designing an automated data discovery tool"
+    status: ongoing
+    sections:
+      - slug: wall
+        title: "Hitting a wall"
+        status: turning-point
+      - slug: method
+        title: "Developing a general method for reliable AI systems design"
+        status: ongoing
+      - slug: migrate
+        title: "Migrate a working AI system to your independent stack"
+        status: later
+  - slug: pretotyping
+    number: "III"
+    title: "Automated pretotyping"
+    status: later
+  - slug: prototyping
+    number: "IV"
+    title: "Automated prototyping"
+    status: later
+  - slug: build
+    number: "V"
+    title: "Automated build"
+    status: later

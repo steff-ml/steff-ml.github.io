@@ -1,0 +1,9 @@
+{% comment %} The published parts of one chapter or section. Usage: {% include series-parts.html slug="stack" %} {% endcomment %}
+{% assign parts = site.posts | where: "chapter", include.slug | sort: "part" %}
+<ul>
+  {% for post in parts %}
+  <li><a href="{{ post.url | relative_url }}"><span class="tree__num">{{ post.part }}</span>{{ post.title }}</a></li>
+  {% else %}
+  <li><span class="tree__planned">No parts published yet</span></li>
+  {% endfor %}
+</ul>
