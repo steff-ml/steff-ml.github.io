@@ -40,6 +40,7 @@ include:
 # to override the default setting.
 exclude:
   - ideas/
+  - _archive/
 # exclude:
 #   - Gemfile
 #   - Gemfile.lock
@@ -110,6 +111,14 @@ defaults:
       author_profile: true
       share: true
       read_time: false
+  # _concepts
+  - scope:
+      path: ""
+      type: concepts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
 
 category_archive:
   type: liquid
@@ -122,3 +131,6 @@ collections:
   projects:
     output: true
     permalink: /projects/:path/
+  concepts:
+    output: true
+    permalink: /concepts/:name/

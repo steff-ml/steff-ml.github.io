@@ -15,16 +15,15 @@ excerpt: "My current understanding of why and how to build the lakehouse for lin
 
 This is the data product definition document for the DMD Eligibility Lakehouse project.
 It is designed to help answer the value, feasbility and prioritization questions needed to start building
-For more information on the what and the how of this document: [How and Why I Write Data Product Definition Documents]({{ "/thinking/how-and-why-i-write-data-product-definition-documents/" | relative_url }}).
 No code, just the argument for what to build first and why.
 
 ## Vision
 
 A patient with a confirmed Duchenne muscular dystrophy (DMD) mutation has, on
-paper, [several possible paths to treatment]({{ "/products/dmd-biology-treatment-and-eligibility/#treatment-options" | relative_url }})[^1]
+paper, [several possible paths to treatment]({{ "/concepts/duchenne-muscular-dystrophy/#treatment-options" | relative_url }})[^1]
 and should be able to immediately know for which they actually qualify for without needing a
 week spent manually cross-referencing registries,
-[the reading-frame rule]({{ "/products/dmd-biology-treatment-and-eligibility/#reading-frame-rule" | relative_url }}),
+[the reading-frame rule]({{ "/concepts/duchenne-muscular-dystrophy/#reading-frame-rule" | relative_url }}),
 and free-text trial criteria across systems not designed for this question.
 
 A patient advocacy organization and pharmaceutical company should be able to immediately know 

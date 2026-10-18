@@ -1,11 +1,6 @@
 ---
-title: "What is Duchenne muscular dystrophy?"
-date: 2026-07-31 09:30:00 +0200
-categories: [products]
-project: precision_medicine_to_eligibility_lakehouse
-audience:
-  - data-engineers
-  - bio-scientists
+title: "Duchenne muscular dystrophy"
+last_modified_at: 2026-07-31
 tags:
   - rare-disease
   - molecular-biology
