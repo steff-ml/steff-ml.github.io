@@ -1,5 +1,5 @@
 ---
-title: "AI model sourcing: Independence requires a portfolio of AI model delivery mechnisms."
+title: "AI model sourcing: Independence requires a portfolio of AI model delivery mechanisms."
 date: 2026-10-24 09:00:00 +0200
 categories: [build-log]
 chapter: stack
@@ -16,7 +16,7 @@ tags:
 ---
 
 ## Introduction
-In order to build the independent AI stack that will power my goals (automated-data-discovery, automated-pretotyping, automated-prototyping, ...) , I first needed to get access to suitable AI models. When thinking this throughs, I quickly realized "suitable" could mean a lot of things depending on the use case and I wanted my AI stack to be able to handle different use cases. For example, automated-data-discovery involves reliably searching the web for data, interpreting papers and the pictures contained within and other unstructured sources and more, while automated-prototyping requires good software engineering capabilities on cloud providers. Additionally, there is now a wide range of AI delivery methods to choose from ranging from subscription models, pay-per-use and more, that also have their own pros and cons depending on the use case.
+In order to build the independent AI stack that will power my goals (automated-data-discovery, automated-pretotyping, automated-prototyping, ...), I first needed to get access to suitable AI models. When thinking this through, I quickly realized "suitable" could mean a lot of things depending on the use case and I wanted my AI stack to be able to handle different use cases. For example, automated-data-discovery involves reliably searching the web for data, interpreting papers and the pictures contained within and other unstructured sources and more, while automated-prototyping requires good software engineering capabilities on cloud providers. Additionally, there is now a wide range of AI delivery methods to choose from ranging from subscription models, pay-per-use and more, that also have their own pros and cons depending on the use case.
 
 The internet is currently filled with detailed specs on which model performs better on each task at which hardware level, but comparatively little guidance on how to pick the best AI models from a broader economic perspective. I needed an economic perspective on AI sourcing. 
 
@@ -24,7 +24,7 @@ The internet is currently filled with detailed specs on which model performs bet
 ## AI as a commodity: defining criteria
 Two metaphors currently dominate how AI is viewed from a business perspective. 
 
-The first one sees AI (and agentic AI in particular) as a very smart person capable of doing valuable tasks for the business. While this metaphor is helpful for finding ways to integrate AI into your business, it encourages the naieve interpretation that a smarter coworker automatically means a better coworker. As we will see, nothing could be further from the truth.
+The first one sees AI (and agentic AI in particular) as a very smart person capable of doing valuable tasks for the business. While this metaphor is helpful for finding ways to integrate AI into your business, it encourages the naive interpretation that a smarter coworker automatically means a better coworker. As we will see, nothing could be further from the truth: the smartest models are usually the most expensive, the hardest to replace and the most exposed to a single vendor's decisions.
 
 The second metaphor presents AI as a commodity that businesses need to sustain consistent operations, similar to electricity or water. Many businesses not only draw electricity from the net, but have a wide range of solutions like batteries, solar panels and emergency generators to guarantee operational stability. AI supported businesses face the same challenge: What happens if my access to AI models is cut off or made illegal? 
 
@@ -42,14 +42,14 @@ This framing helped me define the following criteria:
 This set of criteria here will form the lens from which we judge different AI sourcing options.
 
 
-##  AI sourcing options
+## AI sourcing options
 
 ### 1. AI-as-a-subscription
-The first and for many people only way of procuring AI models is to get a **consumer plan** via one of the major labs ([Anthropic](https://claude.com/pricing), [Google](https://gemini.google/subscriptions), [OpenAI](https://chatgpt.com/pricing),  [Perplexity](https://www.perplexity.ai/pro)). The industry has aligned on a few tiers (Free, 7-8 euro per month, 15-20 euro per month, 100 euro per month and 200 euro per month). 
+The first and for many people only way of procuring AI models is to get a **consumer plan** via one of the major labs ([Anthropic](https://claude.com/pricing), [Google](https://gemini.google/subscriptions), [OpenAI](https://chatgpt.com/pricing),  [Perplexity](https://www.perplexity.ai/pro)). As of October 2026, the industry has aligned on a few tiers (Free, 7-8 euro per month, 15-20 euro per month, 100 euro per month and 200 euro per month). 
 
 **Strengths**:
-- **Access**:Consumers get access to best-in-class models AND applications such as deep research, coding agents, design tools and more. Note that not all models have the same capabilities. For example, Claude models are often best-in-class in coding, but lack the video understanding capabilities Gemini has.
-- **Economics**: Consumer plans charge a flat rate, transferring overuse risk to the provider. However, this also means that consumers pay for underused capacity. Currently though, consumer plans are abnormally cheap, thanks to heavy venture capital subsidies, so they are economically a no brainer.
+- **Access**: Consumers get access to best-in-class models AND applications such as deep research, coding agents, design tools and more. Note that not all models have the same capabilities. For example, Claude models are often best-in-class in coding, but lack the video understanding capabilities Gemini has.
+- **Economics**: Consumer plans charge a flat rate, transferring overuse risk to the provider. However, this also means that consumers pay for underused capacity. Currently though, consumer plans appear abnormally cheap, most likely thanks to heavy venture capital subsidies, so for moderate, steady use they are economically a no brainer.
 - **Effort**: None. You sign up and get immediate access to the latest models and tools.
 
 
@@ -66,24 +66,24 @@ A lesser known addition to the subscription models are **plans with API access**
 
 However, these API subscription plans still often implement 5 hour resets, performance caps and many of them are still based outside the EU.
 
-**Verdict**: Subscriptions are the best way to learn about AI and keep up with the newest tools. They are good for research and non-commercial use, but too unreliable for scalable production use cases. Plans with API access are a natural first step to start working with API's, before you move to full pay-per-use.
+**Verdict**: Subscriptions are the best way to learn about AI and keep up with the newest tools. They are good for research and non-commercial use, but too unreliable for scalable production use cases. Plans with API access are a natural first step to start working with APIs, before you move to full pay-per-use.
 
 
 ### 2. Pay-per-use
-The second method of procuring AI is via pay-per-use. In this plan, the model provider gives you access to an API that consumer programs can call at any time, paying only the tokens that were consumed. Unlike subscription plans, pay-per-use plans are made with production use cases in mind and come with contracts, SLA's (promised performance) and sometimes zero-data-retention options. 
+The second method of procuring AI is via pay-per-use. In this plan, the model provider gives you access to an API that consumer programs can call at any time, paying only the tokens that were consumed. Unlike subscription plans, pay-per-use plans are made with production use cases in mind and come with contracts, SLAs (promised performance) and sometimes zero-data-retention options. 
 
 **Strengths**:
 - **Access**: API access means that these allow you to integrate AI into your own applications.
-- **Economics**: You pay only for what you use, so no paying for idle capacity. For small and spiky volumes, API's can be cheaper than subscriptions, even though they are less heavily subsidized. 
-- **Performance**: SLA's and rate limits legally constrain what the model provider can do in terms of degrading model performance.
+- **Economics**: You pay only for what you use, so no paying for idle capacity. For small and spiky volumes, APIs can be cheaper than subscriptions, even though they are less heavily subsidized. 
+- **Performance**: SLAs and rate limits legally constrain what the model provider can do in terms of degrading model performance.
 - **Effort**: The model provider still runs the infrastructure. Consumers only need to integrate the API.
 - **Control**: Data retention and training terms are explicit about what a model provider can do with your data. However, legal constraints are not the same as explicit control.
 
 
 **Weaknesses**:
--**Economics**: At large volumes, API costs are way more expensive than subscriptions. Paying for what you use also means that overuse risk now lies with the consumer. Especially for agentic workloads, it can be hard to predict how much a task will cost. Budget limits and alerts are a must when doing agentic work on API's.
+- **Economics**: At large volumes, API costs can be far higher than the equivalent subscription. Paying for what you use also means that overuse risk now lies with the consumer. Especially for agentic workloads, it can be hard to predict how much a task will cost. Budget limits and alerts are a must when doing agentic work on APIs.
 
-These are general thoughts on API's versus subscription plans. Access, control and continuity concerns also depend heavily on who is providing API access.
+These are general thoughts on APIs versus subscription plans. Access, control and continuity concerns also depend heavily on who is providing API access.
 Here are some options:
 
 | Provider type | Examples | Access | Control | Continuity |
@@ -93,7 +93,7 @@ Here are some options:
 | **European serverless inference** | [OVHcloud](https://www.ovhcloud.com/en/public-cloud/ai-endpoints/), [Scaleway](https://www.scaleway.com/en/generative-apis/), [Ionos](https://cloud.ionos.com/managed/ai-model-hub) | Open-weight models, usually a step behind the frontier | EU jurisdiction and EU data residency | Open-weight models are easy to replace by other providers, self hosting or rented options. |
 | **Mistral** | [Mistral](https://mistral.ai/pricing#api-pricing) | Strong models, though not always matching the top US labs | European provider | A single supplier, but the model family is partly open-weight and access is less likely to be revoked for political reasons. |
 
-**Verdict**: Pay-per-use is a viable option for production use cases. They come with commercial terms and no unused cost. Controlling spend is tricky though, especially for agentic workflows and actual viability of a pay-per-use option depends on both the task that needs to be done (sensitive or not) and the juridsiction of the model provider. While frontier models remain difficult to replace, open-weight models are offered by many more organizations, making switching between them cheaper and more redundant.
+**Verdict**: Pay-per-use is a viable option for production use cases. They come with commercial terms and no unused cost. Controlling spend is tricky though, especially for agentic workflows and actual viability of a pay-per-use option depends on both the task that needs to be done (sensitive or not) and the jurisdiction of the model provider. While frontier models remain difficult to replace, open-weight models are offered by many more organizations, making switching between them cheaper and more redundant.
 
 ### 3. Renting compute
 With renting compute plans, consumers rent cloud GPU instances and run their models on top. They choose the model (weights, quantization, ...), what serving software is used and where they run it.
@@ -109,7 +109,7 @@ With renting compute plans, consumers rent cloud GPU instances and run their mod
 - **Access**: This approach is only possible for open-weight models.
 - **Control**: More control can also mean more exposure, since certain security and legal requirements are shifted to the consumer. 
 - **Economics**: Consumers pay for capacity whether it's used or not. At low or spiky volume, pay-per-use is cheaper.
-- **Effort**: Consumers are responsible for many parts of the infrastructure, including managing updates, setting up. Economies of scale can make running high-end open-weight models viable for model providers in a way that never makes sense for individual users.
+- **Effort**: Consumers are responsible for many parts of the infrastructure, including managing updates and setting up the serving software. Economies of scale can make running high-end open-weight models viable for model providers in a way that never makes sense for individual users.
 - **Continuity**: GPU supply and quotas can limit consumers and long commitments (often a year or more) lock consumers in. Deploying on a cloud environment also creates rework risk: the more consumers build on a provider's own services (managed Kubernetes variants, identity, networking, storage), the more they have to rebuild when they move. Packaging deployments in containers and using open tooling minimizes that rework, but it can still be significant. 
 
 
@@ -137,17 +137,56 @@ Hardware is mostly a question of memory, because the model weights have to fit. 
 **Weaknesses**:
 - **Control**: Maximum control means maximum legal exposure.
 - **Economics**: Ownership requires upfront capital investment. Furthermore, hardware loses value, and capacity sits idle when demand is low. Prices for GPUs and memory can swing as evidenced by the recent increases in RAM and VRAM costs.
-- **Access**: The most restricted of all options. Models are limited to what fits in the memory you own usually smaller or heavily quantized open-weight models. These are heavily behind the frontier and it is not quick and easy to upgrade like with rented compute.
+- **Access**: The most restricted of all options. Models are limited to what fits in the memory you own, usually smaller or heavily quantized open-weight models. These are heavily behind the frontier and it is not quick and easy to upgrade like with rented compute.
 - **Effort**: Like rented compute, consumers need to manage all the software management tasks. Unlike rented compute, ownership also requires hardware management e.g. setting up GPU's, providing cooling and more. The highest effort option.
 - **Continuity**: Ownership removes dependence on a provider but adds new dependencies. A hardware failure takes you offline with no automatic failover. Scaling means buying more machines, creating a dependency on hardware providers. The effort needed to maintain these systems also creates a dependency on the engineers to set up and maintain them.
 
 
 **Verdict**: Ownership should not be the primary source of AI for most operations. It should be limited to sensitive workloads, small models doing routine work and keeping essential operations running when every external source fails. In the electricity metaphor, it's the battery or generator: it keeps the lights on.
 
+### Summary
+Here is how the four options score on the six criteria. This is my own judgement and a simplification, since results vary by provider and use case.
+
+| Criterion | Subscription | Pay-per-use | Renting compute | Ownership |
+|---|:---:|:---:|:---:|:---:|
+| **Access** | ✓ | ✓ | ✗ | ✗ |
+| **Economics** | ✓ | ~ | ~ | ~ |
+| **Performance** | ✗ | ✓ | ✓ | ✓ |
+| **Control** | ✗ | ~ | ✓ | ✓ |
+| **Continuity** | ✗ | ~ | ~ | ✓ |
+| **Effort** | ✓ | ✓ | ✗ | ✗ |
+
+✓ = strong, ~ = depends on the provider, volume or use case, ✗ = weak.
+
+No option wins every row. The options that are easy to start with (subscription, pay-per-use) are weakest on control and continuity, and the options that give you independence (renting, ownership) cost you access and effort. That trade-off is why a portfolio makes sense.
+
 ## Portfolio of AI delivery mechanisms and my own stack
+From the above analysis of different AI sourcing options, it is clear that there is no one-size-fits-all solution.
+Each of the methods has pros and cons and will be the clearly superior solution for different use cases. 
+From this, it follows that an independent AI stack that accommodates a wide range of use cases should use multiple of these sources.
+I thought it would be helpful to share the models that I use, what I use them for and why:
+
+| Layer | Provider / model | Used for | Why | If it disappears |
+|---|---|---|---|---|
+| **Subscription** | Claude (20 euro per month) | Brainstorming and infrastructure coding | **Access**: top-tier models and the most practical coding tools (Claude Code, Design) | Another lab's coding plan, since nothing in production depends on it. ChatGPT is close enough to replace most of this functionality |
+| **Subscription** | Gemini Pro (20 euro per month) | Video and image analysis and generation | **Access**: multimodal capabilities I can't get from any other vendor, plus extra storage and cloud credits | Another multimodal model, with some loss of capability |
+| **Pay-per-use** | Qwen3.8 27B via OVHcloud and Scaleway | Good all-rounder for production workloads | **Continuity**: open-weight and offered by several vendors. **Control**: EU provider | The same model at another provider |
+| **Pay-per-use** | DeepSeek 4.1 Flash via Scaleway | Cheap option with long context window for complex coding tasks and review | **Continuity**: open-weight, but offered by fewer vendors so no critical uses. **Control**: EU provider | The same model at another provider, but slightly harder to replace. |
+| **Pay-per-use** | Mistral | Workloads where a European provider matters | **Control**: preferred European provider, which may be important for future customers | Switch to an open-weight model at another provider |
+| **Ownership** | Small open-weight models on my own machine, such as Qwen3.5 9b | Learning and small routine tasks like commit message writing | **Continuity**: keeps working when every external source fails | This is my fallback |
+
+Two principles govern this table:
+- **Subscriptions are for exploration, pay-per-use is for production.** I do not use nearly all the tokens of either subscription. I choose to pay too much to learn from two top-tier providers. The analysis above is good to keep in mind, but you still need to decide for yourself whether slight economic inefficiencies are worth other rewards.
+- **In production I value redundancy over quality.** I don't use frontier APIs, because if they fail I may not be able to replace that functionality. I prefer models offered by several vendors, like the Qwen line. Mistral is my exception.
 
 
-## Conclusion:
+**A note on ownership**: At current prices, it is usually not worth it to upgrade your computer or rent compute. Instead, I am more inclined to adapt the models to my hardware specs. Given current inference prices, it also makes no economic sense to run some of these models myself. Running models myself is just the fastest way to learn how they work and to get the most out of my other options. In a future blog, I go into detail about how I run models on my own machine. Since storage is cheap, I will start a personal collection of model weights I deem useful for local use or even rented compute.
+
+
+
+## Conclusion
+I hope this blog has convinced you that there is more to model sourcing than smarter AI = better AI.
+Achieving an independent AI stack does not require you to go to your local hardware store and buy up all their equipment. Instead, I think it requires giving yourself a portfolio of sourcing options and a clear understanding of when to use what. However, this only becomes practical if switching between options is low-cost itself. For that reason, I will explore in the next blog how to set up the infrastructure to achieve that and more.
 
 
 
