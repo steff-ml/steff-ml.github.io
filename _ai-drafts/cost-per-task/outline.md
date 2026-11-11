@@ -52,6 +52,24 @@ Investment (fixes "the formula punishes small models"):
   it lets you capture each step on the exponential curve. Grows with volume and
   with the speed of the curve. No single number yet.
 
+### Presentation (agreed)
+- Layer 1: mental model in one line + flow:
+  task -> hard filters -> remaining options -> lowest cost per successful task -> pick + fallback
+- Layer 2: formula in words, as a table with three named parts: running cost,
+  set-up cost, risk. No math notation.
+- Layer 3: two concrete insights with my own numbers (illustrative until tests run):
+  1. Break-even in minutes: Databricks task ~$2.7 model cost; a 10x cheaper model
+     saves ~$2.4 = ~1.5 minutes of my time at EUR 100/h.
+  2. Chart: cost per task vs number of tasks. Flat line for frontier (no set-up),
+     falling curve for open model + harness. Crossing point = when investing pays.
+
+### Rent vs own (core idea from post 1, made calculable)
+- Frontier usage = rent (operating cost, no asset, provider sets the price).
+- Own stack + knowledge = capital investment (asset that keeps value whichever
+  model wins). The investment layer of the formula is where this lives.
+- Why renting is so tempting now: it is cheap (subsidised; ~86% of task cost is my
+  own time). That is exactly why the capital view is needed.
+
 ## 3. What happened
 ### Worked example: the clinical-trials session (2026-11-08)
 Cumulative cost at API list price (Claude Code result events):

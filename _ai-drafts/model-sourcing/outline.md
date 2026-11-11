@@ -35,6 +35,17 @@ Character: qualitative. Case studies show companies are actively making this cho
   Suggestion: use this doubt honestly in part 3 and as the open question in part 5.
 
 ## 4. The lesson
+- CORE IDEA (Steff): relying fully on Claude pushes you into a rental relationship
+  for what should be the core of your business.
+  - Risk that the provider takes your idea and executes it better itself.
+  - If Claude does everything, why would anyone pay you?
+  - Investing in your own stack and knowledge is a capital investment; that money
+    is not the same as rent. This is the heart of my "Claude bro" critique, maybe
+    more than cost control.
+  - Suggestion: frame "takes your idea" as a structural platform risk (a provider
+    sees how it is used and can build what its customers build), not as an accusation.
+  - Suggestion: rent vs buy is not "buy is always better". Renting is right for what
+    is not your core and for exploring. "Own the core, rent the edge."
 - There is more to it than smarter = better.
 - Companies make opposite choices, and both can be rational. Many route per task.
 - Red thread (suggestion): today's best model is soon a commodity, so invest in
