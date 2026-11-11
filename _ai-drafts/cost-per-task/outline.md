@@ -12,7 +12,16 @@ company strategies from post 1 are a good choice. Plus the worked example.
 
 ## 2. The approach
 - Cost model, which also defines the criteria I will judge models on.
-  Clarity of presentation still to work out.
+
+### Mental model (Steff): filter first, then minimise cost
+1. Hard filters: criteria from post 1 that rule options out for a task
+   (e.g. control: data may not leave the EU).
+2. Cost minimisation among what remains. Criteria that don't filter
+   (e.g. access) carry their own cost and enter the formula.
+- Suggestion (in discussion): a criterion is not a filter or a cost by nature; it
+  depends on the task. The same criterion can be a hard filter for one task and a
+  cost for another. A hard filter = an infinite cost.
+- Open: how to price soft preferences such as independence (willingness to pay?).
 
 ### Cost model (draft)
 Operating cost:
@@ -24,9 +33,12 @@ cost per successful task =
 - Model cost per attempt by option: tokens x price (pay-per-use); fixed fee / N up to
   the rate limit (subscription); GPU hour / (tasks per hour x utilisation) (renting);
   (depreciation + power + maintenance) / N (ownership).
-- The six criteria map onto the formula: access = candidate set; control = hard
-  filter; performance = filter + success rate; economics = model cost; effort =
-  engineering and review time; continuity = risk premium.
+- Default mapping of the six criteria (can change per task, see mental model):
+  control = filter (or premium if it is a preference); performance = filter on
+  latency/availability, otherwise success rate; access = cost via success rate and
+  review time (a weaker model fails more or needs more checking); effort =
+  engineering and review time; continuity = filter (a fallback is required) or risk
+  premium; economics = model cost.
 - Routing: filter on constraints, pick lowest cost per successful task, keep a fallback.
 
 Investment (fixes "the formula punishes small models"):
