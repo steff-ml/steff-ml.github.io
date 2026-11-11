@@ -24,10 +24,15 @@ Character: qualitative. Case studies show companies are actively making this cho
 - The scoring table (may still change).
 - Spectrum of company strategies, from all-in frontier to own models.
 - My portfolio: partly in use, partly planned; tests still have to run.
-  TODO(steff): mark which rows are in use and which are planned.
+  Steff will revise the rows himself.
 - Disappointment candidate: what can't be decided on paper (success rate per
   model per task is unknown without evals).
-  TODO(steff): anything else that surprised or disappointed.
+- Not really a disappointment, but a creeping feeling: maybe this doesn't matter and
+  we can just stay with frontier models. Personal experience: people who discover
+  the power of Claude suddenly feel much more intelligent and even start looking
+  down on understanding things themselves. We developed a nuanced view on AI
+  sourcing, but I don't know if it will prove worth it in hindsight.
+  Suggestion: use this doubt honestly in part 3 and as the open question in part 5.
 
 ## 4. The lesson
 - There is more to it than smarter = better.
