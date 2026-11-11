@@ -2,6 +2,8 @@
 
 > AI-written outline from the exponential-post interview. In progress, not final.
 > Follows post 1 (`_ai-drafts/model-sourcing/outline.md`).
+> Useful data point from post 1 research: Vercel AI Gateway, Aug 2026: open-weight
+> models 56% of tokens but 14% of spend (volume to open, money to frontier).
 
 Character: quantitative. How to calculate it, and under which conditions the
 company strategies from post 1 are a good choice. Plus the worked example.
