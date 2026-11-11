@@ -102,14 +102,19 @@ layout: default
           </div>
         </header>
 
-        {% comment %} The cartoon that opens a post: `image:` and `image_alt:` in the front matter. Build-log posts without one show a placeholder. {% endcomment %}
-        {% if page.image %}
+        {% comment %} What opens a post: a quote (`quote:`, `quote_author:`, optional `quote_source:` URL) or a cartoon (`image:` and `image_alt:`). Build-log posts with neither show a placeholder. {% endcomment %}
+        {% if page.quote %}
+        <figure class="post-quote">
+          <blockquote>{{ page.quote }}</blockquote>
+          {% if page.quote_author %}<figcaption>{% if page.quote_source %}<a href="{{ page.quote_source }}">{{ page.quote_author }}</a>{% else %}{{ page.quote_author }}{% endif %}</figcaption>{% endif %}
+        </figure>
+        {% elsif page.image %}
         <figure class="post-cartoon">
           <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: '' }}">
         </figure>
         {% elsif post_chapter %}
         <figure class="post-cartoon post-cartoon--placeholder" aria-hidden="true">
-          <span>Cartoon goes here: set <code>image:</code> in the front matter</span>
+          <span>Cartoon or quote goes here: set <code>image:</code> or <code>quote:</code> in the front matter</span>
         </figure>
         {% endif %}
 

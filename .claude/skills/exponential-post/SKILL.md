@@ -89,13 +89,24 @@ current build-log fields so the post still renders:
 categories: [build-log]
 chapter: stack          # slug from _data/series.yml
 part: 1
-image: /assets/images/posts/<file>
-image_alt: "..."
+quote: "..."            # opening quote (replaces the cartoon)
+quote_author: "..."
+quote_source: "https://..."  # optional
 concepts: [ai-gateway]  # only concepts with a page in _concepts/
 ```
 
 Add `series: data-ai-engineering` as an extra field, so posts can be grouped
 later. Do not change `_data/series.yml` or the layouts in this skill.
+
+## Sources
+
+Steff wants to know where each line of reasoning comes from. In a draft:
+- Back every claim, figure and model of reasoning with a footnote.
+- Mark each footnote: (checked) found and verified in this session, (notes) from
+  Steff's research notes, (memory) from memory and still to check, (assumption)
+  an illustrative number of your own.
+- Never present an assumption as a fact. Check that a quote is correctly
+  attributed before using it.
 
 ## Review checklist (end of mode B, or before a draft)
 

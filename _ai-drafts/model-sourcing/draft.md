@@ -5,8 +5,9 @@ categories: [build-log]
 series: data-ai-engineering
 chapter: stack
 part: 1
-image: /assets/images/posts/independent-ai-stack-cartoon.jpg
-image_alt: "Cartoon of a signalman in a signal box labelled Independent AI stack, switching a train of prompts and data onto one of three tracks: a large frontier models station with a lowered barrier, a regional station for European cloud providers, and a small self-hosted station next to a cabin with a vegetable garden."
+quote: "Your margin is my opportunity."
+quote_author: "Jeff Bezos (attributed)"
+quote_source: "https://quoteinvestigator.com/2019/01/13/margin/"
 concepts:
   - ai-gateway
 excerpt: "Claude can build a data pipeline on its own. That's great, and it's also a dependency. What are the other ways to get AI, and when do you rent instead of own?"
@@ -27,6 +28,11 @@ Open items:
 - TODO: create the concept page "AI sourcing options" (providers, links, hardware)
   and replace the placeholder link.
 - TODO: link to the clinical-trials post once it exists.
+- Opening quote replaces the cartoon. Bezos is said to have told suppliers this;
+  Quote Investigator finds the attribution credible but has no transcript.
+  Alternative: "Commoditize your complements" (Joel Spolsky, Strategy Letter V).
+- Reference legend: (notes) = your research notes; (checked) = found by search on
+  2026-11-11; (memory) = from memory, check the link before publishing.
 {% endcomment %}
 
 ## The question
@@ -39,7 +45,7 @@ It also made something clear: the more I let Claude do, the more my work depends
 
 This post is desk research, not a test. Comparing models on real tasks needs evaluations and a gateway to switch between them, and that is for later posts. Here I wanted the bigger picture first: the microeconomics of AI.
 
-**AI as a utility.** The usual way to think about AI is as a very smart colleague, which suggests that smarter is always better. I found it more useful to think of AI like electricity. A business draws power from the grid, but it also thinks about batteries and generators, and about what happens when the grid goes down or the price goes up.
+**AI as a utility.** The usual way to think about AI is as a very smart colleague, which suggests that smarter is always better. I found it more useful to think of AI like electricity, a comparison Andrew Ng made popular with "AI is the new electricity".[^ng] A business draws power from the grid, but it also thinks about batteries and generators, and about what happens when the grid goes down or the price goes up.
 
 That framing gave me six criteria:
 
@@ -135,12 +141,14 @@ There is more to choosing AI than "smarter is better". But the real issue turned
 
 Two structural risks come with renting your core:
 
-- **Platform risk.** A provider sees how its product is used, and can build what its customers build. That pattern is familiar from other platforms.
+- **Platform risk.** A provider sees how its product is used, and can build what its customers build. That pattern is well documented: a study of Amazon found that it tends to enter the product categories where third-party sellers are already successful.[^amazon] There is also a classic strategy behind it: companies try to commoditise the layers around their own product.[^spolsky]
 - **Value capture.** If a model does all of your work, why would a client pay you rather than the model? Your value has to sit in what the model doesn't have: knowledge of your domain and processes, verification a client can trust, and a stack that works within a client's constraints. {% comment %} TODO(steff): confirm. {% endcomment %}
 
 Even the weights you depend on are not yours. Anthropic commits to preserving the weights of released models for the lifetime of the company,[^deprecation] which is preservation, not a guarantee that you can keep using them.
 
-Investing in your own stack and knowledge is different from paying rent. It is a **capital investment**: it keeps its value whichever model wins. And the curve is steep: according to Epoch AI, the best open-weight models trail the closed frontier by only about four months.[^epoch] When today's best model is a commodity within months, the ability to switch is worth more than any single choice.
+This is an old question in economics in a new form: when do you make something yourself, and when do you buy it? The classic answer is that you keep in-house what is specific to your business and core to how you compete.[^make-or-buy]
+
+Investing in your own stack and knowledge is different from paying rent. It is a **capital investment**: it keeps its value whichever model wins. And the curve is steep: according to Epoch AI, the best open-weight models trail the closed frontier by only about four months.[^epoch] When today's best model is a commodity within months, the ability to switch is worth more than any single choice. Economists call this an option value: the value of being able to change course later.[^options]
 
 My working rule: **own the core, rent the edge.**
 
@@ -171,3 +179,8 @@ noted); the rest were found by search on 2026-11-11 and have not been opened.
 [^metr]: [METR, Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/). Early-2025 tools; the authors warn against generalising.
 [^deprecation]: (notes) [Anthropic deprecation commitments](https://www.anthropic.com/research/deprecation-commitments)
 [^epoch]: (notes) [Epoch AI: open vs closed gap](https://epoch.ai/data-insights/open-closed-eci-gap)
+[^ng]: (memory) Andrew Ng, "AI is the new electricity", Stanford GSB talk, 2017. TODO: find link.
+[^amazon]: (checked) Feng Zhu and Qihong Liu, "Competing with complementors: An empirical look at Amazon.com", Strategic Management Journal 39(10), 2018. [PDF](https://dash.harvard.edu/bitstream/handle/1/37377131/zhu,liu_competing-with-complementors.pdf?sequence=1)
+[^spolsky]: (memory) Joel Spolsky, [Strategy Letter V](https://www.joelonsoftware.com/2002/06/12/strategy-letter-v/), 2002.
+[^make-or-buy]: (memory) Ronald Coase, "The Nature of the Firm", 1937; Oliver Williamson, *The Economic Institutions of Capitalism*, 1985 (asset specificity); C.K. Prahalad and Gary Hamel, ["The Core Competence of the Corporation"](https://hbr.org/1990/05/the-core-competence-of-the-corporation), Harvard Business Review, 1990.
+[^options]: (memory) Avinash Dixit and Robert Pindyck, *Investment under Uncertainty*, 1994 (real options); Carliss Baldwin and Kim Clark, *Design Rules: The Power of Modularity*, 2000 (the option value of modular design).

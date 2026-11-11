@@ -5,8 +5,9 @@ categories: [build-log]
 series: data-ai-engineering
 chapter: TODO
 part: TODO
-image: /assets/images/posts/TODO
-image_alt: "TODO"
+quote: "TODO: an inspiring quote, checked against its source"
+quote_author: "TODO"
+quote_source: "TODO: URL"
 concepts: []
 excerpt: "TODO(steff): one sentence"
 tags: []
