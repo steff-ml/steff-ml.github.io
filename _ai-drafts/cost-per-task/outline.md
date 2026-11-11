@@ -21,7 +21,7 @@ company strategies from post 1 are a good choice. Plus the worked example.
 - Suggestion (in discussion): a criterion is not a filter or a cost by nature; it
   depends on the task. The same criterion can be a hard filter for one task and a
   cost for another. A hard filter = an infinite cost.
-- Open: how to price soft preferences such as independence (willingness to pay?).
+- Independence: priced as a hedge against price increases (see lesson), not a vague preference.
 
 ### Cost model (draft)
 Operating cost:
@@ -79,7 +79,23 @@ Cumulative cost at API list price (Claude Code result events):
 - Candidate core: frontier to explore, open models once something becomes repeatable.
 - Case for me: if data engineering tasks become my bread and butter, investing in
   open-source technology is justified.
-  TODO(steff): how repetitive are they (N)?
+  - Data engineering is, like software engineering, logic-based and regular. Every
+    project needs pipelines, CI/CD etc., likely doable by relatively simple models.
+    Regulatory data contracts will follow a fixed structure. That is a lot of work.
+  - Understanding and verification are probably more complex.
+  - Hypothesis, to be confirmed by the tests that still have to run.
+    Suggestion: show it as a routing table by task type (hypothesis), checked later.
+  - Counter-argument "frontier gets cheaper, so the gap shrinks": can't count on it.
+    Compute commitments and training costs must be recouped; "Uber effect":
+    dominate the market, then raise prices. A diverse field is the only way to keep
+    token prices low.
+    Suggestion: independence then is a hedge against price increases (risk
+    premium / option value), not just a preference. Note: keeping the field diverse
+    is a public good; for one buyer the rational part is the hedge.
+  - Client demands: open/European models, possibly local or edge processing, are a
+    legitimate hard filter. The use case must be able to handle it.
+    Chain (suggestion): filter forces small models -> small models only work on
+    decomposed tasks -> investing in harness/evals becomes a precondition, not a choice.
 - Suggestion: "pin the formula, not the answer".
 
 ## 5. What next
