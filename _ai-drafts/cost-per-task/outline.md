@@ -8,9 +8,20 @@
 Character: quantitative. How to calculate it, and under which conditions the
 company strategies from post 1 are a good choice. Plus the worked example.
 
+## Decisions (round 2)
+- Part 1: one question: "When does it pay to own instead of rent?" My own case
+  (is investing justified for me) becomes the example in part 4.
+- Part 3: scenarios with explicit, marked assumptions (option a). This sets the bar
+  open models must reach per task.
+- Part 4: the lesson is the quantitative side of "own the core, rent the edge":
+  the formula shows where the line between core and edge lies.
+- Owning is a fundamentally different investment: a capital investment. More than
+  price risk, the core is: a company that doesn't even own its own processes.
+  Capital is not better by definition; there are scenarios where renting wins.
+- Post 1 and post 2 should be mirror images.
+
 ## 1. The question
-- Post 1 showed companies making opposite choices. When is which one rational?
-- For me: is investing in open-source data + AI tooling justified?
+- When does it pay to own instead of rent?
 
 ## 2. The approach
 - Cost model, which also defines the criteria I will judge models on.
