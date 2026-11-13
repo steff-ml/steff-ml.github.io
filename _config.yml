@@ -39,6 +39,7 @@ include:
 exclude:
   - ideas/
   - _archive/
+  - _ai-drafts/
 # exclude:
 #   - Gemfile
 #   - Gemfile.lock

@@ -185,9 +185,18 @@ Chapter II has sections, so its posts use a section slug (`wall`, `method`,
 `migrate`), not `discovery`. Parts are numbered within each chapter or section,
 starting at 1.
 
-**Cartoons:** put the image in `assets/images/posts/` and point `image:` at it.
-Without `image:`, a build-log post shows a dashed placeholder, so you can see
-which ones still need a cartoon. TILs and link roundups don't get a placeholder.
+**Opening quote or cartoon:** a post can open with a quote instead of a cartoon:
+
+```yaml
+quote: "Price is what you pay. Value is what you get."
+quote_author: "Warren Buffett"
+quote_source: "https://..."   # optional, links the author
+```
+
+For a cartoon, put the image in `assets/images/posts/` and point `image:` at it.
+`quote:` wins if both are set. Without either, a build-log post shows a dashed
+placeholder, so you can see which ones still need one. TILs and link roundups
+don't get a placeholder.
 
 ### Concept pages
 
