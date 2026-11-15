@@ -8,6 +8,63 @@
 Character: quantitative. How to calculate it, and under which conditions the
 company strategies from post 1 are a good choice. Plus the worked example.
 
+## Decisions (round 3, 2026-11-13) -- supersedes the round-2 question
+- Post 1 now ends on "own the core, rent the edge", so this post's question is:
+  what is core, what is edge, and how do we decide that line quantitatively?
+  Suggestion: "...and how much of it can numbers decide?"
+- Steff's starting guideline: volume. Tasks run at high volume are both core to
+  the strategy AND cheaper to own. Not a perfect line, but a good start.
+- Literature (memory, to check):
+  - Support: Williamson, transaction cost economics (frequency, together with
+    asset specificity, favours making over buying); Kraljic (profit impact is
+    partly volume purchased); cloud repatriation (a16z "The Cost of Cloud, a
+    Trillion Dollar Paradox", 2021; 37signals leaving the cloud): rent spiky or
+    exploratory workloads, own the steady baseline. Cases: Intercom, Revolut, Uber.
+  - Pushback: Prahalad & Hamel (1990): core = customer value, hard to imitate,
+    not volume. Payroll = high volume, not core. Fine & Whitney (1996):
+    dependence for capacity (fine to outsource) vs for knowledge (core).
+  - Suggestion: 2x2 of volume (numbers decide) x differentiation (strategic
+    choice). Volume rule covers the high-volume differentiating corner.
+
+- Moved from post 1 (checked 2026-11-13): Vercel AI Gateway, Aug 2026: open-weight
+  56% of tokens (7% in Dec 2025) but 14% of spend
+  (https://vercel.com/blog/ai-gateway-production-index-september-2026).
+  Gartner: open models more verbose and retry more; per-task saving vs frontier
+  ~5-6x, not the ~20x the price list suggests
+  (https://www.theregister.com/ai-and-ml/2026/11/03/open-models-can-do-90-of-agentic-work-at-a-twentieth-of-the-cost-of-a-frontier-llm-gartner/5307132).
+
+## Moved from post 1 (2026-11-15): company strategies
+Steff's note: this section is about cost, not supply risk, so it moves here. Fits
+part 3 ("under which conditions each company strategy is rational"). Text as it
+was in the post, footnotes included ([^pragmatic] is still also used in post 1).
+
+### How companies optimize AI spend (from post 1)
+
+If the trade-off is real, companies should land in different places. They do. Most figures below are reported by the companies themselves.
+
+| Strategy | Examples |
+|---|---|
+| **All-in on frontier models** | Cognizant has put more than 25,000 people on Claude.[^cognizant] Deloitte is rolling Claude out to its whole workforce.[^deloitte] Sierra reports 5x more output on some tasks with Claude Code and Codex.[^sierra] |
+| **Both at once** | Uber spent its 2026 AI tools budget in four months,[^uber] then moved some tasks to open models and halved its cost per AI session.[^pragmatic] |
+| **Open by default, frontier as the exception** | Revolut's default coding model is a self-hosted open model, at a tenth of its former bill.[^revolut] Intercom matched GPT-4.1 on one task with a fine-tuned 14B Qwen model.[^intercom] AT&T routes each task to the smallest model that can do it, with savings of up to 90%.[^att] |
+| **Own models** | Pinterest pays less than 8% of the closed-model cost per transaction.[^pragmatic] C3 AI's fine-tuned model beats frontier models on its own software, faster.[^c3] |
+
+Three things stand out:
+
+- **The work that moves is high-volume or specific to the business.** Revolut's everyday coding, Intercom's support pipeline, AT&T's telecom work, C3 AI's own software. The hardest and newest work stays with frontier models.
+- **Almost nobody moves completely.** Companies decide per task.
+- **The all-in examples are often services firms.** For Cognizant and Deloitte, betting on one provider is partly what they sell.
+
+[^cognizant]: (checked) [Analytics India Magazine, 11 November 2026](https://analyticsindiamag.com/ai-news/cognizant-commits-25000-professionals-to-deploy-claude-in-enterprises)
+[^deloitte]: (checked) October 2025. [Anthropic](https://www.anthropic.com/news/deloitte-anthropic-partnership) · [Deloitte](https://www.deloitte.com/us/en/about/press-room/deloitte-and-anthropic-collaborate-to-bring-safe-reliable-trusted-ai-to-commercial-government-organizations.html)
+[^sierra]: (checked) Self-reported, January pilot. [Sierra, "AI-pilling our company"](https://sierra.ai/blog/ai-pilling-our-company-lessons-learned)
+[^uber]: (checked, secondary; original reporting by The Information) [Fortune, 26 May 2026](https://fortune.com/2026/05/26/uber-coo-ai-spending-tokens-claude-code/) · [Outlook Business](https://www.outlookbusiness.com/corporate/uber-caps-ai-tool-usage-after-exhausting-yearly-budget-in-just-4-months) ($1,500 monthly cap per employee)
+[^revolut]: (checked) [AI Engineer talk](https://ai.engineer/talks/Ok6QdZHCcI8-revolut-cut-ai-coding-costs-90-self). The comparison doesn't match usage periods or include the cost of running the service.
+[^intercom]: (checked) [Intercom (Fin) research, "David vs Goliath: are small LLMs any good?"](https://fin.ai/research/david-vs-goliath-are-small-llms-any-good/) · [Cost of serving LLMs](https://fin.ai/research/cost-of-serving-llms/)
+[^att]: (checked) [AT&T, "The tokenomics equation", 23 July 2026](https://about.att.com/blogs/2026/the-tokenomics-equation.html)
+[^c3]: (checked) [C3 AI blog](https://c3.ai/blog/why-c3-ai-fine-tunes-its-own-models-even-with-frontier-ai-this-strong)
+[^pragmatic]: (checked) [The Pragmatic Engineer, "Tech companies move to open AI models"](https://blog.pragmaticengineer.com/the-pulse-tech-companies-move-to-open-ai-models/): Uber's cost per AI session down 52%; AT&T 56% cheaper on some tasks for about 2% lower quality; Pinterest CEO: "less than 8% of the cost of comparable closed proprietary models".
+
 ## Decisions (round 2)
 - Part 1: one question: "When does it pay to own instead of rent?" My own case
   (is investing justified for me) becomes the example in part 4.

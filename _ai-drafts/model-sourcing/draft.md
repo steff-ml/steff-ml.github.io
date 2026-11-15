@@ -1,5 +1,5 @@
 ---
-title: "Rent or own? The microeconomics of getting AI"
+title: "The landlord decides: the dangers of depending on Claude"
 date: YYYY-MM-DD 09:00:00 +0200
 categories: [build-log]
 series: data-ai-engineering
@@ -10,177 +10,207 @@ quote_author: "Jeff Bezos (attributed)"
 quote_source: "https://quoteinvestigator.com/2019/01/13/margin/"
 concepts:
   - ai-gateway
-excerpt: "Claude can build a data pipeline on its own. That's great, and it's also a dependency. What are the other ways to get AI, and when do you rent instead of own?"
+excerpt: "Claude can do a lot of my work. What does that dependence mean for my career or business, and which other ways of getting AI reduce the risk?"
 tags:
   - ai-engineering
   - ai-sourcing
 ---
 {% comment %}
-AI DRAFT (written with the exponential-post skill, based on the interview in
-outline.md). Not reviewed yet. Check every claim, then move this file to
+AI DRAFT (written with the exponential-post skill, based on outline.md as of
+2026-11-13). Not reviewed yet. Check every claim, then move this file to
 _drafts/ or _posts/ and delete this comment.
 
+Fact checks that changed what you told me (please confirm the new wording):
+- FABLE: the export order (12 June 2026) hit ALL customers, not only non-US ones:
+  Anthropic switched Fable 5 off for everyone until 1 July. So "competitors
+  elsewhere kept it" is not supported. What IS supported: when access returned,
+  Mythos 5 came back only for approved US organisations, and Mythos Preview was
+  given first to a small group of partners (Project Glasswing). The draft uses that.
+- BIOLOGY FALLBACK: Opus 5.5 switches to Opus 5 on dual-use biology requests by
+  default, with a notice, and the switch can be turned off in Settings. So
+  "without consent" is too strong; the draft says "by default". TODO(steff):
+  did you see the notice / know about the setting?
+- SIERRA: the public figure is a self-reported 5x "on some tasks", using Claude
+  Code AND Codex. The 3-20x figure was not found.
+- PINTEREST: "<8%" is the CEO's figure as quoted by The Pragmatic Engineer.
+- INTERCOM: its own research shows a fine-tuned Qwen 14B matching GPT-4.1 on an
+  extraction task; the "$250k/month" figure only appears in a podcast blurb.
+- AT&T: "56% cheaper for ~2% lower quality" comes from The Pragmatic Engineer;
+  "up to 90%" from AT&T's own blog. The WSJ original was not found.
+- Microsoft Copilot dropped (not checked, not needed).
+- Trimmed 2026-11-13: dangers told once (full story in the incidents), case-study
+  cells shortened (details in footnotes), Vercel/Gartner aggregate data moved to
+  the cost-per-task outline.
+
 Open items:
-- TODO(steff): revise the portfolio rows (in use vs planned).
-- TODO(steff): confirm "what Claude doesn't have" in part 4 (my guess, not yet confirmed).
-- TODO: verify every case study figure against a primary source.
-- Sources added 2026-11-11: footnotes marked (notes) come from your research notes; the others are new and not yet opened.
-- TODO: create the concept page "AI sourcing options" (providers, links, hardware)
-  and replace the placeholder link.
-- TODO: link to the clinical-trials post once it exists.
-- Opening quote replaces the cartoon. Bezos is said to have told suppliers this;
-  Quote Investigator finds the attribution credible but has no transcript.
-  Alternative: "Commoditize your complements" (Joel Spolsky, Strategy Letter V).
-- Reference legend: (notes) = your research notes; (checked) = found by search on
-  2026-11-11; (memory) = from memory, check the link before publishing.
+- TODO(steff): revise portfolio rows (in use vs planned).
+- TODO(steff): title. Post 2's draft title also uses "Own the core, rent the edge";
+  that phrase now lands in this post, so post 2 needs a new title.
+- TODO: concept page "AI sourcing options" and the link to the clinical-trials post.
+- Reference legend: (checked) = opened or confirmed by search on 2026-11-13;
+  (notes) = your research notes (checked 2026-09-25); (memory) = from memory,
+  check before publishing.
 {% endcomment %}
 
 ## The question
 
-In the [previous post](TODO) I let Claude Code ingest, clean and visualise clinical trial data, with nothing more than an interview at the start. It worked remarkably well, and I enjoy working with it.
+In the [previous post](TODO) I let Claude Code ingest, clean and visualise clinical trial data with nothing more than an interview at the start. It worked remarkably well.
 
-It also made something clear: the more I let Claude do, the more my work depends on one provider. So this post asks a simple question: **what other ways are there to get access to AI models, and what are their pros and cons?**
+It also made me look at the other side of the coin. The more of my work Claude does, the more my work depends on one provider. There are many ways to think about that: what it does to how we learn, to our jobs, to society. This post takes one lens only: **what does it mean for my career or my business?**
+
+So the question is: **what are the dangers of letting Claude do my work, and are there alternatives?**
 
 ## The approach
 
-This post is desk research, not a test. Comparing models on real tasks needs evaluations and a gateway to switch between them, and that is for later posts. Here I wanted the bigger picture first: the microeconomics of AI.
+This is desk research, not a test. Comparing models on real tasks needs evaluations and a gateway, and that is for later posts.
 
-**AI as a utility.** The usual way to think about AI is as a very smart colleague, which suggests that smarter is always better. I found it more useful to think of AI like electricity, a comparison Andrew Ng made popular with "AI is the new electricity".[^ng] A business draws power from the grid, but it also thinks about batteries and generators, and about what happens when the grid goes down or the price goes up.
+**First, the dangers.** I only counted a danger if I could point to something that actually happened:
 
-That framing gave me six criteria:
+- **Access gets cut**, by a government[^fable] [^pentagon] or by the provider itself.[^windsurf] [^openai]
+- **Terms change**, such as subscriptions no longer working in third-party tools.[^oauth]
+- **Quality changes underneath you**, through bugs, changed defaults or deliberate routing to another model.[^postmortems] [^fallback]
+- **Prices and limits change** once you depend on a tool.[^uber]
+- **Data stored in the EU is not out of reach** of US authorities.[^cloud-act]
 
-| Criterion | Core question |
-|---|---|
-| **Access** | Which models can I use, and how soon after release? |
-| **Economics** | What do I pay, and who carries the risk of over- or underuse? |
-| **Performance** | Is it available, fast and consistent? |
-| **Control** | Where does my data go, under which jurisdiction, and what do the terms allow? |
-| **Continuity** | Can I switch cheaply? How likely is the provider to change terms or disappear? |
-| **Effort** | What do I have to build and maintain myself? |
+I ran into several of these myself. More on that below.
 
-I scored the four ways to get a model on these criteria, from least to most hands-on:
+**Then, a way to score the options.** I sorted the criteria into three layers:
 
-1. **Subscription**: a monthly plan from a lab such as Anthropic, Google or OpenAI, or a plan with an API key for open-weight models.
-2. **Pay-per-use**: an API billed per token, from a model lab, a hyperscaler, a European inference provider or Mistral.
-3. **Renting compute**: renting GPUs in the cloud and serving an open-weight model yourself.
-4. **Ownership**: buying hardware and running open-weight models on it.
+1. **Disqualifiers** (pass or fail): can this option be used at all? Data protection and data residency (GDPR), sector rules, export controls and the provider's usage policy can each rule an option out.
+2. **Supply risk**: how much power does the supplier have over me? Price and rate limits, access, outages, models being retired, silent quality changes, lock-in.
+3. **Value**: what do I get? Capability, effort and cost.
 
-The details per option (providers, prices, hardware) are on a separate page: [AI sourcing options](TODO).
-
-Finally, I looked at what companies actually do, to see whether these trade-offs play out in practice.
+None of this is new. Procurement has weighed supply risk against impact since Peter Kraljic's matrix in 1983.[^kraljic] Economists have long explained why depending on one supplier gets expensive: the more you invest in a relationship that only works with that supplier, the more room the supplier has to raise prices (what Oliver Williamson called hold-up), and a supplier with few competitors has more bargaining power.[^tce] Regulators know it too. The EU's DORA regulation requires banks and insurers to assess concentration risk and to have tested exit plans for critical technology providers.[^dora]
 
 ## What happened
 
-### No option wins
+### Five ways to get AI
 
-| Criterion | Subscription | Pay-per-use | Renting compute | Ownership |
-|---|:---:|:---:|:---:|:---:|
-| **Access** | ✓ | ✓ | ✗ | ✗ |
-| **Economics** | ✓ | ~ | ~ | ~ |
-| **Performance** | ✗ | ✓ | ✓ | ✓ |
-| **Control** | ✗ | ~ | ✓ | ✓ |
-| **Continuity** | ✗ | ~ | ~ | ✓ |
-| **Effort** | ✓ | ✓ | ✗ | ✗ |
+From least to most hands-on:
 
-✓ = strong, ~ = depends on provider, volume or use case, ✗ = weak. This is my own judgement and a simplification.
+1. **Subscription**: a monthly plan such as [Claude](https://claude.com/pricing), ChatGPT or Gemini. Cheap and easy, but you get the provider's apps on the provider's terms.
+2. **API, closed model**: pay per token, directly from a lab ([Anthropic](https://claude.com/pricing#api), [OpenAI](https://openai.com/api/pricing/), [Google](https://ai.google.dev/gemini-api/docs/pricing)) or through a hyperscaler ([AWS Bedrock](https://aws.amazon.com/bedrock/pricing/), [Microsoft](https://azure.microsoft.com/en-us/products/ai-foundry/models)).
+3. **API, open model**: pay per token for open-weight models, for example at European providers such as [OVHcloud](https://www.ovhcloud.com/en/public-cloud/ai-endpoints/), [Scaleway](https://www.scaleway.com/en/generative-apis/) and [Ionos](https://cloud.ionos.com/managed/ai-model-hub). [Mistral](https://mistral.ai/pricing#api-pricing) offers a model family that is partly open-weight.
+4. **Rented compute**: renting GPUs and serving an open-weight model yourself.
+5. **Own hardware**: running open-weight models on machines you own.
 
-The pattern is a trade-off. The options that are easy to start with are weak on control and continuity. The options that give you independence cost you access and effort.
+Details per option are on a separate page: [AI sourcing options](TODO).
 
-### The weak spots are not theoretical
+### The scored table
 
-The ✗ marks for subscriptions and frontier APIs are not hypothetical. In the past year alone:
+| | Subscription | API, closed model | API, open model | Rented compute | Own hardware |
+|---|:---:|:---:|:---:|:---:|:---:|
+| ***Disqualifiers*** | | | | | |
+| Data residency / GDPR | ✗ | ~ | ✓ | ✓ | ✓ |
+| Export controls / access cut off | ✗ | ✗ | ✓ | ✓ | ✓ |
+| Provider's usage policy | ✗ | ✗ | ~ | ✓ | ✓ |
+| ***Supply risk*** | | | | | |
+| Price and rate-limit power | ✗ | ✗ | ✓ | ✓ | ✓ |
+| Silent quality changes | ✗ | ~ | ✓ | ✓ | ✓ |
+| Outages / model retirement | ✗ | ✗ | ~ | ~ | ✓ |
+| Lock-in | ✗ | ~ | ✓ | ✓ | ~ |
+| ***Value*** | | | | | |
+| Capability | ✓ | ✓ | ~ | ~ | ✗ |
+| Effort | ✓ | ✓ | ✓ | ✗ | ✗ |
+| Cost | ✓ | ~ | ✓ | ~ | ~ |
 
-- **Access was cut for political reasons.** The US government imposed export controls on Fable 5 three days after launch, and Anthropic disabled it for all customers until the controls were lifted.[^fable-export] The Pentagon designated Anthropic a "supply chain risk", which an appeals court upheld.[^pentagon]
-- **Terms changed.** Anthropic blocked the use of subscription logins in third-party tools such as OpenCode, so a subscription now only works inside Anthropic's own apps.[^oauth]
-- **Behaviour changed.** Anthropic published postmortems for quality drops caused by infrastructure bugs and changed defaults,[^postmortems] independent daily benchmarks have flagged statistically significant drops,[^degradation] and some topics, such as dual-use biology, deliberately fall back to a less capable model.[^bio-safeguards]
-- **Data residency is not sovereignty.** Microsoft France told the French Senate under oath that it cannot guarantee EU data is safe from US authorities, even when it is stored in the EU.[^cloud-act]
+✓ = strong, ~ = depends on provider, volume or use case, ✗ = weak. My own judgement, and a simplification.
 
-None of these make frontier providers bad choices. They are what renting looks like: the landlord can change the terms.
+The surprise was where the line falls. I expected the big split to be between renting and owning. It isn't: it's between **closed and open models**. Paying per token for Claude and paying per token for an open model at a European provider look the same on the invoice, but carry very different risks. An open model can be moved to another provider, or to your own machine, when the terms change. A closed model can't.
 
-### Companies make opposite choices
+The EU AI Act is not in the table, because as a user of AI your obligations barely depend on how you get it. One exception: if you modify a general-purpose model substantially, you can become its provider in the eyes of the law. The Commission's rule of thumb is more than a third of the original training compute, which ordinary fine-tuning doesn't come close to.[^ai-act]
 
-If the trade-off is real, you would expect companies to land in different places. They do. The figures below are mostly reported by the companies themselves.
+### What companies do
+
+If the trade-off is real, companies should land in different places. They do. Most figures below are reported by the companies themselves.
 
 | Strategy | Examples |
 |---|---|
-| **All-in on a frontier provider** | [Cognizant](https://analyticsindiamag.com/ai-news/cognizant-commits-25000-professionals-to-deploy-claude-in-enterprises) is rolling out Claude across its workforce and set up a Claude group of more than 25,000 people. Deloitte is [training and certifying 15,000 professionals](https://intuitionlabs.ai/articles/claude-enterprise-deployment-training-guide-2026) on Claude. Engineers at Sierra [estimate](https://joseparreogarcia.substack.com/p/open-source-models-are-good-enough) they ship 3 to 20 times more productively with Claude Code. |
-| **Both at once** | Uber reportedly [used up its 2026 AI coding budget in four months](https://joseparreogarcia.substack.com/p/open-source-models-are-good-enough) with roughly 5,000 engineers on Claude Code, while [moving other tasks to open models](https://blog.pragmaticengineer.com/the-pulse-tech-companies-move-to-open-ai-models/). |
-| **Open by default, frontier as the exception** | [Revolut](https://ai.engineer/talks/Ok6QdZHCcI8-revolut-cut-ai-coding-costs-90-self) runs its coding agents on a self-hosted open-weight model and routes only vision tasks to frontier models, reporting about a tenth of the cost. Intercom [moved one high-volume summarisation job](https://consciousengines.com/blog/frontier-model-downshift-index) to a fine-tuned open model and kept its hardest customer-facing prompt on a frontier model. |
-| **Own models** | Pinterest [reports](https://consciousengines.com/blog/frontier-model-downshift-index) a cost per transaction below 8% of comparable closed models. [C3 AI](https://c3.ai/blog/why-c3-ai-fine-tunes-its-own-models-even-with-frontier-ai-this-strong) fine-tunes its own models, even with strong frontier models available. |
+| **All-in on frontier models** | Cognizant has put more than 25,000 people on Claude.[^cognizant] Deloitte is rolling Claude out to its whole workforce.[^deloitte] Sierra reports 5x more output on some tasks with Claude Code and Codex.[^sierra] |
+| **Both at once** | Uber spent its 2026 AI tools budget in four months,[^uber] then moved some tasks to open models and halved its cost per AI session.[^pragmatic] |
+| **Open by default, frontier as the exception** | Revolut's default coding model is a self-hosted open model, at a tenth of its former bill.[^revolut] Intercom matched GPT-4.1 on one task with a fine-tuned 14B Qwen model.[^intercom] AT&T routes each task to the smallest model that can do it, with savings of up to 90%.[^att] |
+| **Own models** | Pinterest pays less than 8% of the closed-model cost per transaction.[^pragmatic] C3 AI's fine-tuned model beats frontier models on its own software, faster.[^c3] |
 
-Two things stand out. First, the companies that move away from frontier models rarely move away completely: they decide **per task**. Second, the all-in examples are often services firms, for whom betting on one provider is partly a commercial choice.
+Three things stand out:
 
-The aggregate data shows the same split, and it depends on what you measure. On Vercel's AI Gateway, open-weight models handled 56% of all tokens in August 2026, up from 7% in December 2025, but only 14% of the spend.[^vercel] Volume moves to open models; the money stays with the frontier. Measured by enterprise spend, the picture even looked the other way: in 2025, Menlo Ventures saw the open-model share of enterprise usage fall from 19% to 11%, with Anthropic at about 40% of enterprise LLM spend.[^menlo] And when open models do take over, the gain per task is smaller than the price per token suggests: Gartner notes that open models are more verbose and retry more often.[^gartner] AT&T reportedly cut its bill by 56% for a 2% drop in measured quality.[^att]
+- **The work that moves is high-volume or specific to the business.** Revolut's everyday coding, Intercom's support pipeline, AT&T's telecom work, C3 AI's own software. The hardest and newest work stays with frontier models.
+- **Almost nobody moves completely.** Companies decide per task.
+- **The all-in examples are often services firms.** For Cognizant and Deloitte, betting on one provider is partly what they sell.
 
-### My own portfolio
+### My portfolio, and the incidents behind it
+
+My own setup came out of incidents, not theory. None of them cost me much.
+
+- **A question was switched to a weaker model.** When I asked about genome foundation models, Claude moved my conversation from Opus 5.5 to Opus 5. Anthropic does this by default for dual-use biology.[^fallback] I understand why the safeguard exists. But it showed me that the provider decides which model answers my question.
+- **I lost access to frontier models.** Fable 5 was unavailable for about three weeks because of the export controls.[^fable] When access came back, Fable returned for everyone, but Mythos 5 only for approved US organisations.[^fable-restored] Its preview had gone first to a small group of large partners.[^glasswing]
+- **The rules point one way.** Anthropic's terms forbid customers from using its services to build a competing product or to reverse engineer them.[^terms] The provider itself has no such limit: it launched Claude Code, which competes with coding tools like Windsurf that were built on its models.[^windsurf]
+- **Prices haven't changed for me yet.** But Uber shows how it works: once your work depends on a tool, the bill grows with your use.
+
+I am not judging whether these rules are right. That is another post. For this one, the effect is what matters. Each restriction moved capability away from me and towards someone else: the provider, its partners, or companies the government favours.
 
 {% comment %} TODO(steff): revise rows, mark what is in use and what is planned. {% endcomment %}
 
-| Layer | Provider / model | Used for | If it disappears |
+| Way of getting AI | Provider / model | Used for | Reduces which danger |
 |---|---|---|---|
-| **Subscription** | Claude | Brainstorming and infrastructure coding | Another lab's plan |
-| **Subscription** | Gemini | Video and image analysis | Another multimodal model, with some loss |
-| **Pay-per-use** | Qwen via OVHcloud and Scaleway | All-round production workloads | The same model at another provider |
-| **Pay-per-use** | DeepSeek via Scaleway | Cheap long-context coding and review | Slightly harder to replace |
-| **Pay-per-use** | Mistral | Work where a European provider matters | An open-weight model elsewhere |
-| **Ownership** | Small open-weight models | Learning and routine tasks | This *is* the fallback |
+| **Subscription** | Claude | Brainstorming and infrastructure coding | none: easy to replace with another lab's plan, because nothing in production depends on it |
+| **Subscription** | Gemini | Video and image analysis | none: some loss of capability if it disappears |
+| **API, open model** | Qwen via OVHcloud and Scaleway | All-round production work | Lock-in and access: the same model at several EU providers |
+| **API, open model** | DeepSeek via Scaleway | Cheap long-context coding and review | Price, but fewer providers, so nothing critical |
+| **API, closed / partly open** | Mistral | Work where a European provider matters | Data residency |
+| **Own hardware** | Small open-weight models | Learning and routine tasks | Everything: this *is* the fallback |
 
 ### What I couldn't settle
 
-Two things remain open.
+The honest summary: **the losses were minimal, but it did spook me.** The case for diversifying rests on what *could* happen, not on what has cost me money so far. That's how insurance works, but it is a weaker argument than a disaster.
 
-The first is practical: **on paper, I can't tell whether a cheaper model can do my work.** Whether an open-weight model on a European provider handles a clinical trials pipeline as well as Claude depends on success rates I haven't measured yet.
-
-The second is a creeping feeling that **maybe none of this matters**, and we can simply stay with the frontier models. They keep getting better, and the effort of a nuanced setup is real. I also notice, in myself and in others, that working with a model as capable as Claude makes it tempting to stop understanding things yourself. Researchers at the MIT Media Lab call this "cognitive debt",[^cognitive-debt] and in a 2025 randomised trial by METR, experienced developers were 19% slower with AI tools while believing they were 20% faster.[^metr] I don't know yet whether this nuanced view on sourcing will prove worth it in hindsight.
+And on paper I can't tell whether a cheaper model can do my work. Whether an open model at a European provider handles the clinical trials pipeline as well as Claude depends on success rates I haven't measured yet.
 
 ## The lesson
 
-There is more to choosing AI than "smarter is better". But the real issue turned out not to be cost. It's ownership.
+**Own the core, rent the edge.**
 
-**Relying fully on one frontier provider puts you in a rental relationship for what should be the core of your business.** Renting is not wrong. It is flexible, it is cheap right now, and for exploring it is the right choice. But rent builds no asset, and the landlord sets the price.
+- **Core** is what sets you apart. You should own the knowledge behind it.
+- **Edge** is everything that doesn't set you apart, plus new experiments that haven't proven themselves yet.
 
-Two structural risks come with renting your core:
+Renting is not wrong. It is flexible, cheap and the right choice for exploring. But rent builds no asset, and the landlord sets the terms. Everything I ran into came down to that. Relying fully on Claude means renting what should be the core of my business, from a provider that can change the price, the model or the access, and that may one day build what I build.
 
-- **Platform risk.** A provider sees how its product is used, and can build what its customers build. That pattern is well documented: a study of Amazon found that it tends to enter the product categories where third-party sellers are already successful.[^amazon] There is also a classic strategy behind it: companies try to commoditise the layers around their own product.[^spolsky]
-- **Value capture.** If a model does all of your work, why would a client pay you rather than the model? Your value has to sit in what the model doesn't have: knowledge of your domain and processes, verification a client can trust, and a stack that works within a client's constraints. {% comment %} TODO(steff): confirm. {% endcomment %}
+So think of your knowledge, personal and business, as **capital**, and invest in it deliberately. Use AI to automate what is not core to your offering. That applies at two levels:
 
-Even the weights you depend on are not yours. Anthropic commits to preserving the weights of released models for the lifetime of the company,[^deprecation] which is preservation, not a guarantee that you can keep using them.
+- **For a business:** own your processes, your data and the knowledge of how your work gets done.
+- **For a career:** own the understanding that clients pay you for.
 
-This is an old question in economics in a new form: when do you make something yourself, and when do you buy it? The classic answer is that you keep in-house what is specific to your business and core to how you compete.[^make-or-buy]
+The timing is good, because **owning the core has never been this cheap.** According to Epoch AI, the best open-weight models trail the closed frontier by only about four months.[^epoch] Owning no longer means training your own model. You can own the model and still rent the compute.
 
-Investing in your own stack and knowledge is different from paying rent. It is a **capital investment**: it keeps its value whichever model wins. And the curve is steep: according to Epoch AI, the best open-weight models trail the closed frontier by only about four months.[^epoch] When today's best model is a commodity within months, the ability to switch is worth more than any single choice. Economists call this an option value: the value of being able to change course later.[^options]
-
-My working rule: **own the core, rent the edge.**
+One more thing the case studies show: **tasks move.** An experiment starts at the edge, on a frontier model. Once it proves itself and the volume grows, it becomes core, and it starts to pay to own it.
 
 ## What next
 
-This post stayed qualitative. The obvious next question is when each strategy is actually the right one, and that needs numbers. In the next post I work out what an AI task really costs, including my own time, using the clinical trials session as an example.
+"Core is what sets you apart" is easy to say. It is much harder to apply to a single task. Is a daily data-cleaning job core because I run it constantly, or edge because anyone could do it?
 
-And the open question I keep coming back to: **is all this nuance worth it, or will we look back and realise we should simply have stayed with the frontier models?**
+That is the next post: **what is core, what is edge, and how much of that line can numbers decide?**
 
-{% comment %}
-Footnote sources: items marked (notes) come from
-_drafts/beyond-frontier-AI-part-I-research-notes.md (checked 2026-09-25 unless
-noted); the rest were found by search on 2026-11-11 and have not been opened.
-{% endcomment %}
-
-[^fable-export]: (notes) [Implicator](https://www.implicator.ai/us-export-controls-force-anthropic-to-pull-fable-5-and-mythos-5-days-after-launch/)
+[^fable]: (checked) [Implicator, 13 June 2026](https://www.implicator.ai/us-export-controls-force-anthropic-to-pull-fable-5-and-mythos-5-days-after-launch/): order of 12 June, Anthropic disabled both models for all customers. Lifted 30 June, restored 1 July: [Al Jazeera](https://www.aljazeera.com/economy/2026/7/1/us-lifts-restrictions-on-powerful-ai-models-fable-mythos-anthropic-says) · [CoinDesk](https://www.coindesk.com/tech/2026/07/01/anthropic-restores-ai-models-fable-mythos-after-the-u-s-lifts-export-controls)
+[^fable-restored]: (checked, secondary) Mythos 5 reintroduced only to approved US organisations: [GovConWire](https://www.govconwire.com/articles/anthropic-fable-5-mythos-5-access-restored) · [CoinDesk](https://www.coindesk.com/tech/2026/07/01/anthropic-restores-ai-models-fable-mythos-after-the-u-s-lifts-export-controls). TODO: confirm in Anthropic's own announcement.
+[^glasswing]: (checked) Project Glasswing, April 2026: Mythos Preview limited to 12 launch partners (including AWS, Apple, Google, Microsoft, NVIDIA, JPMorgan Chase) and about 40 further organisations. [TechCrunch](https://techcrunch.com/2026/04/07/anthropic-mythos-ai-model-preview-security/) · [InfoQ](https://infoq.com/news/2026/04/anthropic-claude-mythos)
 [^pentagon]: (notes) [Axios](https://www.axios.com/2026/02/27/anthropic-pentagon-supply-chain-risk-claude) · [Mayer Brown](https://www.mayerbrown.com/en/insights/publications/2026/03/pentagon-designates-anthropic-a-supply-chain-risk-what-government-contractors-need-to-know) · [CNBC](https://www.cnbc.com/2026/09/25/pentagon-anthropic-ai-risk-appeals-court.html)
+[^windsurf]: (checked) June 2025, under five days' notice; Jared Kaplan said it would be "odd" to sell Claude to OpenAI. Coverage links it to Anthropic's own Claude Code. [The Decoder](https://the-decoder.com/anthropic-cuts-claude-access-for-windsurf-after-openais-3b-takeover-news/) · [TechTalks](https://bdtechtalks.com/2025/06/11/anthropic-cuts-windsurf-access-to-claude/)
+[^openai]: (checked) August 2025, first reported by WIRED. [TechCrunch](https://www.techcrunch.com/2025/08/02/anthropic-cuts-off-openais-access-to-its-claude-models)
 [^oauth]: (notes) [VentureBeat](https://venturebeat.com/technology/anthropic-cracks-down-on-unauthorized-claude-usage-by-third-party-harnesses) · [AlternativeTo](https://alternativeto.net/news/2026/2/anthropic-officially-bans-using-subscription-authentication-for-third-party-claude-use)
-[^postmortems]: (notes) Anthropic postmortems: [Aug/Sep 2025](https://www.anthropic.com/engineering/a-postmortem-of-three-recent-issues) · [Mar-Apr 2026](https://www.anthropic.com/engineering/april-23-postmortem). These were bugs and configuration changes, not secret model swaps.
-[^degradation]: (notes) [MarginLab tracker](https://marginlab.ai/trackers/claude-code)
-[^bio-safeguards]: (notes) Opus 5.5 falls back to Opus 5 for dual-use biology; the fallback is shown with a notice. [Claude Help Center](https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5)
+[^postmortems]: (notes) [Aug/Sep 2025](https://www.anthropic.com/engineering/a-postmortem-of-three-recent-issues) · [Mar-Apr 2026](https://www.anthropic.com/engineering/april-23-postmortem). Bugs and configuration changes, not secret model swaps.
+[^fallback]: (checked) Opus 5.5 falls back to Opus 5 on dual-use requests in areas such as virology, toxicology and molecular design. On by default, shown with a notice, can be turned off (the conversation then pauses). [Claude Help Center](https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5)
+[^uber]: (checked, secondary; original reporting by The Information) [Fortune, 26 May 2026](https://fortune.com/2026/05/26/uber-coo-ai-spending-tokens-claude-code/) · [Outlook Business](https://www.outlookbusiness.com/corporate/uber-caps-ai-tool-usage-after-exhausting-yearly-budget-in-just-4-months) ($1,500 monthly cap per employee)
 [^cloud-act]: (notes) [The Register](https://www.theregister.com/2025/07/25/microsoft_admits_it_cannot_guarantee/) · [Forbes](https://www.forbes.com/sites/emmawoollacott/2025/07/22/microsoft-cant-keep-eu-data-safe-from-us-authorities/)
-[^vercel]: [Vercel AI Gateway production index, September 2026](https://vercel.com/blog/ai-gateway-production-index-september-2026) · [The New Stack](https://thenewstack.io/open-weight-anthropic-spend/)
-[^menlo]: (notes) [Menlo Ventures, 2025: The State of Generative AI in the Enterprise](https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/)
-[^gartner]: [The Register](https://www.theregister.com/ai-and-ml/2026/11/03/open-models-can-do-90-of-agentic-work-at-a-twentieth-of-the-cost-of-a-frontier-llm-gartner/5307132)
-[^att]: Reported via [Open vs Frontier AI Models & the $100K Token Budget](https://medium.com/@huanzidage/open-models-vs-frontier-models-who-actually-wins-1a01bf0df160). TODO: find the original (Wall Street Journal interview).
-[^cognitive-debt]: (notes) Kosmyna et al., MIT Media Lab, [arXiv 2506.08872](https://arxiv.org/abs/2506.08872)
-[^metr]: [METR, Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/). Early-2025 tools; the authors warn against generalising.
-[^deprecation]: (notes) [Anthropic deprecation commitments](https://www.anthropic.com/research/deprecation-commitments)
+[^kraljic]: (checked) Peter Kraljic, ["Purchasing Must Become Supply Management"](https://hbr.org/1983/09/purchasing-must-become-supply-management), Harvard Business Review, September 1983.
+[^tce]: (memory) Oliver Williamson, *The Economic Institutions of Capitalism*, 1985 (asset specificity and hold-up); Michael Porter, ["How Competitive Forces Shape Strategy"](https://hbr.org/1979/03/how-competitive-forces-shape-strategy), Harvard Business Review, 1979 (supplier power).
+[^dora]: (checked, secondary) Regulation (EU) 2022/2554, [Article 28](https://www.springlex.eu/en/packages/dora/dora-regulation/article-28/) (exit strategies) and [Article 29](https://advisera.com/dora-regulation/preliminary-assessment-of-ict-concentration-risk-at-entity-level/) (concentration risk). TODO: link EUR-Lex.
+[^ai-act]: (checked, secondary) Commission guidelines for general-purpose AI models, 18 July 2025: a downstream modifier generally becomes the provider when the modification uses more than a third of the original training compute; parameter-efficient fine-tuning is unlikely to reach this. [CMS](https://cms.law/en/swe/legal-updates/general-purpose-ai-models-obligations-and-roles-for-providers-and-downstream-modifiers-under-the-eu-ai-act) · [WilmerHale](https://www.wilmerhale.com/en/insights/blogs/wilmerhale-privacy-and-cybersecurity-law/20250724-european-commission-issues-guidelines-for-providers-of-general-purpose-ai-models)
+[^cognizant]: (checked) [Analytics India Magazine, 11 November 2026](https://analyticsindiamag.com/ai-news/cognizant-commits-25000-professionals-to-deploy-claude-in-enterprises)
+[^deloitte]: (checked) October 2025. [Anthropic](https://www.anthropic.com/news/deloitte-anthropic-partnership) · [Deloitte](https://www.deloitte.com/us/en/about/press-room/deloitte-and-anthropic-collaborate-to-bring-safe-reliable-trusted-ai-to-commercial-government-organizations.html)
+[^sierra]: (checked) Self-reported, January pilot. [Sierra, "AI-pilling our company"](https://sierra.ai/blog/ai-pilling-our-company-lessons-learned)
+[^pragmatic]: (checked) [The Pragmatic Engineer, "Tech companies move to open AI models"](https://blog.pragmaticengineer.com/the-pulse-tech-companies-move-to-open-ai-models/): Uber's cost per AI session down 52%; AT&T 56% cheaper on some tasks for about 2% lower quality; Pinterest CEO: "less than 8% of the cost of comparable closed proprietary models".
+[^revolut]: (checked) [AI Engineer talk](https://ai.engineer/talks/Ok6QdZHCcI8-revolut-cut-ai-coding-costs-90-self). The comparison doesn't match usage periods or include the cost of running the service.
+[^intercom]: (checked) [Intercom (Fin) research, "David vs Goliath: are small LLMs any good?"](https://fin.ai/research/david-vs-goliath-are-small-llms-any-good/) · [Cost of serving LLMs](https://fin.ai/research/cost-of-serving-llms/)
+[^att]: (checked) [AT&T, "The tokenomics equation", 23 July 2026](https://about.att.com/blogs/2026/the-tokenomics-equation.html)
+[^c3]: (checked) [C3 AI blog](https://c3.ai/blog/why-c3-ai-fine-tunes-its-own-models-even-with-frontier-ai-this-strong)
+[^terms]: (checked) [Anthropic Commercial Terms](https://www.anthropic.com/legal/commercial-terms), section D.4.
 [^epoch]: (notes) [Epoch AI: open vs closed gap](https://epoch.ai/data-insights/open-closed-eci-gap)
-[^ng]: (memory) Andrew Ng, "AI is the new electricity", Stanford GSB talk, 2017. TODO: find link.
-[^amazon]: (checked) Feng Zhu and Qihong Liu, "Competing with complementors: An empirical look at Amazon.com", Strategic Management Journal 39(10), 2018. [PDF](https://dash.harvard.edu/bitstream/handle/1/37377131/zhu,liu_competing-with-complementors.pdf?sequence=1)
-[^spolsky]: (memory) Joel Spolsky, [Strategy Letter V](https://www.joelonsoftware.com/2002/06/12/strategy-letter-v/), 2002.
-[^make-or-buy]: (memory) Ronald Coase, "The Nature of the Firm", 1937; Oliver Williamson, *The Economic Institutions of Capitalism*, 1985 (asset specificity); C.K. Prahalad and Gary Hamel, ["The Core Competence of the Corporation"](https://hbr.org/1990/05/the-core-competence-of-the-corporation), Harvard Business Review, 1990.
-[^options]: (memory) Avinash Dixit and Robert Pindyck, *Investment under Uncertainty*, 1994 (real options); Carliss Baldwin and Kim Clark, *Design Rules: The Power of Modularity*, 2000 (the option value of modular design).

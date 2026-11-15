@@ -1,82 +1,98 @@
-# Outline post 1: The microeconomics of AI (rework of model sourcing)
+# Outline: The dangers of depending on Claude, and the alternatives
 
 > AI-written outline from the exponential-post interview. In progress, not final.
-> Source post: `_posts/build-log/2026-10-24-model-sourcing.md` (left unchanged).
-> Decision: split into two posts (option B). Post 2: `_ai-drafts/cost-per-task/outline.md`.
+> Source post: `_posts/build-log/2026-10-24-model-sourcing.md` (unchanged).
+> Next: `_ai-drafts/cost-per-task/outline.md`. Parked: `_ai-drafts/human-side/ideas.md`.
 
-Series: Data + AI engineering on the exponential.
-Comes after the clinical-trials post (Claude Code + grill-me ingests, cleans and
-visualises clinical trials without further instructions).
-Character: qualitative. Case studies show companies are actively making this choice.
+Series: Data + AI engineering on the exponential. Follows the clinical-trials post.
+Qualitative, economic argument only. Written for both careers and businesses,
+with a lesson for both.
 
 ## 1. The question
-- The clinical-trials experiment works, but makes me dependent on Claude.
-- What other ways are there to get AI, and what are the pros and cons?
+- Lens: what are the dangers for my career or business? (Human and societal
+  lenses exist, but are out of scope.)
+- What are the dangers of letting Claude do my work, and are there alternatives?
 
 ## 2. The approach
-- Desk research: the "microeconomics of AI".
-- All ways to use and integrate AI (subscription, pay-per-use, renting, ownership),
-  scored on six criteria (access, economics, performance, control, continuity, effort).
-- Case studies of companies making very different choices (see spectrum below).
-- Testing on real tasks needs evals + a gateway: out of scope.
+- Desk research: economic case studies of vendor-side dangers.
+- Score the ways of getting AI in three layers:
+  1. **Disqualifiers** (pass/fail): GDPR / data residency, EU AI Act, sector
+     rules (e.g. DORA), export controls, usage policy.
+  2. **Supply risk**: supplier power (price, rate limits, access), outages,
+     deprecation, silent quality changes, lock-in.
+  3. **Value**: capability, effort, cost.
+- Citable basis: Kraljic matrix (supply risk x impact) for weighing; supplier
+  power / hold-up (Porter, Williamson) for why the risks are structural.
 
 ## 3. What happened
-- The scoring table (may still change).
-- Spectrum of company strategies, from all-in frontier to own models.
-- My portfolio: partly in use, partly planned; tests still have to run.
-  Steff will revise the rows himself.
-- Disappointment candidate: what can't be decided on paper (success rate per
-  model per task is unknown without evals).
-- Not really a disappointment, but a creeping feeling: maybe this doesn't matter and
-  we can just stay with frontier models. Personal experience: people who discover
-  the power of Claude suddenly feel much more intelligent and even start looking
-  down on understanding things themselves. We developed a nuanced view on AI
-  sourcing, but I don't know if it will prove worth it in hindsight.
-  Suggestion: use this doubt honestly in part 3 and as the open question in part 5.
+1. Short description of the ways of procuring AI, with concrete vendor links.
+   Long provider lists go to a concept page ("AI sourcing options").
+2. The scored table (draft below).
+3. Case studies (between table and portfolio): companies decide per task;
+   high-volume or business-specific work moves to open/own models, the hardest
+   work stays on the frontier. Supports "own the core, rent the edge".
+4. My portfolio, and the incidents that made it necessary:
+   - A genome-foundation-model question switched from Opus 5.5 to Opus 5
+     (checked: on by default, with a notice, can be turned off).
+   - The Fable export ban (12 June - 1 July 2026, checked): off for ALL customers.
+     Afterwards Mythos 5 returned only for approved US organisations; Mythos
+     Preview went first to Glasswing partners.
+   - Price rise not yet; Uber shows the mechanism.
+   - Effects, not motives: each restriction moves capability from me to someone
+     else (the provider, its partners, other jurisdictions).
+   - Disappointment: "The losses were minimal, but it did spook me." The case
+     rests on what could happen. And paper scores can't replace evals.
+
+### Table (draft scores approved by Steff, 2026-11-13)
+DECIDED: pay-per-use split into closed vs open models; the biggest risk
+difference is closed vs open weights, not rent vs buy.
+
+| | Subscription | API, closed model | API, open model | Rented compute | Own hardware |
+|---|:---:|:---:|:---:|:---:|:---:|
+| ***Disqualifiers*** | | | | | |
+| Data residency / GDPR | ✗ | ~ | ✓ | ✓ | ✓ |
+| Export controls / access cut off | ✗ | ✗ | ✓ | ✓ | ✓ |
+| Provider's usage policy | ✗ | ✗ | ~ | ✓ | ✓ |
+| ***Supply risk*** | | | | | |
+| Price and rate-limit power | ✗ | ✗ | ✓ | ✓ | ✓ |
+| Silent quality changes | ✗ | ~ | ✓ | ✓ | ✓ |
+| Outages / model retirement | ✗ | ✗ | ~ | ~ | ✓ |
+| Lock-in | ✗ | ~ | ✓ | ✓ | ~ |
+| ***Value*** | | | | | |
+| Capability | ✓ | ✓ | ~ | ~ | ✗ |
+| Effort | ✓ | ✓ | ✓ | ✗ | ✗ |
+| Cost | ✓ | ~ | ✓ | ~ | ~ |
+
+EU AI Act: in the text, not the table (deployer obligations barely depend on how
+you get AI; fine-tuning can make you a provider).
 
 ## 4. The lesson
-- CORE IDEA (Steff): relying fully on Claude pushes you into a rental relationship
-  for what should be the core of your business.
-  - Risk that the provider takes your idea and executes it better itself.
-  - If Claude does everything, why would anyone pay you?
-  - Investing in your own stack and knowledge is a capital investment; that money
-    is not the same as rent. This is the heart of my "Claude bro" critique, maybe
-    more than cost control.
-  - Suggestion: frame "takes your idea" as a structural platform risk (a provider
-    sees how it is used and can build what its customers build), not as an accusation.
-  - Suggestion: rent vs buy is not "buy is always better". Renting is right for what
-    is not your core and for exploring. "Own the core, rent the edge."
-- There is more to it than smarter = better.
-- Companies make opposite choices, and both can be rational. Many route per task.
-- Red thread (suggestion): today's best model is soon a commodity, so invest in
-  being able to switch, not in choosing.
+- Own the core, rent the edge.
+- Treat knowledge (personal and business) as capital and make coherent
+  investments in it. Use AI to automate what is not core to your offering.
+- Two levels: a business that owns its processes; a person who owns their knowledge.
+- Qualitative definition goes in this post:
+  - Core = what sets you apart; you should own the knowledge of it.
+  - Edge = anything that doesn't set you apart, or a new experiment that hasn't
+    established itself yet.
+  - Suggestion: tasks move: an experiment starts at the edge and becomes core as
+    it proves itself and volume grows (link to the volume rule in post 2).
+- Suggestion (open): make "take advantage of the situation" concrete: owning the
+  core has never been this cheap (open weights near the frontier; you can own the
+  model and still rent the compute).
 
 ## 5. What next
-- When is which strategy right? That needs numbers -> post 2 (cost per task).
+- The definition is clear in words, but where does a single task fall? The
+  nature of the task decides where it should live -> segue to post 2.
+- What is core, what is edge, and how do we decide that line quantitatively?
+  -> cost-per-task post.
+- Suggestion (open): "...and how much of it can numbers decide?" (core is a
+  strategic choice; numbers decide where owning pays off for a given core).
 
-## Accepted suggestions
-- Move the long per-option reference material (providers, links, hardware) to a
-  concept page, e.g. "AI sourcing options", and link from the post.
-
-## Case study spectrum (to verify against primary sources)
-All-in on a frontier provider:
-- Cognizant: Claude group of 25,000+ people, Claude across its whole workforce
-  (services firm, so partly a commercial bet).
-- Deloitte: Claude Center of Excellence, 15,000 professionals certified. Not exclusive.
-- Sierra: engineers self-estimate 3-20x productivity leaning heavily on Claude Code.
-Mixed / tension inside one company:
-- Uber: reportedly burned its 2026 AI coding-tools budget in 4 months (~5,000
-  engineers on Claude Code); also moved some tasks to open models (AI costs down ~50%).
-- Microsoft Copilot: Anthropic models on by default, multi-model orchestration.
-Hybrid with a router:
-- Revolut: self-hosted GLM for coding agents, router sends vision to frontier;
-  "GLM is the normal path, frontier is the exception"; ~10x cheaper (company-reported).
-- Intercom: one high-volume summarisation job (~$250k/month) to fine-tuned Qwen 14B;
-  hardest customer-facing prompt stays on frontier.
-- AT&T: up to 90% cost cut on some applications, reportedly 56% lower bill for a
-  2% quality drop; savings credited to routing.
-Open / own models:
-- Pinterest: open models at <8% of the cost per transaction of closed models.
-- C3 AI: fine-tunes its own models despite strong frontier models.
-Background: Gartner (open models more verbose, per-task saving ~5-6x not ~20x);
-Vercel gateway: open-weight token share 7% -> 56% (Dec -> Aug).
+## Open
+- TODO(steff): revise portfolio rows.
+- Verified 2026-11-13 (see draft footnotes): Fable ban, Glasswing, Windsurf and
+  OpenAI cut-offs, Commercial Terms D.4, case studies, Kraljic, DORA, AI Act.
+  Still (memory): Williamson, Porter.
+- Case studies: Cognizant, Deloitte, Sierra (all-in); Uber (both); Revolut,
+  Intercom, AT&T (open by default); Pinterest, C3 AI (own). Copilot dropped.
