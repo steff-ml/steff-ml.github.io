@@ -4,8 +4,9 @@
 `exponential-post` skill (`.claude/skills/exponential-post/`). None of it has
 been reviewed or published.
 
-- One folder per post: `<slug>/outline.md` (interview result) and, if asked,
-  `<slug>/draft.md`.
+- One folder per post: `<slug>/skeleton.md`, the skeleton of a post as it
+  forms in dialogue with Steff, plus a log of decisions.
+- Claude does not write post prose. Older folders still contain `outline.md`
+  and `draft.md` from the previous version of the skill; they are material only.
 - Jekyll does not build this folder (it is in `exclude` in `_config.yml`).
-- To publish: review the draft, then move it by hand to `_drafts/` or
-  `_posts/build-log/` and delete the AI-draft comment at the top.
+- Unfinished ideas and the vision do not belong here: this repo is public.
