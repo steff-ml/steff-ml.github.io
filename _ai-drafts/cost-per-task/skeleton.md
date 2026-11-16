@@ -6,7 +6,7 @@
 
 ## Status
 
-Round 5: full skeleton on the table, waiting on Steff to confirm or attack.
+Round 6: Steff attacked round 5. Approach being reworked into one method; What happened follows from it.
 
 ## Skeleton (round 5)
 
@@ -104,3 +104,8 @@ cliffhanger. Hinge: limits (the floor is untested). Cliffhanger: the test.
 - 2026-11-16, round 5: evidence agreed: session (start), chart (turning
   point), companies + Vercel (reality check), Gartner + OVH (disappointments).
   No new measurement: the test is the next post. Full skeleton written.
+- 2026-11-16, round 6 (Steff on round 5): question good. Approach good, but
+  the line of proof is unclear: the calculation and the company examples
+  feel like two different methods, and make vs buy is not clear. What
+  happened: confusing. What next: building the gateway infrastructure as the
+  test, otherwise costs cannot be measured.
