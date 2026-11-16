@@ -6,7 +6,18 @@
 
 ## Status
 
-Round 3: framework (TCE) and task definition set. Open: the question.
+Round 4: question and answer set. Next: what happened (the evidence).
+
+## Skeleton (round 4, in progress)
+
+| Part | Content |
+|---|---|
+| **Question** | "What is the business case for building the fallback?" (Steff). Bridge from blog 1: convinced of the supply risk, now convince the manager; Steff is both. |
+| **Approach** | Transaction cost economics at task level: frequency and asset specificity (uncertainty was blog 1). Task = sequence of steps with one acceptance criterion; each step to the cheapest executor that passes (code, small model, frontier, human); evaluate the system per task. Cost formula and break-even as the calculator inside TCE. Rent vs investment. |
+| **What happened** | TODO: decide the evidence (round 5). |
+| **Answer** | Steff: "The fallback is worth building if: you have tasks that are disqualified from rented solutions; you have tasks that are cheaper with the infra, i.e. high volume simple tasks." Agreed additions: benefits stack because the infra is shared; "simple" means decomposable into simple steps; the cost side: build and maintain, falling fast because AI builds it, so the threshold drops (TCE boundaries shift); plus one sentence: insurance and leverage against supply risk (blog 1). |
+| **What this doesn't show** | The floor must clear the bar per task; untested. |
+| **What next** | The test: does the floor clear the bar? (cliffhanger) |
 
 ## What changed since the material was written
 
@@ -69,3 +80,8 @@ Round 3: framework (TCE) and task definition set. Open: the question.
 - 2026-11-16, round 3: gateway build data NOT used: the gateway is not done,
   and this post argues economically for building it (using it would be
   circular). Back to the core question.
+- 2026-11-16, round 4: question: "What is the business case for building
+  the fallback?" Answer (Steff): disqualified tasks + high-volume simple
+  tasks. Steff agreed to add: cost side with shifting boundaries, stacking
+  benefits, decomposable instead of simple (in the answer); insurance and
+  leverage as one sentence; the floor clearing the bar under limits.
