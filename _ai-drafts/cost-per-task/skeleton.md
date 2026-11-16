@@ -6,7 +6,37 @@
 
 ## Status
 
-Round 7: structure set (theory, then observation). Next: the task table.
+Round 8: skeleton holds. Next: Steff writes (after blog 1).
+
+## Skeleton (round 8)
+
+| Part | Content | Budget |
+|---|---|---:|
+| **Question** | "What is the business case for building the fallback?" Picks up blog 1's cliffhanger: convinced of the supply risk, now the manager asks whether it is worth it. Steff is both. | 120 |
+| **Approach** | Two complementary sources. (1) Theory: TCE (frequency, asset specificity; uncertainty was blog 1) + cost per successful task, as a business case per task with four questions: may it be rented? how often? does it decompose into simple steps? break-even (setup ÷ saving per run, with the Gartner correction)? Task = sequence of steps with one acceptance criterion; evaluate the system per task. Make = own the process, buy the model as a commodity; buy = rent the capability. (2) Observation: what companies do. | 400 |
+| **What happened: analysis** | The task table (below). Make wins exactly at the two conditions, and those tasks share one infrastructure. Break-even chart for routine work, with a second curve where AI lowers the set-up cost. Disappointment: per task, open models are 5–6x cheaper, not the 20x of the price list (Gartner); task complexity matters (OVH 3x Databricks). | 500 |
+| **What happened: observation** | Companies ask the same question. Those who optimise decide per task and switch (Uber, AT&T, Revolut, Intercom, Pinterest, C3 AI); all-in firms often sell that expertise (Cognizant, Deloitte). Common factor: cheap switching, i.e. the gateway. | 300 |
+| **Answer** | Worth building when benefits outweigh cost. Benefits stack because the infra is shared: disqualified tasks become possible; high-volume tasks that decompose into simple steps get cheaper; one sentence on insurance and leverage (blog 1). Cost: build and maintain, falling fast because AI builds it, so the threshold drops (TCE boundaries shift). Candidate line: make the process, buy the commodity, rent the frontier. | 350 |
+| **What this doesn't show** | Whether the floor clears the bar per task; the real cost of building and maintaining. Company figures mostly self-reported. | 100 |
+| **What next** | Build the gateway infrastructure and measure what it really costs. | 80 |
+| | | **1,850** |
+
+### Task table (starting point; Steff refines while writing)
+
+| Task (from blog 1) | May it be rented? | How often? | Decomposes? | Break-even | Verdict |
+|---|---|---|---|---|---|
+| Building pipelines (clinical trials) | Yes | Low | Partly | No: human time dominates (real: ~$2.70 model vs ~1 h human) | Buy, fallback ready |
+| Routine work: transformations, docs, tests | Yes | High, daily | Yes | TODO(steff): assumptions | Make |
+| Brainstorming, exploring, infra code | Yes | Medium | No (new work) | Never | Buy (subscription) |
+| Learning, small everyday tasks | Yes | Medium | Yes | Already cheap, low stakes | Cheapest (local) |
+| Sensitive personal data | No | – | – | No choice | Make (required) |
+| Scenario (hypothetical): a task in a product, 1,000 runs a day | Yes | Very high | Yes | TODO(steff): assumptions | Make |
+
+Open for writing: TODO(steff) the scenario in more detail; the
+assumptions behind the break-even numbers (mark them as illustrative; apply
+the Gartner correction); check company figures against primary sources.
+
+## Older rounds
 
 ## Structure (round 7, Steff)
 
@@ -135,3 +165,6 @@ cliffhanger. Hinge: limits (the floor is untested). Cliffhanger: the test.
   flow. Structure = theoretical analysis, then observation of what companies
   do. Complementary: one gives the framework, the other shows the practice
   with cheap switching.
+- 2026-11-16, round 8: task table accepted as a starting point. The
+  1,000-a-day scenario is hypothetical; Steff will think it through in more
+  detail while writing. Skeleton holds; next action: write (after blog 1).
