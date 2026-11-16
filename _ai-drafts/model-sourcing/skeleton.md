@@ -6,7 +6,20 @@
 
 ## Status
 
-Round 1: skeleton read back, not yet agreed. Open decision: which question.
+Round 2: question and answer decided by Steff. Skeleton not yet agreed.
+
+## Skeleton (round 2)
+
+Steff's own words in quotes (Dutch, from the dialogue); the rest is structure.
+
+| Part | Content | Paragraphs now | Budget |
+|---|---|---|---:|
+| **Question** | Q1, from the previous post: "Should Claude do all the (data) engineering tasks it is capable of?" Too broad for one post, so this post takes one aspect: supply risk. | ¶1–2 | 100 |
+| **Approach** | A chain of questions, each following from the last: Q2 (what strategic reasons could stop me going all-in?) → Q3 (how do I judge an option per task, and what are the alternatives?) → placing my own tasks. Lens: AI as a critical input, so procurement (Kraljic). | ¶4, ¶9, ¶10–15 | 400 |
+| **What happened** | The risk is real, with my own incidents (Fable, biology question). The dividing line is closed/big vs open/small. My tasks in the matrix. Limits: fallback untested, losses small so far, moving has a cost. | ¶6–8, ¶26–28, ¶36–38 | 700 |
+| **Answer** | "Nee, hangt af van de taak, hoe afhankelijk ik mag zijn van mijn supplier en hoeveel impact het heeft. Core taken moeten kunnen runnen op simpele modellen en taken die in onderzoeksfase zitten of minder cruciaal voor de business zijn kunnen op Claude draaien." Fallback, not exit: this post is about supply risk. Why the fallback sits on the floor: rationing hits the ceiling, and the floor rises. | ¶29–30, ¶33–35, ¶39–43 (to rework) | 400 |
+| **What next** | Does the floor actually do my core work, and what does the fallback cost? Next post. | ¶44–45 | 100 |
+| | | **Total** | **1,700** |
 
 ## Numbers
 
@@ -102,3 +115,9 @@ roughly 1,800 words.
 
 - 2026-11-15, round 1: skeleton read back; three questions and two answers
   found. Waiting on Steff's choice of question.
+- 2026-11-16, round 2: Steff: the questions are a chain (Q1 → Q2 → Q3 → Q4),
+  not competitors. Q1 is the question, narrowed to supply risk. Answer: no,
+  it depends on the task; core must be able to run on simple models.
+  Fallback, not floor. Consequence: the current lesson ("the core should run
+  on the floor") contradicts the answer and needs reworking; Q4 stops being
+  a question and becomes the reason the fallback sits on the floor.
