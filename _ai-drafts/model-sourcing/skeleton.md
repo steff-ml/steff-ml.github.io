@@ -6,7 +6,7 @@
 
 ## Status
 
-Round 2: question and answer decided by Steff. Skeleton not yet agreed.
+Round 3: skeleton nearly holds. Cut list ready. Waiting on Steff to confirm, then cut.
 
 ## Skeleton (round 2)
 
@@ -67,6 +67,42 @@ Fable and biology incidents in ¶33) is about you, not about a business.
 question moved to an older model (¶7, ¶33). Failures and limits: ¶36–38
 (fallback untested, danger small so far, cost of moving). Good material.
 
+## Round 3 decisions
+
+- **Answer, this post:** on supply risk alone, core work must be able to run
+  on simple models (fallback). The fuller case (moving the core to the floor
+  lowers cost; gateway infrastructure is an investment, rent to a lab is
+  not) belongs to the next posts.
+- **Point forward in three places:**
+  1. *Plant* (Question, ¶2): this post looks through one lens, supply risk;
+     cost comes later.
+  2. *Hinge* (What this doesn't show, ¶38 "What the move costs"): the
+     fallback costs something, and it might even save something. Open.
+  3. *Cliffhanger* (What next): the round-1 tension becomes the hook. Supply
+     risk says *have* a fallback. What if cost says *use* it, and building
+     it is an investment rather than rent?
+- **Q3 step** (¶16–25) shrinks to one paragraph plus a link.
+- **Protagonist:** Steff reasons from their own case and looks for lessons
+  that apply more broadly. Evidence stays personal; the answer generalises.
+
+## Cut list (round 3)
+
+| ¶ | What | Words | Action | Saves |
+|---|---|---:|---|---:|
+| 3 | Slave / employee / contractor metaphor | 149 | One sentence that lands "contractor" | ~120 |
+| 5 | Section list | 123 | One or two sentences naming the chain of questions | ~80 |
+| 7 | Risk table, news column | ~140 | Into footnotes; keep "What happened to me" | ~120 |
+| 16–19 | Three-layer scoring table | 232 | One sentence: disqualifiers come first | ~190 |
+| 20–25 | Five ways to buy AI + scoring table | 299 | Link to the sourcing-options page; keep ¶26 | ~285 |
+| 31–32 | My portfolio | 131 | Parking lot | 131 |
+| | | | **Total saved** | **~925** |
+
+Result: about 1,770 words before reworking.
+
+**To rewrite (Steff):** ¶2 (your own perspective, supply-risk aspect, plant),
+¶29–30 (answer), ¶33–35 (why the fallback sits on the floor), ¶38 (hinge),
+¶39–43 (lesson: fallback, generalised from your case), ¶44–45 (cliffhanger).
+
 ## Paragraph map
 
 | ¶ | Starts with | Words | Carries |
@@ -109,7 +145,14 @@ roughly 1,800 words.
 
 ## Parking lot
 
-(empty)
+- **Three-layer scoring (¶16–19)** → the cost post: it is the
+  filter-then-minimise model from that outline.
+- **Five ways to buy AI + scoring (¶20–25)** → the AI sourcing options page.
+- **My portfolio (¶31–32)** → a later post on what I actually run, once rows
+  are verified (in use vs planned).
+- **News column (¶7)** → footnotes.
+- **Slave / employee / contractor metaphor (¶3)** → possibly the parked
+  human-side idea (the moral question it sidesteps).
 
 ## Log
 
@@ -121,3 +164,7 @@ roughly 1,800 words.
   Fallback, not floor. Consequence: the current lesson ("the core should run
   on the floor") contradicts the answer and needs reworking; Q4 stops being
   a question and becomes the reason the fallback sits on the floor.
+- 2026-11-16, round 3: answer stays at supply risk; the cost case is set up
+  for later posts, pointed to in three places (plant, hinge, cliffhanger).
+  Q3 step shrinks. Protagonist: Steff, with lessons that generalise. Cut list
+  written (~925 words).
