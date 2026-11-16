@@ -6,7 +6,7 @@
 
 ## Status
 
-Round 1: questions in the material read back. Open decision: which question.
+Round 2: framework chosen (TCE). Open: the task-level assumption, then the question.
 
 ## What changed since the material was written
 
@@ -41,3 +41,18 @@ Round 1: questions in the material read back. Open decision: which question.
 ## Log
 
 - 2026-11-16, round 1: five questions and two tensions read back.
+- 2026-11-16, round 2: Steff: blog 1 = supply risk says have a fallback for
+  core tasks; blog 2 = cost: when do you use what. Cost is complex: one cost
+  builds something (infrastructure), the other is rent. Numbers confirm the
+  model: the example was a one-off where development time dominated; at
+  1,000 runs a day the logic flips, so make that clearer. Bridge: map the
+  costs and benefits of the fallback; how does someone convinced by blog 1
+  convince their manager? Steff is both the engineer and the manager.
+- 2026-11-16, round 2: framework: transaction cost economics (Williamson):
+  uncertainty (blog 1), frequency and asset specificity (blog 2). Applied to
+  three tasks: building a pipeline (buy), routine work (make), a runtime task
+  in the product (make). Candidate line: make the process, buy the commodity,
+  rent the frontier. Weakness: the real example (pipeline build) is the
+  low-frequency case; B/C have no measurement yet.
+- 2026-11-16: Steff: a second assumption needs grounding: we evaluate
+  everything at task level. This decides the eval strategy later.
