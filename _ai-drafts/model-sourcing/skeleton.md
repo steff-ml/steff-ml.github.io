@@ -6,7 +6,7 @@
 
 ## Status
 
-Round 3: skeleton nearly holds. Cut list ready. Waiting on Steff to confirm, then cut.
+Round 3: skeleton and cut list confirmed by Steff (2026-11-16). Next: Steff cuts and rewrites; then a check round (map, word count, arc check).
 
 ## Skeleton (round 2)
 
@@ -168,3 +168,4 @@ roughly 1,800 words.
   for later posts, pointed to in three places (plant, hinge, cliffhanger).
   Q3 step shrinks. Protagonist: Steff, with lessons that generalise. Cut list
   written (~925 words).
+- 2026-11-16: Steff confirmed skeleton and cut list. Post stays published (not shared yet).

@@ -46,6 +46,13 @@ not a law: ask per post whether another form serves the question better.
 | **Answer** | What Steff now thinks, in one sentence someone could disagree with. Earned by the findings. | A recap instead of an answer. A generic AI claim. |
 | **What next** | The open question or the next post. | A promise without a question. |
 
+**Pointing forward.** A post can answer through one lens (for example
+supply risk) and leave a fuller case to later posts. Then point forward in
+up to three places: *plant* it in the question (this post looks through one
+lens), *hinge* it in the limits (what this does not show), and end on a
+*cliffhanger* in What next. A tension between two answers in a draft is
+often the best cliffhanger, not a flaw.
+
 Plus, always:
 
 - **Budget**: words per part. Posts are medium length, deep but sparing
@@ -85,11 +92,15 @@ When Steff has a text of their own and it is too long, sprawling or won't close.
 The usual cause is not knowing what is essential, so recover the skeleton
 first and cut second.
 
-1. Read the text in full. Count words per section.
+1. Read the text in full. Count words per section and per paragraph,
+   leaving out front matter, comment blocks and footnotes.
 2. **Read back the skeleton that is actually in it**, quoting Steff's own
    sentences: what the question seems to be, where the answer is. If you
    find more than one research question, say so first: that is the main
-   finding, and the dialogue starts with which one this post answers.
+   finding. Then ask whether they compete or form a **chain** (each one
+   following from the last). A chain is fine: the first question is the
+   post's question, the rest are the steps of the approach, and the step
+   that costs the most words is the first candidate to shrink.
 3. **Map every paragraph**: carries a part / carries nothing / belongs to
    another post. Show it as a short table (paragraph's first words, part,
    words). Give the total that would remain.
