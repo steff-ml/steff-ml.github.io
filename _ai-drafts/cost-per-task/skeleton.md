@@ -109,3 +109,8 @@ cliffhanger. Hinge: limits (the floor is untested). Cliffhanger: the test.
   feel like two different methods, and make vs buy is not clear. What
   happened: confusing. What next: building the gateway infrastructure as the
   test, otherwise costs cannot be measured.
+- 2026-11-16, round 6: proposed one method (business case per task, four
+  questions) and make = own the process, buy the model as a commodity.
+  Steff disagreed with parking the companies: they show that companies ask
+  this question too, and they argue the need for a cheap switching function
+  (the gateway).
