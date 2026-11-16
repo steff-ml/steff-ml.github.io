@@ -6,7 +6,24 @@
 
 ## Status
 
-Round 6: Steff attacked round 5. Approach being reworked into one method; What happened follows from it.
+Round 7: structure set (theory, then observation). Next: the task table.
+
+## Structure (round 7, Steff)
+
+Two complementary sources of evidence, in this order:
+1. **Theoretical analysis**: the mental framework to understand the
+   decision. TCE + cost per successful task, applied as a business case per
+   task to Steff's own tasks (same task list as blog 1). Real anchor: the
+   clinical-trials session; volume cases are marked assumptions; Gartner as
+   the correction from price list to per-task saving.
+2. **Observation**: how companies put this into practice, with cheap
+   switching. They decide per task and switch (Uber, AT&T, Revolut, ...);
+   all-in firms often sell that expertise. Common factor: a cheap switching
+   function, i.e. the gateway.
+
+Make = own the process (gateway, harness, evals, decomposed tasks), buy the
+model as a commodity. Buy = rent the finished capability.
+What next: build the gateway infrastructure and measure what it costs.
 
 ## Skeleton (round 5)
 
@@ -114,3 +131,7 @@ cliffhanger. Hinge: limits (the floor is untested). Cliffhanger: the test.
   Steff disagreed with parking the companies: they show that companies ask
   this question too, and they argue the need for a cheap switching function
   (the gateway).
+- 2026-11-16, round 7: Steff: "the others" before the method breaks the
+  flow. Structure = theoretical analysis, then observation of what companies
+  do. Complementary: one gives the framework, the other shows the practice
+  with cheap switching.
