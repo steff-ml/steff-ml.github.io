@@ -6,7 +6,7 @@
 
 ## Status
 
-Round 2: framework chosen (TCE). Open: the task-level assumption, then the question.
+Round 3: framework (TCE) and task definition set. Open: the question.
 
 ## What changed since the material was written
 
@@ -56,3 +56,16 @@ Round 2: framework chosen (TCE). Open: the task-level assumption, then the quest
   low-frequency case; B/C have no measurement yet.
 - 2026-11-16: Steff: a second assumption needs grounding: we evaluate
   everything at task level. This decides the eval strategy later.
+- 2026-11-16, round 3: task = a sequence of steps with one acceptance
+  criterion someone values; each step goes to the cheapest executor that
+  passes (code, small model, frontier, human). Evaluate the system (code +
+  model) at task level; steps for diagnosis. Small models look deceptively
+  good because code carries much of the work.
+- 2026-11-16, round 3: Steff: AI drives the cost of writing that code toward
+  zero (e.g. Claude helped build the gateway). Insight kept: TCE still holds,
+  but AI shifts its boundaries; making pays at much lower frequency. What
+  remains of the investment: specifying, decomposing, verifying, noticing
+  change.
+- 2026-11-16, round 3: gateway build data NOT used: the gateway is not done,
+  and this post argues economically for building it (using it would be
+  circular). Back to the core question.
