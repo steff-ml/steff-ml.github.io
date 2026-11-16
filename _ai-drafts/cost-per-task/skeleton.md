@@ -6,18 +6,22 @@
 
 ## Status
 
-Round 4: question and answer set. Next: what happened (the evidence).
+Round 5: full skeleton on the table, waiting on Steff to confirm or attack.
 
-## Skeleton (round 4, in progress)
+## Skeleton (round 5)
 
-| Part | Content |
-|---|---|
-| **Question** | "What is the business case for building the fallback?" (Steff). Bridge from blog 1: convinced of the supply risk, now convince the manager; Steff is both. |
-| **Approach** | Transaction cost economics at task level: frequency and asset specificity (uncertainty was blog 1). Task = sequence of steps with one acceptance criterion; each step to the cheapest executor that passes (code, small model, frontier, human); evaluate the system per task. Cost formula and break-even as the calculator inside TCE. Rent vs investment. |
-| **What happened** | TODO: decide the evidence (round 5). |
-| **Answer** | Steff: "The fallback is worth building if: you have tasks that are disqualified from rented solutions; you have tasks that are cheaper with the infra, i.e. high volume simple tasks." Agreed additions: benefits stack because the infra is shared; "simple" means decomposable into simple steps; the cost side: build and maintain, falling fast because AI builds it, so the threshold drops (TCE boundaries shift); plus one sentence: insurance and leverage against supply risk (blog 1). |
-| **What this doesn't show** | The floor must clear the bar per task; untested. |
-| **What next** | The test: does the floor clear the bar? (cliffhanger) |
+| Part | Content | Budget |
+|---|---|---:|
+| **Question** | "What is the business case for building the fallback?" Bridge: blog 1 convinced you of the supply risk; now the manager asks whether the fallback is worth it. Steff is both. | 120 |
+| **Approach** | TCE at task level: frequency and asset specificity (uncertainty was blog 1); specificity answers Prahalad & Hamel (frequent but generic is not core). Task = sequence of steps with one acceptance criterion; each step to the cheapest executor that passes (code, small model, frontier, human); evaluate the system per task. Cost per successful task and break-even as the calculator. Rent builds nothing; the fallback is an investment. | 450 |
+| **What happened** | *Start:* the clinical-trials session, a one-off: $16.90 model, ~1 h human, so renting wins (real). *Turning point:* break-even chart, cost per task vs runs per day, one-off to 1,000/day; the line moves when set-up cost falls (assumptions, marked). *Reality check:* companies that build meet the conditions (volume or filters); all-in firms often sell that expertise; Vercel 56% of tokens / 14% of spend. *Disappointments:* Gartner, 5–6x cheaper per task, not the 20x of the price list; OVH 3x Databricks. | 650 |
+| **Answer** | Worth building when benefits outweigh cost. Benefits stack (shared infra): disqualified tasks become possible; high-volume tasks that decompose into simple steps get cheaper; plus one sentence on insurance and leverage (blog 1). Cost: build and maintain, falling fast because AI builds it, so the threshold drops (TCE boundaries shift). Candidate line: make the process, buy the commodity, rent the frontier. | 350 |
+| **What this doesn't show** | Whether the floor clears the bar per task (untested). Company figures mostly self-reported. | 100 |
+| **What next** | Cliffhanger: does the floor clear the bar on my tasks? The test. | 80 |
+| | | **1,750** |
+
+**Pointing back and forward.** Plant: the question picks up blog 1's
+cliffhanger. Hinge: limits (the floor is untested). Cliffhanger: the test.
 
 ## What changed since the material was written
 
@@ -48,6 +52,18 @@ Round 4: question and answer set. Next: what happened (the evidence).
 2. **What happened is mostly assumptions.** Real data: the clinical-trials
    session ($16.90 model, ~1 h human, OVH ~3x Databricks). The bar (91%,
    1.5 minutes) and the harness case (40 h, 95%) are illustrative.
+
+## Parking lot
+
+- **Fast vs durable investments table** (draft lesson) → the post on building
+  the fallback (harness, evals, gateway).
+- **Company strategy table in full** → condensed into the reality check;
+  full table can go to a concept page.
+- **Decision theory footnotes** (consider-then-choose, penalty method,
+  geometric retries) → cut; footnote at most.
+- **Wardley mapping** → later in the series (frontier to commodity).
+- **Gateway build data** → the post on building it (using it here is circular).
+- **Q5, harness lowers the bar more for small models?** → the test post.
 
 ## Log
 
@@ -85,3 +101,6 @@ Round 4: question and answer set. Next: what happened (the evidence).
   tasks. Steff agreed to add: cost side with shifting boundaries, stacking
   benefits, decomposable instead of simple (in the answer); insurance and
   leverage as one sentence; the floor clearing the bar under limits.
+- 2026-11-16, round 5: evidence agreed: session (start), chart (turning
+  point), companies + Vercel (reality check), Gartner + OVH (disappointments).
+  No new measurement: the test is the next post. Full skeleton written.
