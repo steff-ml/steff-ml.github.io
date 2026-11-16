@@ -84,7 +84,15 @@ For a new post, or when the material is build sessions, notes or links.
    rounds on the Question (is it one question?) and on What happened (what
    failed?). Bring your own angle each round: a sceptical reader's
    objection, a sharper question, a cut.
-4. Stop when Steff says the skeleton holds. Save it (see Output).
+4. **When the ideas feel loose**, look for an established framework that
+   brings them together (Kraljic for blog 1, transaction cost economics for
+   blog 2). Apply it to Steff's own example before Steff decides on it.
+5. **Give every source of evidence one role**, and name it: for example a
+   theoretical analysis (the framework to understand the decision) and an
+   observation (what others do in practice). Complementary sources are not
+   competing methods. Never use the results of what the post argues for
+   as its evidence (circular).
+6. Stop when Steff says the skeleton holds. Save it (see Output).
 
 ### Move 2: reverse skeleton (restructure and cut)
 
